@@ -10,4 +10,17 @@ export const theme: ThemeOptions = createTheme({
             main: '#4D4D4D',
         },
     },
+    typography: {
+        fontFamily: 'Inter, Arial, sans-serif',
+    },
+    shape: {
+        borderRadius: 10,
+    },
+    components: {
+        MuiButton: {
+            defaultProps: {
+                disableElevation: true, //Отключаем тень
+            },
+        },
+    },
 });

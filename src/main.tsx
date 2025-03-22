@@ -5,16 +5,16 @@ import '@fontsource/inter/700.css';
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
-import {Layout} from './components/Layout/Layout.tsx';
+import {CheckIsMobile} from './components/CheckIsMobile/CheckIsMobile.tsx';
 import {Providers} from './components/Providers/Providers.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <Layout>
+        <CheckIsMobile>
             <Providers>
                 <App />
             </Providers>
-        </Layout>
+        </CheckIsMobile>
     </StrictMode>
 );

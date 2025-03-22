@@ -1,7 +1,7 @@
 import {Box, Typography} from '@mui/material';
 import {FC, PropsWithChildren} from 'react';
 import {useMediaQuery} from 'usehooks-ts';
-export const Layout: FC<PropsWithChildren> = ({children}) => {
+export const CheckIsMobile: FC<PropsWithChildren> = ({children}) => {
     const matches = useMediaQuery('(max-width: 430px)');
     return (
         <div>
