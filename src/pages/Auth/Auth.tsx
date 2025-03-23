@@ -1,9 +1,13 @@
 import {Box, Button, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
+import {Helmet} from 'react-helmet';
 import {Link} from 'react-router-dom';
-export const Home: FC = () => {
+export const Auth: FC = () => {
     return (
         <>
+            <Helmet>
+                <title>Авторизация</title>
+            </Helmet>
             <Box
                 display={'flex'}
                 justifyContent={'center'}
@@ -11,7 +15,7 @@ export const Home: FC = () => {
                 minHeight={'100vh'}
             >
                 <Stack gap={'20px'}>
-                    <Typography variant="h3" textAlign={'center'}>
+                    <Typography variant="h1" textAlign={'center'}>
                         ЭКО Контроль
                     </Typography>
                     <Button
