@@ -1,6 +1,6 @@
 import {Box, Button, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
-
+import {Link} from 'react-router-dom';
 export const Home: FC = () => {
     return (
         <>
@@ -18,14 +18,16 @@ export const Home: FC = () => {
                     <Button
                         variant="contained"
                         sx={{py: '17px', mt: '113px'}}
-                        href="/sign-in"
+                        component={Link}
+                        to="/sign-in"
                     >
                         Войти
                     </Button>
                     <Button
                         variant="contained"
                         sx={{py: '17px'}}
-                        href="/sign-up"
+                        component={Link}
+                        to="/sign-up"
                     >
                         Зарегистрироваться
                     </Button>
