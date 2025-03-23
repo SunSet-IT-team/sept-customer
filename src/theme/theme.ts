@@ -12,6 +12,9 @@ export const theme: ThemeOptions = createTheme({
     },
     typography: {
         fontFamily: 'Inter, Arial, sans-serif',
+        h1: {
+            fontSize: '48px',
+        },
     },
     shape: {
         borderRadius: 10,

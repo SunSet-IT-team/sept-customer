@@ -11,10 +11,10 @@ import './index.css';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <CheckIsMobile>
-            <Providers>
+        <Providers>
+            <CheckIsMobile>
                 <App />
-            </Providers>
-        </CheckIsMobile>
+            </CheckIsMobile>
+        </Providers>
     </StrictMode>
 );

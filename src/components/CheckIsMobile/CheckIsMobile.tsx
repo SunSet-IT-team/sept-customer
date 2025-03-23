@@ -14,7 +14,7 @@ export const CheckIsMobile: FC<PropsWithChildren> = ({children}) => {
                     justifyContent={'center'}
                     minHeight={'100vh'}
                 >
-                    <Typography variant="h4" textAlign={'center'}>
+                    <Typography variant="h1" textAlign={'center'}>
                         Пожалуйста, зайдите с мобильного устройства
                     </Typography>
                 </Box>
