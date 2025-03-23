@@ -9,7 +9,6 @@ export const Home: FC = () => {
                 justifyContent={'center'}
                 alignItems={'center'}
                 minHeight={'100vh'}
-                px={'10px'}
             >
                 <Stack gap={'20px'}>
                     <Typography variant="h3" textAlign={'center'}>
