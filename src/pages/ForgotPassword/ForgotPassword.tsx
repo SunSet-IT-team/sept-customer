@@ -16,7 +16,6 @@ export const ForgotPassword: FC = () => {
     const toBack = () => {
         navigate(-1);
     };
-
     return (
         <>
             <Helmet>
