@@ -1,7 +1,8 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import {Button} from '@mui/material';
+import {Button, Link} from '@mui/material';
 import {FC} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
+import {Link as ReactRouterDomLink} from 'react-router-dom';
 import {ISignInForm} from './form.type';
 import {signInFormSchema} from './schema';
 import {SignInFormContent} from './SignInFormContent';
@@ -20,13 +21,24 @@ export const SignInForm: FC = () => {
             mode="onChange"
         >
             <SignInFormContent />
+            <Link
+                to="/forgot-pasword"
+                variant="body1"
+                color="secondary"
+                display={'block'}
+                align="center"
+                my={'28px'}
+                component={ReactRouterDomLink}
+            >
+                Забыли пароль?
+            </Link>
             <Button
                 variant="contained"
                 color="secondary"
-                sx={{mt: '50px', width: '100%', py: '12px'}}
+                sx={{width: '100%', py: '12px'}}
                 type="submit"
             >
-                Войти
+                Войти в личный кабинет
             </Button>
         </FormContainer>
     );
