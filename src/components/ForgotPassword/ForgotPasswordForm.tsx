@@ -11,7 +11,7 @@ import {IForgotPasswordForm} from './form.type';
 import {forgotPasswordFormSchema} from './schema';
 export const ForgotPasswordForm: FC = () => {
     const navigate = useNavigate();
-    const {mutateAsync} = useResetPassword();
+    const {mutateAsync, isSuccess} = useResetPassword();
     const {setResetPasswordData} = useActions(resetPasswordSlice.actions);
     const onSubmit = (data: IForgotPasswordForm) => {
         console.log(data);
