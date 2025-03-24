@@ -45,8 +45,19 @@ export const ConfirmationForm: FC = () => {
                             sx={{gap: 1}}
                             {...field}
                             length={5}
+                            justifyContent={'center'}
                             TextFieldsProps={{
                                 error: !!errors.verification_code,
+                                type: 'number',
+                                sx: {
+                                    '& .MuiInputBase-root': {
+                                        width: '15vw',
+                                        height: '15vw',
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontSize: '32px',
+                                    },
+                                },
                             }}
                         />
                         {errors.verification_code ? (
