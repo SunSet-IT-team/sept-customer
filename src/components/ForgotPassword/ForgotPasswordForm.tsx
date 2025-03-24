@@ -29,7 +29,6 @@ export const ForgotPasswordForm: FC = () => {
         //     ...data,
         // });
     };
-
     return (
         <FormContainer
             onSuccess={onSubmit}
