@@ -22,7 +22,7 @@ export const SignInForm: FC = () => {
         >
             <SignInFormContent />
             <Link
-                to="/forgot-pasword"
+                to="/forgot-password"
                 variant="body1"
                 color="secondary"
                 display={'block'}
