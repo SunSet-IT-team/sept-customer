@@ -47,6 +47,7 @@ export const ConfirmationForm: FC = () => {
                             length={5}
                             TextFieldsProps={{
                                 error: !!errors.verification_code,
+                                type: 'number',
                             }}
                         />
                         {errors.verification_code ? (
