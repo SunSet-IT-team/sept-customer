@@ -11,8 +11,7 @@ export const signUpFormSchema = z.object({
         .string()
         .min(1, {message: 'Поле обязательно для заполнения'})
         .regex(phoneRegex, {
-            message:
-                'Введите корректный российский номер телефона (например, +79181234567)',
+            message: 'Введите российский номер телефона в формате +79181234567',
         }),
     password: z
         .string()
