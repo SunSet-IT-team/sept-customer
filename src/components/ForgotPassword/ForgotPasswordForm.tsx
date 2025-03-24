@@ -3,15 +3,22 @@ import {Button} from '@mui/material';
 import {FC} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
 import {useNavigate} from 'react-router-dom';
+import {useActions} from '../../hooks/useActions';
 import {useResetPassword} from '../../hooks/useResetPassword';
+import {resetPasswordSlice} from '../../store/reset-password/reset-password.slice';
 import {ForgotPasswordFormContent} from './ForgotPasswordContent';
 import {IForgotPasswordForm} from './form.type';
 import {forgotPasswordFormSchema} from './schema';
 export const ForgotPasswordForm: FC = () => {
     const navigate = useNavigate();
     const {mutateAsync} = useResetPassword();
+    const {setResetPasswordData} = useActions(resetPasswordSlice.actions);
     const onSubmit = (data: IForgotPasswordForm) => {
         console.log(data);
+        setResetPasswordData({
+            userId: 1,
+            ...data,
+        });
         navigate('/confirmation');
         // mutateAsync({
         //     userId: 1,
