@@ -15,7 +15,14 @@ export const SignUp: FC = () => {
             <Helmet>
                 <title>Регистрация</title>
             </Helmet>
-            <Box position={'relative'} py={'26px'} px={'33px'}>
+            <Box
+                position={'relative'}
+                py={'26px'}
+                px={'33px'}
+                display={'flex'}
+                flexDirection={'column'}
+                minHeight={'100vh'}
+            >
                 <Stack
                     direction={'row'}
                     justifyContent={'center'}
@@ -35,7 +42,9 @@ export const SignUp: FC = () => {
                         Регистрация
                     </Typography>
                 </Stack>
-                <SignUpForm />
+                <Box my={'auto'}>
+                    <SignUpForm />
+                </Box>
             </Box>
         </>
     );
