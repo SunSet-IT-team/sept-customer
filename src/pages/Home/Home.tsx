@@ -1,15 +1,41 @@
 import {Search} from '@mui/icons-material';
-import {Box, InputAdornment, TextField, Typography} from '@mui/material';
+import {
+    Box,
+    CircularProgress,
+    InputAdornment,
+    TextField,
+    Typography,
+} from '@mui/material';
+import {useQuery} from '@tanstack/react-query';
 import {FC, useMemo, useState} from 'react';
+import {SERVICES} from '../../api';
 import {ServicesList} from '../../components/ServicesList/ServicesList';
-import {servicesListData} from './data';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
+    const {data: servicesList, isLoading} = useQuery({
+        queryFn: () => SERVICES.ServicesService.getAllServices(),
+        queryKey: ['get all services'],
+    });
+
     const filteredServices = useMemo(() => {
-        return servicesListData.filter((service) =>
-            service.title.includes(search.toLowerCase())
+        return servicesList?.filter((service) =>
+            service.title.toLowerCase().includes(search.toLowerCase().trim())
         );
-    }, [search]);
+    }, [search, servicesList]);
+
+    if (isLoading || !servicesList || !servicesList.length) {
+        return (
+            <Box
+                display={'flex'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                mt={'50%'}
+            >
+                <CircularProgress />
+            </Box>
+        );
+    }
+
     return (
         <Box mt={'50px'}>
             <TextField
@@ -69,7 +95,9 @@ export const Home: FC = () => {
             >
                 Наши услуги
             </Typography>
-            <ServicesList servicesList={filteredServices} />
+            {filteredServices && (
+                <ServicesList servicesList={filteredServices} />
+            )}
         </Box>
     );
 };
