@@ -13,9 +13,6 @@ export const theme: ThemeOptions = createTheme({
             default: '#4D4D4D',
             paper: '#FFFFFF',
         },
-        text: {
-            primary: '#FFFFFF',
-        },
     },
     typography: {
         fontFamily: 'Inter, Arial, sans-serif',
