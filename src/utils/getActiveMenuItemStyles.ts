@@ -5,7 +5,7 @@ export const getActiveMenuItemStyles = (isActive: boolean, isHome: boolean) => {
         wrapper: {
             position: 'absolute',
             top: '-50%',
-            background: 'white',
+            background: '#FFFFFF',
             borderRadius: '50%',
             padding: '4px',
             width: '62px',

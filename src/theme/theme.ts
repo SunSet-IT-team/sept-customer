@@ -11,10 +11,10 @@ export const theme: ThemeOptions = createTheme({
         },
         background: {
             default: '#4D4D4D',
-            paper: 'white',
+            paper: '#FFFFFF',
         },
         text: {
-            primary: 'white',
+            primary: '#FFFFFF',
         },
     },
     typography: {
@@ -48,7 +48,7 @@ export const theme: ThemeOptions = createTheme({
         MuiBottomNavigationAction: {
             styleOverrides: {
                 root: {
-                    color: 'white',
+                    color: '#FFFFFF',
                     justifyContent: 'end',
                     paddingBottom: '10px',
                     borderRadius: '40px',
