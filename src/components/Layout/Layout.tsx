@@ -5,7 +5,7 @@ import {Navbar} from '../Navbar/Navbar';
 
 const Layout: FC = () => {
     return (
-        <Box px={'20px'} position={'relative'}>
+        <Box px={'20px'} position={'relative'} pb={'140px'}>
             <Outlet />
             <Paper
                 sx={{
@@ -13,7 +13,7 @@ const Layout: FC = () => {
                     bottom: '20px',
                     left: '20px',
                     right: '20px',
-                    borderRadius: '30px',
+                    background: 'none',
                 }}
                 elevation={0}
             >
