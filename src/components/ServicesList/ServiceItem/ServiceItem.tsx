@@ -7,7 +7,7 @@ export const ServiceItem: FC<IService> = ({id, title}) => {
     return (
         <Box
             component={Link}
-            to={`${id}`}
+            to={`service/${id}/new_order`}
             width={'100%'}
             display={'flex'}
             justifyContent={'center'}
