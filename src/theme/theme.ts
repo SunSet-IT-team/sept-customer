@@ -9,11 +9,18 @@ export const theme: ThemeOptions = createTheme({
         secondary: {
             main: '#4D4D4D',
         },
+        background: {
+            default: '#4D4D4D',
+            paper: '#FFFFFF',
+        },
     },
     typography: {
         fontFamily: 'Inter, Arial, sans-serif',
         h1: {
             fontSize: '48px',
+        },
+        body2: {
+            fontSize: '13px',
         },
     },
     shape: {
@@ -22,7 +29,33 @@ export const theme: ThemeOptions = createTheme({
     components: {
         MuiButton: {
             defaultProps: {
-                disableElevation: true, //Отключаем тень
+                disableElevation: true,
+            },
+        },
+        MuiBottomNavigation: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#4D4D4D',
+                    borderRadius: '40px',
+                    minHeight: '71px',
+                    position: 'relative',
+                },
+            },
+        },
+        MuiBottomNavigationAction: {
+            styleOverrides: {
+                root: {
+                    color: '#FFFFFF',
+                    justifyContent: 'end',
+                    paddingBottom: '10px',
+                    borderRadius: '40px',
+                    '& .MuiBottomNavigationAction-label': {
+                        fontSize: '13px',
+                    },
+                    '&.Mui-selected .MuiBottomNavigationAction-label': {
+                        fontSize: '13px',
+                    },
+                },
             },
         },
     },
