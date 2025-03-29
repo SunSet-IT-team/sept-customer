@@ -2,6 +2,7 @@ import {z} from 'zod';
 
 export const newOrderFormSchema = z.object({
     date: z.string().min(1, {message: 'Поле обязательно для заполнения'}),
+    city: z.string().min(1, {message: 'Поле обязательно для заполнения'}),
     payment_type: z
         .string()
         .min(1, {message: 'Поле обязательно для заполнения'}),

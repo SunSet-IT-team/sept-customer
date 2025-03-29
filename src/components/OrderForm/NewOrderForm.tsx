@@ -26,6 +26,7 @@ export const NewOrderForm: FC = () => {
         payment_type: '',
         septic_height: '',
         volume: '',
+        city: '',
     };
     return (
         <FormContainer

@@ -2,6 +2,7 @@ export const newOrderInputsData = [
     {label: 'Дата', name: 'date', required: true, type: 'date'},
     {label: 'Тип оплаты', name: 'payment_type', required: true},
     {label: 'Объект', name: 'object', required: true},
+    {label: 'Город', name: 'city', required: true},
     {label: 'Комментарий', name: 'comment', required: false},
     {label: 'Расстояние до септика', name: 'entrance_distance', required: true},
     {label: 'Высота септика', name: 'septic_height', required: true},
