@@ -1,5 +1,7 @@
 export const newOrderInputsData = [
     {label: 'Дата', name: 'date', required: true, type: 'date'},
+    {label: 'Город', name: 'city', required: true},
+    {label: 'Услуга', name: 'service', required: true},
     {label: 'Тип оплаты', name: 'payment_type', required: true},
     {label: 'Объект', name: 'object', required: true},
     {label: 'Комментарий', name: 'comment', required: false},
