@@ -7,10 +7,13 @@ import {newOrderSlice} from '../../store/new_order/new_order.slice';
 
 export const OrderCreated: FC = () => {
     const {order_id} = useParams();
-    const {setExecutor, setFormData} = useActions(newOrderSlice.actions);
+    const {setExecutor, setFormData, setService} = useActions(
+        newOrderSlice.actions
+    );
     useEffect(() => {
         setExecutor(null);
         setFormData(null);
+        setService(null);
     }, []);
     return (
         <>

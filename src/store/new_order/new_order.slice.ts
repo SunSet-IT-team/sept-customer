@@ -3,15 +3,20 @@ import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {INewOrderForm} from '../../components/OrderForm/schema';
 import {IExecutorShort} from '../../types/executor';
+import {IService} from '../../types/service';
 import {IInitialStateNewOrder} from './state.interface';
 const initialState: IInitialStateNewOrder = {
     formData: null,
     executor: null,
+    service: null,
 };
 export const newOrderSlice = createSlice({
     name: 'new order',
     initialState,
     reducers: {
+        setService(state, action: PayloadAction<IService | null>) {
+            state.service = action.payload;
+        },
         setFormData(
             state,
             action: PayloadAction<Omit<INewOrderForm, 'executor'> | null>

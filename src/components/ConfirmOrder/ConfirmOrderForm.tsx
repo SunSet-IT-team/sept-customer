@@ -8,7 +8,7 @@ import {IOrder} from './type';
 
 export const ConfirmOrderForm: FC = () => {
     const navigate = useNavigate();
-    const {formData, executor} = useTypedSelector(
+    const {formData, executor, service} = useTypedSelector(
         (state) => state.newOrderForm
     );
 
@@ -16,7 +16,11 @@ export const ConfirmOrderForm: FC = () => {
         console.log({...formData, ...executor});
         navigate(`/order/order_created/${10}`); //Здесь захардкожено значение, пока нет интеграции с сервером
     };
-    const defaultValues = {...formData, executor: executor?.title};
+    const defaultValues = {
+        ...formData,
+        executor: executor?.title,
+        service: service?.title,
+    };
     return (
         <FormContainer
             onSuccess={onSubmit}

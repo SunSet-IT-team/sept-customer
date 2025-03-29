@@ -20,14 +20,14 @@ export const ExecutorService = {
                     },
                     {
                         id: 2,
-                        title: 'ООО Септики',
+                        title: 'ООО Септики2',
                         reviewsCount: 85,
                         averageRating: 4.9,
                         imgUrl: 'https://placehold.co/90x90',
                     },
                     {
                         id: 3,
-                        title: 'ООО Септики',
+                        title: 'ООО Септики3',
                         reviewsCount: 85,
                         averageRating: 4.9,
                         imgUrl: 'https://placehold.co/90x90',
