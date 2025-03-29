@@ -1,15 +1,10 @@
 import {Search} from '@mui/icons-material';
-import {
-    Box,
-    CircularProgress,
-    InputAdornment,
-    TextField,
-    Typography,
-} from '@mui/material';
+import {Box, InputAdornment, TextField, Typography} from '@mui/material';
 import {useQuery} from '@tanstack/react-query';
 import {FC, useMemo, useState} from 'react';
 import {SERVICES} from '../../api';
 import {ServicesList} from '../../components/ServicesList/ServicesList';
+import {Spinner} from '../../components/Spinner/Spinner';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
     const {data: servicesList, isLoading} = useQuery({
@@ -24,16 +19,7 @@ export const Home: FC = () => {
     }, [search, servicesList]);
 
     if (isLoading || !servicesList || !servicesList.length) {
-        return (
-            <Box
-                display={'flex'}
-                justifyContent={'center'}
-                alignItems={'center'}
-                mt={'50%'}
-            >
-                <CircularProgress />
-            </Box>
-        );
+        return <Spinner />;
     }
 
     return (
