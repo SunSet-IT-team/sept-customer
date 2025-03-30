@@ -1,30 +1,37 @@
-import {Stack} from '@mui/material';
-import {FC} from 'react';
+import {Box, Stack} from '@mui/material';
+import {FC, RefCallback} from 'react';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {IExecutorShort} from '../../types/executor';
 import {ExecutorItem} from './ExecutorItem/ExecutorItem';
 
 interface IProps {
     executors: IExecutorShort[];
+    observedRef: RefCallback<HTMLDivElement>;
 }
 
-export const ExecutorsList: FC<IProps> = ({executors}) => {
+export const ExecutorsList: FC<IProps> = ({executors, observedRef}) => {
     const {executors: favouriteExecutors} = useTypedSelector(
         (state) => state.favourites
     );
     return (
         <Stack gap={'10px'}>
-            {executors.map((executor) => {
+            {executors.map((executor, index) => {
                 const isFavourite = favouriteExecutors.some(
                     (favourite_executor) =>
                         favourite_executor.id === executor.id
                 );
                 return (
-                    <ExecutorItem
-                        executor={executor}
+                    <Box
+                        ref={
+                            index === executors.length - 4 ? observedRef : null
+                        }
                         key={executor.title + executor.id}
-                        isFavourite={isFavourite}
-                    />
+                    >
+                        <ExecutorItem
+                            executor={executor}
+                            isFavourite={isFavourite}
+                        />
+                    </Box>
                 );
             })}
         </Stack>
