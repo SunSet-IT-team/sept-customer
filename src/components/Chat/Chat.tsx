@@ -8,7 +8,7 @@ import {
     Typography,
 } from '@mui/material';
 import {FC, ReactNode, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useHandleBack} from '../../hooks/useHandleBack';
 import {ChatMessage} from './ChatMessage';
 interface IProps {
     interlocutor: {
@@ -19,9 +19,9 @@ interface IProps {
 }
 export const Chat: FC<IProps> = ({interlocutor, componentAboveChat}) => {
     const [message, setMessage] = useState<string>('');
-    const navigate = useNavigate();
+    const {handleBack} = useHandleBack();
     const handleCloseChat = () => {
-        navigate(-1);
+        handleBack();
     };
 
     const handleSend = () => {};

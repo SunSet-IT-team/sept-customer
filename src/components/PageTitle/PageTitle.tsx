@@ -1,17 +1,15 @@
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import {Stack, Typography} from '@mui/material';
 import {FC} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {useHandleBack} from '../../hooks/useHandleBack';
 
 interface IProps {
     title: string;
 }
 
 export const PageTitle: FC<IProps> = ({title}) => {
-    const navigate = useNavigate();
-    const toBack = () => {
-        navigate(-1);
-    };
+    const {handleBack} = useHandleBack();
+
     return (
         <Stack
             direction={'row'}
@@ -26,7 +24,7 @@ export const PageTitle: FC<IProps> = ({title}) => {
                     cursor: 'pointer',
                     padding: '2px',
                 }}
-                onClick={toBack}
+                onClick={handleBack}
             />
             <Typography variant="h6" sx={{fontWeight: 500}}>
                 {title}
