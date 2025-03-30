@@ -30,6 +30,11 @@ export const theme: ThemeOptions = createTheme({
         MuiButton: {
             defaultProps: {
                 disableElevation: true,
+                sx: {
+                    padding: '10px 0',
+                    fontSize: '14px',
+                    textTransform: 'none',
+                },
             },
         },
         MuiBottomNavigation: {

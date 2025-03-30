@@ -10,6 +10,7 @@ import {ConfirmOrder} from './pages/ConfirmOrder/ConfirmOrder';
 import {ForgotPassword} from './pages/ForgotPassword/ForgotPassword';
 import {Home} from './pages/Home/Home';
 import {NewOrder} from './pages/NewOrder/NewOrder';
+import {OrderChat} from './pages/OrderChat/OrderChat';
 import {SignIn} from './pages/SignIn/SignIn';
 import {SignUp} from './pages/SignUp/SignUp';
 function App() {
@@ -41,6 +42,7 @@ function App() {
                     path="order_created/:order_id"
                     element={<OrderCreated />}
                 />
+                <Route path=":order_id/chat" element={<OrderChat />} />
             </Route>
             <Route path="executor">
                 <Route path=":executor_id" element={<AboutExecutor />} />
