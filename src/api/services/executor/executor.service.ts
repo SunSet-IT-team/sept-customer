@@ -3,14 +3,24 @@ import {IExecutorFull, IExecutorShort} from '../../../types/executor';
 import {axiosInstance} from '../../instance';
 
 export const ExecutorService = {
-    async getAllExecutors(): Promise<IExecutorShort[]> {
-        const response = await axiosInstance<IExecutorShort[]>({
+    async getAllExecutors({
+        page,
+    }: {
+        page: number;
+    }): Promise<{items: IExecutorShort[]; nextPage: number | null}> {
+        const response = await axiosInstance<{
+            items: IExecutorShort[];
+            nextPage: number | null;
+        }>({
             url: API_ROUTES.GET_ALL_EXECUTORS(),
             method: 'GET',
         });
-        return new Promise((res) => {
-            setTimeout(() => {
-                res([
+        const result: Record<
+            number,
+            {items: IExecutorShort[]; nextPage: number | null}
+        > = {
+            1: {
+                items: [
                     {
                         id: 1,
                         title: 'ООО Септики',
@@ -32,8 +42,129 @@ export const ExecutorService = {
                         averageRating: 4.9,
                         imgUrl: 'https://placehold.co/90x90',
                     },
-                ]);
-            }, 1500);
+                    {
+                        id: 4,
+                        title: 'ООО Септики4',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 5,
+                        title: 'ООО Септики5',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 6,
+                        title: 'ООО Септики6',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                ],
+                nextPage: 2,
+            },
+            2: {
+                items: [
+                    {
+                        id: 4,
+                        title: 'ООО Септики4',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 5,
+                        title: 'ООО Септики5',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 6,
+                        title: 'ООО Септики6',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 4,
+                        title: 'ООО Септики4',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 5,
+                        title: 'ООО Септики5',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 6,
+                        title: 'ООО Септики6',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                ],
+                nextPage: 3,
+            },
+            3: {
+                items: [
+                    {
+                        id: 7,
+                        title: 'ООО Септики7',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 8,
+                        title: 'ООО Септики8',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 9,
+                        title: 'ООО Септики9',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 4,
+                        title: 'ООО Септики4',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 5,
+                        title: 'ООО Септики5',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                    {
+                        id: 6,
+                        title: 'ООО Септики6',
+                        reviewsCount: 85,
+                        averageRating: 4.9,
+                        imgUrl: 'https://placehold.co/90x90',
+                    },
+                ],
+                nextPage: null,
+            },
+        };
+        return new Promise((res) => {
+            setTimeout(() => {
+                res(result[page]);
+            }, 0);
         });
         return response.data;
     },
