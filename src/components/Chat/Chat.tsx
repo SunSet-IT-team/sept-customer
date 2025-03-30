@@ -28,7 +28,7 @@ export const Chat: FC<IProps> = ({interlocutor, componentAboveChat}) => {
     const handleAttach = () => {};
 
     return (
-        <Box sx={{height: '100vh'}} display="flex" flexDirection="column">
+        <Box sx={{height: '100dvh'}} display="flex" flexDirection="column">
             <Box
                 sx={{
                     backgroundColor: 'primary.main',

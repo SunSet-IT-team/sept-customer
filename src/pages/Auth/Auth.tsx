@@ -12,7 +12,7 @@ export const Auth: FC = () => {
                 display={'flex'}
                 justifyContent={'center'}
                 alignItems={'center'}
-                minHeight={'100vh'}
+                minHeight={'100dvh'}
             >
                 <Stack gap={'20px'}>
                     <Typography variant="h1" textAlign={'center'}>
