@@ -12,7 +12,7 @@ export const CheckIsMobile: FC<PropsWithChildren> = ({children}) => {
                     display="flex"
                     alignItems={'center'}
                     justifyContent={'center'}
-                    minHeight={'100vh'}
+                    minHeight={'100dvh'}
                 >
                     <Typography variant="h1" textAlign={'center'}>
                         Пожалуйста, зайдите с мобильного устройства

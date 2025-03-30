@@ -24,7 +24,7 @@ export const OrderCreated: FC = () => {
                 display={'flex'}
                 justifyContent={'center'}
                 alignItems={'center'}
-                minHeight={'100vh'}
+                minHeight={'100dvh'}
                 px={'30px'}
             >
                 <Stack>

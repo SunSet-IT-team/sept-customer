@@ -19,7 +19,7 @@ export const SignIn: FC = () => {
                 position={'relative'}
                 py={'26px'}
                 px={'33px'}
-                minHeight={'100vh'}
+                minHeight={'100dvh'}
                 display={'flex'}
                 flexDirection={'column'}
             >
