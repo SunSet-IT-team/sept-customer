@@ -1,9 +1,8 @@
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {useNavigate} from 'react-router-dom';
 import {ConfirmationForm} from '../../components/ConfirmationForm/ConfirmationForm';
+import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {useResetPassword} from '../../hooks/useResetPassword';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 
@@ -38,25 +37,7 @@ export const Confirmation: FC = () => {
                 display={'flex'}
                 flexDirection={'column'}
             >
-                <Stack
-                    direction={'row'}
-                    justifyContent={'center'}
-                    width={'100%'}
-                    alignItems={'center'}
-                >
-                    <ArrowBackIosNewRoundedIcon
-                        sx={{
-                            position: 'absolute',
-                            left: '33px',
-                            cursor: 'pointer',
-                            padding: '2px',
-                        }}
-                        onClick={toBack}
-                    />
-                    <Typography variant="h6" sx={{fontWeight: 500}}>
-                        Код подтверждения
-                    </Typography>
-                </Stack>
+                <PageTitle title="Код подтверждения" />
                 <Stack direction={'column'} gap={'25px'} my={'auto'}>
                     <Typography variant="body1" textAlign={'center'}>
                         Введите код подтверждения
