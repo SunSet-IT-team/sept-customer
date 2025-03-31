@@ -14,3 +14,8 @@ export const signInInputsData = [
         type: 'password',
     },
 ];
+
+export const signInDefaultsValues = {
+    email: '',
+    password: '',
+};
