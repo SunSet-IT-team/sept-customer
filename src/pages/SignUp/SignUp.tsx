@@ -38,7 +38,11 @@ export const SignUp: FC = () => {
                         }}
                         onClick={toBack}
                     />
-                    <Typography variant="h6" sx={{fontWeight: 500}}>
+                    <Typography
+                        variant="h6"
+                        sx={{fontWeight: 500}}
+                        component={'h1'}
+                    >
                         Регистрация
                     </Typography>
                 </Stack>

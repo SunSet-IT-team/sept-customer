@@ -2,9 +2,11 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {Button} from '@mui/material';
 import {FC} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
+import {signUpDefaultsValues} from './data';
 import {IRegisterForm} from './form.type';
 import {signUpFormSchema} from './schema';
-import {SignUpFormContent} from './SignUpFormContent';
+import {SignUpFormContent} from './SignUpFormContent/SignUpFormContent';
+import {signUpButtonStyles} from './styles';
 export const SignUpForm: FC = () => {
     const onSubmit = (data: IRegisterForm) => {
         console.log(data);
@@ -13,20 +15,14 @@ export const SignUpForm: FC = () => {
         <FormContainer
             onSuccess={onSubmit}
             resolver={zodResolver(signUpFormSchema)}
-            defaultValues={{
-                fullname: '',
-                email: '',
-                phone: '',
-                password: '',
-                processingDataAccepted: false,
-            }}
+            defaultValues={signUpDefaultsValues}
             mode="onChange"
         >
             <SignUpFormContent />
             <Button
                 variant="contained"
                 color="secondary"
-                sx={{mt: '50px', width: '100%', py: '12px'}}
+                sx={signUpButtonStyles}
                 type="submit"
             >
                 Зарегистрироваться

@@ -1,11 +1,5 @@
 import {z} from 'zod';
-
-const phoneRegex = /(^8|\+7)((\d{10})|(\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}))/;
-const onlyDigitsRegex = /^\+?\d+$/;
-
-const cleanPhoneNumber = (phone: string) => {
-    return phone.replace(/[\(\)\-\s]/g, ''); // Убираем скобки, дефисы и пробелы
-};
+import {cleanPhoneNumber, onlyDigitsRegex, phoneRegex} from '../../utils/regex';
 
 export const signUpFormSchema = z.object({
     fullname: z.string().min(1, {message: 'Поле обязательно для заполнения'}),

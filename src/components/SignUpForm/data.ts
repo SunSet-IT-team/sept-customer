@@ -25,3 +25,11 @@ export const signUpInputsData = [
         type: 'password',
     },
 ];
+
+export const signUpDefaultsValues = {
+    fullname: '',
+    email: '',
+    phone: '',
+    password: '',
+    processingDataAccepted: false,
+};
