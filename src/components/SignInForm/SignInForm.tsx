@@ -3,9 +3,11 @@ import {Button, Link} from '@mui/material';
 import {FC} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
 import {Link as ReactRouterDomLink} from 'react-router-dom';
+import {signInDefaultsValues} from './data';
 import {ISignInForm} from './form.type';
 import {signInFormSchema} from './schema';
-import {SignInFormContent} from './SignInFormContent';
+import {SignInFormContent} from './SignInFormContent/SignInFormContent';
+import {buttonStyles, linkStyles} from './styles';
 export const SignInForm: FC = () => {
     const onSubmit = (data: ISignInForm) => {
         console.log(data);
@@ -14,10 +16,7 @@ export const SignInForm: FC = () => {
         <FormContainer
             onSuccess={onSubmit}
             resolver={zodResolver(signInFormSchema)}
-            defaultValues={{
-                email: '',
-                password: '',
-            }}
+            defaultValues={signInDefaultsValues}
             mode="onChange"
         >
             <SignInFormContent />
@@ -25,17 +24,15 @@ export const SignInForm: FC = () => {
                 to="/forgot-password"
                 variant="body1"
                 color="secondary"
-                display={'block'}
-                align="center"
-                my={'28px'}
                 component={ReactRouterDomLink}
+                sx={linkStyles}
             >
                 Забыли пароль?
             </Link>
             <Button
                 variant="contained"
                 color="secondary"
-                sx={{width: '100%', py: '12px'}}
+                sx={buttonStyles}
                 type="submit"
             >
                 Войти в личный кабинет
