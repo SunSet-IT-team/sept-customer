@@ -13,7 +13,6 @@ export const Auth: FC = () => {
                 justifyContent={'center'}
                 alignItems={'center'}
                 minHeight={'100vh'}
-                px={'10px'}
             >
                 <Stack gap={'20px'}>
                     <Typography variant="h1" textAlign={'center'}>
