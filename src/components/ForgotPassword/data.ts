@@ -14,3 +14,8 @@ export const forgotPasswordInputsData = [
         type: 'password',
     },
 ];
+
+export const forgotPasswordDefaultValues = {
+    email: '',
+    new_password: '',
+};

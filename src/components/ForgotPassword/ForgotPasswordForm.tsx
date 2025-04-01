@@ -6,13 +6,17 @@ import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
 import {useResetPassword} from '../../hooks/useResetPassword';
 import {resetPasswordSlice} from '../../store/reset-password/reset-password.slice';
-import {ForgotPasswordFormContent} from './ForgotPasswordContent';
+import {forgotPasswordDefaultValues} from './data';
+import {ForgotPasswordFormContent} from './ForgotPasswordContent/ForgotPasswordContent';
 import {IForgotPasswordForm} from './form.type';
 import {forgotPasswordFormSchema} from './schema';
+import {submitButton} from './styles';
+
 export const ForgotPasswordForm: FC = () => {
     const navigate = useNavigate();
     const {mutateAsync, isSuccess} = useResetPassword();
     const {setResetPasswordData} = useActions(resetPasswordSlice.actions);
+
     const onSubmit = (data: IForgotPasswordForm) => {
         console.log(data);
         setResetPasswordData({
@@ -25,14 +29,12 @@ export const ForgotPasswordForm: FC = () => {
         //     ...data,
         // });
     };
+
     return (
         <FormContainer
             onSuccess={onSubmit}
             resolver={zodResolver(forgotPasswordFormSchema)}
-            defaultValues={{
-                email: '',
-                new_password: '',
-            }}
+            defaultValues={forgotPasswordDefaultValues}
             mode="onChange"
         >
             <ForgotPasswordFormContent />
@@ -40,7 +42,7 @@ export const ForgotPasswordForm: FC = () => {
             <Button
                 variant="contained"
                 color="secondary"
-                sx={{mt: '44px', width: '100%', py: '12px'}}
+                sx={submitButton}
                 type="submit"
             >
                 Сменить пароль
