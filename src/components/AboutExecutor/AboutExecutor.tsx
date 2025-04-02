@@ -9,6 +9,19 @@ import {PageTitle} from '../PageTitle/PageTitle';
 import {Review} from '../Review/Review';
 import {Spinner} from '../Spinner/Spinner';
 import {ToggleExecutorFavourite} from '../ToggleExecutorFavourite/ToggleExecutorFavourite';
+import {
+    companyNameStyle,
+    descriptionBoxStyle,
+    executorImageContainerStyle,
+    executorImageStyle,
+    favouriteIconStyle,
+    infoBoxItemStyle,
+    infoBoxStyle,
+    ratingBoxStyle,
+    ratingStackStyle,
+    reviewsBoxStyle,
+} from './styles';
+
 export const AboutExecutor: FC = () => {
     const {executor_id} = useParams();
     if (!executor_id) {
@@ -41,140 +54,65 @@ export const AboutExecutor: FC = () => {
     const isFavourite = favouriteExecutors.some(
         (favourite_executor) => favourite_executor.id === executor.id
     );
+
     return (
         <Box p={'30px'}>
             <PageTitle title="" />
             <Stack justifyContent={'center'} alignItems={'center'}>
-                <Box position={'relative'}>
-                    <img
-                        src=""
-                        alt=""
-                        style={{
-                            width: 143,
-                            height: 143,
-                            backgroundColor: '#7D7D7D',
-                            borderRadius: '20px',
-                        }}
-                    />
+                <Box sx={executorImageContainerStyle}>
+                    <img src="" alt="" style={executorImageStyle} />
                     <ToggleExecutorFavourite
                         executor={executor}
                         isFavourite={isFavourite}
-                        sx={{
-                            position: 'absolute',
-                            top: 0,
-                            right: 0,
-                            backgroundColor: 'white',
-                            borderRadius: '50%',
-                            width: '30px',
-                            height: '30px',
-                            border: '1px solid black',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}
+                        sx={favouriteIconStyle}
                     />
                 </Box>
-                <Box
-                    px={'4px'}
-                    py={'8px'}
-                    border={'1px solid black'}
-                    borderRadius={'20px'}
-                    mt={'-10px'}
-                    position={'relative'}
-                    sx={{
-                        backgroundColor: 'white',
-                    }}
-                >
-                    <Stack
-                        direction={'row'}
-                        gap={'5px'}
-                        justifyContent={'center'}
-                        alignItems={'center'}
-                    >
+                <Box sx={ratingBoxStyle}>
+                    <Stack sx={ratingStackStyle}>
                         <StarIcon color="secondary" fontSize="small" />
                         <Typography>{averageRating}</Typography>
                         <Typography>{ratingsCount} оценок</Typography>
                     </Stack>
                 </Box>
             </Stack>
-            <Typography
-                textAlign={'center'}
-                variant="h1"
-                fontSize={'16px'}
-                fontWeight={'500'}
-                py={'20px'}
-            >
+            <Typography variant="h1" sx={companyNameStyle}>
                 {title}
             </Typography>
 
-            <Stack
-                direction={'row'}
-                justifyContent={'space-between'}
-                px={'16px'}
-                py={'8px'}
-                border={'1px solid black'}
-                borderRadius={'20px'}
-                sx={{
-                    backgroundColor: 'primary.main',
-                }}
-            >
-                <Box width={'100%'} sx={{borderRight: '1px solid black'}}>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+            <Stack sx={infoBoxStyle}>
+                <Box sx={infoBoxItemStyle} borderRight={'1px solid black'}>
+                    <Typography variant="body2" fontWeight={500}>
                         {experience}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+                    <Typography variant="body2" fontWeight={500}>
                         лет стажа
                     </Typography>
                 </Box>
-                <Box width={'100%'} sx={{borderRight: '1px solid black'}}>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+                <Box sx={infoBoxItemStyle} borderRight={'1px solid black'}>
+                    <Typography variant="body2" fontWeight={500}>
                         {callsCount}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+                    <Typography variant="body2" fontWeight={500}>
                         вызов
                     </Typography>
                 </Box>
-                <Box width={'100%'}>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+                <Box sx={infoBoxItemStyle}>
+                    <Typography variant="body2" fontWeight={500}>
                         {reviewsCount}
                     </Typography>
-                    <Typography
-                        variant="body2"
-                        fontWeight={500}
-                        textAlign={'center'}
-                    >
+                    <Typography variant="body2" fontWeight={500}>
                         отзыва
                     </Typography>
                 </Box>
             </Stack>
 
-            <Box mt={'37px'}>
+            <Box sx={descriptionBoxStyle}>
                 <Typography variant="h6" fontWeight={'500'}>
                     Данные о компании
                 </Typography>
                 <Typography mt={'20px'}>{description}</Typography>
             </Box>
-            <Box mt={'20px'}>
+            <Box sx={reviewsBoxStyle}>
                 <Typography variant="h6" fontWeight={'500'}>
                     Отзывы
                 </Typography>

@@ -14,3 +14,15 @@ export const paymentTypes = [
     {label: 'Наличные', id: 'cash'},
     {label: 'Безналичный расчет', id: 'wire_transfer'},
 ];
+
+export const newOrderDefaultValues = {
+    comment: '',
+    date: '',
+    entrance_distance: '',
+    object: '',
+    object_type: '',
+    payment_type: '',
+    septic_height: '',
+    volume: '',
+    city: '',
+};
