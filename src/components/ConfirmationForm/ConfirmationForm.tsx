@@ -1,10 +1,8 @@
-import {Box, FormHelperText} from '@mui/material';
-import {MuiOtpInput} from 'mui-one-time-password-input';
 import {FC, useEffect} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {useConfirmation} from '../../hooks/useConfirmation';
+import {OtpField} from '../ui/Inputs/OtpField/OtpField';
 import {IConfirmationForm} from './form.type';
-
 export const ConfirmationForm: FC = () => {
     const {mutateAsync, isError} = useConfirmation();
     const {
@@ -28,11 +26,13 @@ export const ConfirmationForm: FC = () => {
             clearErrors('verification_code');
         }
     }, [code]);
+
     useEffect(() => {
         if (isError) {
             setError('verification_code', {message: 'Неверный код'});
         }
     }, [isError]);
+
     return (
         <form>
             <Controller
@@ -40,38 +40,10 @@ export const ConfirmationForm: FC = () => {
                 control={control}
                 rules={{validate: (value) => value.length === 6}}
                 render={({field}) => (
-                    <Box>
-                        <MuiOtpInput
-                            sx={{gap: 1}}
-                            {...field}
-                            length={5}
-                            justifyContent={'center'}
-                            TextFieldsProps={{
-                                error: !!errors.verification_code,
-                                type: 'number',
-                                sx: {
-                                    '& .MuiInputBase-root': {
-                                        width: '15vw',
-                                        height: '15vw',
-                                    },
-                                    '& .MuiInputBase-input': {
-                                        fontSize: '32px',
-                                    },
-                                },
-                            }}
-                        />
-                        {errors.verification_code ? (
-                            <FormHelperText
-                                error
-                                sx={{
-                                    textAlign: 'center',
-                                    fontSize: '14px',
-                                }}
-                            >
-                                {errors.verification_code.message}
-                            </FormHelperText>
-                        ) : null}
-                    </Box>
+                    <OtpField
+                        field={field}
+                        errorMessage={errors.verification_code?.message}
+                    />
                 )}
             />
         </form>
