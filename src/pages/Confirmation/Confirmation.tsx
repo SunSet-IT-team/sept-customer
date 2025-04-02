@@ -9,14 +9,15 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 export const Confirmation: FC = () => {
     const navigate = useNavigate();
-    const {data} = useTypedSelector((state) => state.resetPassword);
+    const {email, new_password, userId} = useTypedSelector(
+        (state) => state.resetPassword
+    );
     const toBack = () => {
         navigate(-1);
     };
     const {mutateAsync, isSuccess} = useResetPassword();
     const handleResendCode = () => {
-        if (data.userId !== null) {
-            const {email, new_password, userId} = data;
+        if (userId !== null) {
             mutateAsync({
                 email,
                 new_password,
