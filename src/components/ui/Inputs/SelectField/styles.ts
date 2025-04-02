@@ -5,14 +5,13 @@ export const labelStyles: SxProps<Theme> = {
     fontWeight: 500,
 };
 
-export const requiredAsteriskStyles = {
+export const asteriskStyles = {
     color: 'red',
     marginLeft: '2px',
-    marginTop: '-10px',
 };
 
-export const textFieldStyles: SxProps<Theme> = {
-    '& .MuiInputBase-input': {
-        padding: '10px',
+export const selectFieldStyles: SxProps<Theme> = {
+    '& .MuiInputBase-root': {
+        padding: '0px',
     },
 };
