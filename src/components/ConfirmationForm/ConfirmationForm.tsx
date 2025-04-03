@@ -25,13 +25,13 @@ export const ConfirmationForm: FC = () => {
         } else {
             clearErrors('verification_code');
         }
-    }, [code]);
+    }, [code, mutateAsync, clearErrors]);
 
     useEffect(() => {
         if (isError) {
             setError('verification_code', {message: 'Неверный код'});
         }
-    }, [isError]);
+    }, [isError, setError]);
 
     return (
         <form>

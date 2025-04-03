@@ -11,6 +11,7 @@ import {Spinner} from '../../components/Spinner/Spinner';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 export const ChooseExecutor: FC = () => {
     const {ref, inView} = useInView();
+
     const {
         data: executors,
         isLoading,
@@ -28,16 +29,19 @@ export const ChooseExecutor: FC = () => {
     });
     const navigate = useNavigate();
     const {formData} = useTypedSelector((state) => state.newOrderForm);
+
     useEffect(() => {
         if (!formData) {
             navigate('/');
         }
-    }, [formData]);
+    }, [formData, navigate]);
+
     useEffect(() => {
         if (inView && hasNextPage) {
             fetchNextPage();
         }
-    }, [inView, isSuccess]);
+    }, [inView, isSuccess, hasNextPage, fetchNextPage]);
+
     if (isLoading || !executors) {
         return <Spinner />;
     }
