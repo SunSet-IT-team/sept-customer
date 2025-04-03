@@ -4,7 +4,6 @@ import {FormContainer} from 'react-hook-form-mui';
 import {useNavigate} from 'react-router-dom';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {ConfirmOrderFormContent} from './ConfirmOrderContent';
-import {IOrder} from './type';
 
 export const ConfirmOrderForm: FC = () => {
     const navigate = useNavigate();
@@ -12,7 +11,7 @@ export const ConfirmOrderForm: FC = () => {
         (state) => state.newOrderForm
     );
 
-    const onSubmit = (data: IOrder) => {
+    const onSubmit = () => {
         console.log({...formData, ...executor});
         navigate(`/order/order_created/${10}`); //Здесь захардкожено значение, пока нет интеграции с сервером
     };

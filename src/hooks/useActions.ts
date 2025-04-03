@@ -3,10 +3,13 @@ import {useMemo} from 'react';
 import {useAppDispatch} from '../store/store';
 
 type ActionCreatorsMapObject<T extends Action = Action> = {
-    [key: string]: (...args: any[]) => T;
+    [key: string]: (...args: unknown[]) => T;
 };
 
 export const useActions = <T extends ActionCreatorsMapObject>(actions: T) => {
     const dispatch = useAppDispatch();
-    return useMemo(() => bindActionCreators(actions, dispatch), [dispatch]);
+    return useMemo(
+        () => bindActionCreators(actions, dispatch),
+        [dispatch, actions]
+    );
 };

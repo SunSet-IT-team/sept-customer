@@ -24,11 +24,12 @@ import {
 
 export const AboutExecutor: FC = () => {
     const {executor_id} = useParams();
-    if (!executor_id) {
-        return <Spinner />;
-    }
+
     const {data: executor, isLoading} = useQuery({
-        queryFn: () => SERVICES.ExecutorService.getExecutorById(+executor_id),
+        queryFn: () =>
+            SERVICES.ExecutorService.getExecutorById(
+                executor_id ? Number(executor_id) : 0
+            ),
         queryKey: ['get executor by id'],
         enabled: !!executor_id,
     });
@@ -37,7 +38,7 @@ export const AboutExecutor: FC = () => {
         (state) => state.favourites
     );
 
-    if (isLoading || !executor) {
+    if (isLoading || !executor || !executor_id) {
         return <Spinner />;
     }
     const {

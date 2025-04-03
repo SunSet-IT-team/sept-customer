@@ -7,14 +7,11 @@ import {useResetPassword} from '../../hooks/useResetPassword';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 
 export const Confirmation: FC = () => {
-    const navigate = useNavigate();
     const {email, new_password, userId} = useTypedSelector(
         (state) => state.resetPassword
     );
-    const toBack = () => {
-        navigate(-1);
-    };
-    const {mutateAsync, isSuccess} = useResetPassword();
+
+    const {mutateAsync} = useResetPassword();
     const handleResendCode = () => {
         if (userId !== null) {
             mutateAsync({

@@ -3,5 +3,5 @@ export const phoneRegex =
 export const onlyDigitsRegex = /^\+?\d+$/;
 
 export const cleanPhoneNumber = (phone: string) => {
-    return phone.replace(/[\(\)\-\s]/g, ''); // Убираем скобки, дефисы и пробелы
+    return phone.replace(/[()\-\s]/g, ''); // Убираем скобки, дефисы и пробелы
 };
