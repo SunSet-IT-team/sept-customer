@@ -5,11 +5,13 @@ import {INewOrderForm} from '../../components/OrderForm/schema';
 import {IExecutorShort} from '../../types/executor';
 import {IService} from '../../types/service';
 import {IInitialStateNewOrder} from './state.interface';
+
 const initialState: IInitialStateNewOrder = {
     formData: null,
     executor: null,
     service: null,
 };
+
 export const newOrderSlice = createSlice({
     name: 'new order',
     initialState,

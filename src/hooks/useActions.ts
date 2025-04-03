@@ -3,7 +3,7 @@ import {useMemo} from 'react';
 import {useAppDispatch} from '../store/store';
 
 type ActionCreatorsMapObject<T extends Action = Action> = {
-    [key: string]: (...args: unknown[]) => T;
+    [key: string]: (...args: any[]) => T;
 };
 
 export const useActions = <T extends ActionCreatorsMapObject>(actions: T) => {
