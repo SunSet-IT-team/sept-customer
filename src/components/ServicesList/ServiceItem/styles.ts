@@ -1,7 +1,6 @@
 import {SxProps, Theme} from '@mui/material';
 
 export const serviceItemStyle: SxProps<Theme> = {
-    mt: '44px',
     width: '100%',
     p: '10px',
     display: 'flex',
@@ -9,6 +8,8 @@ export const serviceItemStyle: SxProps<Theme> = {
     justifyContent: 'center',
     borderRadius: '15px',
     color: 'black',
+    fontWeight: 500,
+    alignItems: 'center',
     backgroundColor: 'primary.main',
     aspectRatio: '1/1',
     textDecoration: 'none',
