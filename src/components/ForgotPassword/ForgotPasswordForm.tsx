@@ -4,7 +4,7 @@ import {FC} from 'react';
 import {FormContainer} from 'react-hook-form-mui';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
-import {useResetPassword} from '../../hooks/useResetPassword';
+// import {useResetPassword} from '../../hooks/useResetPassword';
 import {resetPasswordSlice} from '../../store/reset-password/reset-password.slice';
 import {forgotPasswordDefaultValues} from './data';
 import {ForgotPasswordFormContent} from './ForgotPasswordContent/ForgotPasswordContent';
@@ -14,7 +14,7 @@ import {submitButton} from './styles';
 
 export const ForgotPasswordForm: FC = () => {
     const navigate = useNavigate();
-    const {mutateAsync, isSuccess} = useResetPassword();
+    // const {mutate, isSuccess} = useResetPassword();
     const {setResetPasswordData} = useActions(resetPasswordSlice.actions);
 
     const onSubmit = (data: IForgotPasswordForm) => {
