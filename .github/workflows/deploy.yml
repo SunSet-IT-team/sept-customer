@@ -23,6 +23,6 @@ jobs:
                   ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
                     cd ../srv/sept-customer &&
                     git pull origin main &&
-                    docker compose build customer_sept &&
-                    docker compose up -d customer_sept
+                    docker compose build customer-sept &&
+                    docker compose up -d customer-sept
                   "
