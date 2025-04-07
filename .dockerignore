@@ -5,7 +5,7 @@ build/
 .env
 .env.local
 
-# Игнорируем системные файлы
+# Игнорируем системные файлы 
 .DS_Store
 .idea/
 .vscode/
