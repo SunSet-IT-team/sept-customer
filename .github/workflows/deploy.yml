@@ -22,7 +22,7 @@ jobs:
               run: |
                   ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
                     cd ../srv/sept-customer &&
-                    git pull origin main &&
+                    git pull origin main --force &&
                     docker compose build customer-sept &&
-                    docker compose up -d customer-sept
+                    docker compose up -d customer-sept  
                   "
