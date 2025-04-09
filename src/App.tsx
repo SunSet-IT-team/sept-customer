@@ -13,12 +13,13 @@ import {NewOrder} from './pages/NewOrder/NewOrder';
 import {OrderChat} from './pages/OrderChat/OrderChat';
 import {SignIn} from './pages/SignIn/SignIn';
 import {SignUp} from './pages/SignUp/SignUp';
+import { MyOrders } from './pages/MyOrders/MyOrders';
 function App() {
     return (
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/my-calls" element={<>My calls</>} />
+                <Route path="/my-calls" element={<MyOrders />} />
                 <Route path="/profile" element={<>Profile</>} />
             </Route>
             <Route path="/auth" element={<Auth />} />
