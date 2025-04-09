@@ -13,7 +13,8 @@ import {NewOrder} from './pages/NewOrder/NewOrder';
 import {OrderChat} from './pages/OrderChat/OrderChat';
 import {SignIn} from './pages/SignIn/SignIn';
 import {SignUp} from './pages/SignUp/SignUp';
-import { MyOrders } from './pages/MyOrders/MyOrders';
+import {MyOrders} from './pages/MyOrders/MyOrders';
+import {OrderReview} from './pages/OrderReview/OrderReview';
 function App() {
     return (
         <Routes>
@@ -44,6 +45,11 @@ function App() {
                     element={<OrderCreated />}
                 />
                 <Route path=":order_id/chat" element={<OrderChat />} />
+                <Route path=":order_id/review" element={<OrderReview />} />
+                <Route
+                    path=":order_id/add-review"
+                    element={<>Добавить отзыв</>}
+                />
             </Route>
             <Route path="executor">
                 <Route path=":executor_id" element={<AboutExecutor />} />
