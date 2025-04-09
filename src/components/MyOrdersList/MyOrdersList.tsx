@@ -1,16 +1,17 @@
 import {Box, Stack} from '@mui/material';
 import {FC} from 'react';
 import {OrderCard} from './OrderCard/OrderCard';
+import { IOrder } from '../../types/order';
 
 interface IProps {
-    calls: any;
+    calls: IOrder[];
 }
 
-export const MyCallsList: FC<IProps> = ({calls}) => {
+export const MyOrdersList: FC<IProps> = ({calls}) => {
 
     return (
         <Stack spacing={'25px'} mt={'25px'}>
-            {calls.map(({id, date, orderName, status}: any) => {
+            {calls.map(({id, date, orderName, status}: IOrder) => {
               const actionHref = status === "В работе" ? `/order/${id}/chat` : `/order/${id}/review`
 
                 return (

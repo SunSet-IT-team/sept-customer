@@ -2,15 +2,15 @@ import {Box} from '@mui/material';
 import {FC, useEffect} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
-import { useActions } from '../../hooks/useActions';
-import { MyCallsList } from '../../components/MyCallsList/MyCallsList';
-import { OrdersSlice } from '../../store/orders/orders.slice';
-import { useQuery } from '@tanstack/react-query';
-import { SERVICES } from '../../api';
-import { Spinner } from '../../components/Spinner/Spinner';
+import {useActions} from '../../hooks/useActions';
+import {MyOrdersList} from '../../components/MyOrdersList/MyOrdersList';
+import {OrdersSlice} from '../../store/orders/orders.slice';
+import {useQuery} from '@tanstack/react-query';
+import {SERVICES} from '../../api';
+import {Spinner} from '../../components/Spinner/Spinner';
 
 export const MyOrders: FC = () => {
-    const { setOrders } = useActions(OrdersSlice.actions)
+    const {setOrders} = useActions(OrdersSlice.actions);
 
     const {data: ordersData, isLoading} = useQuery({
         queryFn: () => SERVICES.OrderService.getUserOrders(),
@@ -19,7 +19,7 @@ export const MyOrders: FC = () => {
 
     useEffect(() => {
         if (ordersData?.length) setOrders(ordersData);
-    }, [ordersData])
+    }, [ordersData]);
 
     if (isLoading || !ordersData || !ordersData.length) {
         return <Spinner />;
@@ -31,7 +31,7 @@ export const MyOrders: FC = () => {
                 <title>Мои заказы</title>
             </Helmet>
             <PageTitle title="Мои заказы" />
-            <MyCallsList calls={ordersData} />
+            <MyOrdersList calls={ordersData} />
         </Box>
     );
 };
