@@ -1,22 +1,23 @@
 import {Box, Paper} from '@mui/material';
 import {FC} from 'react';
-import {Outlet} from 'react-router-dom';
+import {Outlet, useLocation} from 'react-router-dom';
 import {Navbar} from '../Navbar/Navbar';
+import {useLayoutStyles} from './styles';
 
+/**
+ * @TODO переименновать в что-то осмысленное связанное с навигацией
+ */
 const Layout: FC = () => {
+    /**
+     * КОСТЫЛЬ
+     */
+    const location = useLocation();
+
+    const styles = useLayoutStyles();
     return (
-        <Box px={'20px'} position={'relative'} pb={'140px'}>
+        <Box sx={location.pathname.includes('profile') ? {} : styles.layout}>
             <Outlet />
-            <Paper
-                sx={{
-                    position: 'fixed',
-                    bottom: '20px',
-                    left: '20px',
-                    right: '20px',
-                    background: 'none',
-                }}
-                elevation={0}
-            >
+            <Paper sx={styles.navigation} elevation={0}>
                 <Navbar />
             </Paper>
         </Box>

@@ -17,20 +17,24 @@ import {MyOrders} from './pages/MyOrders/MyOrders';
 import {OrderReview} from './pages/OrderReview/OrderReview';
 import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
 import {MyReviews} from './pages/MyReviews/MyReviews';
+import ProfilePage from './pages/Profile/Profile';
 function App() {
     return (
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/my-calls" element={<MyOrders />} />
-                <Route path="/profile" element={<>Profile</>} />
                 <Route path="/my-reviews" element={<MyReviews />} />
+                <Route path="/profile" element={<ProfilePage />} />
             </Route>
             <Route path="/auth" element={<Auth />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/favorites" element={<>Избранное</>} />
+            <Route path="/settings" element={<>Настройки</>} />
+            <Route path="/support" element={<>Поддержка</>} />
             <Route path="/service">
                 <Route path=":service_id/new_order" element={<NewOrder />} />
                 <Route

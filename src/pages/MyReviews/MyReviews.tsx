@@ -4,11 +4,11 @@ import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {useActions} from '../../hooks/useActions';
 import {OrdersSlice} from '../../store/orders/orders.slice';
-import { MyReviewsList } from '../../components/MyReviewsList/MyReviewList';
+import {MyReviewsList} from '../../components/MyReviewsList/MyReviewList';
 
 const ordersData: any[] = [
     {
-        id: "39-19",
+        id: '39-19',
         name: 'ООО Септики',
         date: '16 июля, 16:00',
         address: 'Садовая, 15',
@@ -18,7 +18,7 @@ const ordersData: any[] = [
         },
     },
     {
-        id: "39-20",
+        id: '39-20',
         name: 'ООО Септики',
         date: '16 июля, 16:00',
         address: 'Садовая, 15',
@@ -32,8 +32,8 @@ export const MyReviews: FC = () => {
     const {setOrders} = useActions(OrdersSlice.actions);
     useEffect(() => {
         console.log(ordersData);
-        setOrders(ordersData)
-    }, [])
+        setOrders(ordersData);
+    }, []);
 
     return (
         <Box py={'26px'}>

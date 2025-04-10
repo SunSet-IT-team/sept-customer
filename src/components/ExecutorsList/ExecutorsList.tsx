@@ -9,6 +9,9 @@ interface IProps {
     observedRef: RefCallback<HTMLDivElement>;
 }
 
+/**
+ * @TODO вынести исполнителя в отдельный компонент и отдельный нормальный тип
+ */
 export const ExecutorsList: FC<IProps> = ({executors, observedRef}) => {
     const {executors: favouriteExecutors} = useTypedSelector(
         (state) => state.favourites
