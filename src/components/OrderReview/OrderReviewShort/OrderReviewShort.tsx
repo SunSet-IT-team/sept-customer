@@ -20,16 +20,17 @@ interface IProps {
     order_id: IOrder["id"]
     rating_score: number;
     review_text: string;
+    disabled: boolean
 }
 
-export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_text}) => {
+export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_text, disabled}) => {
     const isMobileSmall = useMediaQuery('(max-width:480px)');
     const navigate = useNavigate();
     const {deleteReview} = useActions(OrdersSlice.actions);
 
     const editAction = useCallback(
         function () {
-            navigate('../add-review', {relative: 'path'});
+            navigate(`/orders/${order_id}/add-review`);
         },
         [navigate]
     );
@@ -78,10 +79,12 @@ export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_tex
                     variant="contained"
                     sx={editButtonSx}
                     onClick={editAction}
+                    disabled={disabled}
                 >
                     Редактировать
                 </Button>
-                <Button variant="contained" sx={deleteButtonSx} onClick={deleteAction}>
+                <Button variant="contained" sx={deleteButtonSx} onClick={deleteAction}
+                disabled={disabled}>
                     Удалить
                 </Button>
             </Stack>
