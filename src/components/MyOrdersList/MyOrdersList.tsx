@@ -4,14 +4,14 @@ import {OrderCard} from './OrderCard/OrderCard';
 import { IOrder } from '../../types/order';
 
 interface IProps {
-    calls: IOrder[];
+    orders: IOrder[];
 }
 
-export const MyOrdersList: FC<IProps> = ({calls}) => {
+export const MyOrdersList: FC<IProps> = ({orders}) => {
 
     return (
         <Stack spacing={'25px'} mt={'25px'}>
-            {calls.map(({id, date, orderName, status}: IOrder) => {
+            {orders.map(({id, date, orderName, status, review}: IOrder) => {
               const actionHref = status === "В работе" ? `/order/${id}/chat` : `/order/${id}/review`
 
                 return (
@@ -22,6 +22,7 @@ export const MyOrdersList: FC<IProps> = ({calls}) => {
                             service={orderName}
                             status={status}
                             actionHref={actionHref}
+                            withReview={!!review}
                         />
                     </Box>
                 );
