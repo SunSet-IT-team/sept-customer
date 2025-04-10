@@ -8,9 +8,10 @@ import {titleBefDataSx} from './styles';
 interface IProps {
     data: IOrderData;
     isConfirmed: boolean;
+    isReview: boolean;
 }
 
-export const OrderReviewBody: FC<IProps> = ({data, isConfirmed}) => {
+export const OrderReviewBody: FC<IProps> = ({data, isConfirmed, isReview}) => {
     return (
         <>
             <Box mt={'40px'}>
@@ -33,7 +34,11 @@ export const OrderReviewBody: FC<IProps> = ({data, isConfirmed}) => {
 
             <MainDataList data={data} />
 
-            <ActionButton isConfirmed={isConfirmed} />
+            {!isReview && (
+                <>
+                    <ActionButton isConfirmed={isConfirmed} />
+                </>
+            )}
         </>
     );
 };

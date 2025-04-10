@@ -31,7 +31,7 @@ export const MyOrders: FC = () => {
                 <title>Мои заказы</title>
             </Helmet>
             <PageTitle title="Мои заказы" />
-            <MyOrdersList calls={ordersData} />
+            <MyOrdersList orders={ordersData} />
         </Box>
     );
 };
