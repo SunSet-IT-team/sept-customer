@@ -18,6 +18,7 @@ import {OrderReview} from './pages/OrderReview/OrderReview';
 import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
 import {MyReviews} from './pages/MyReviews/MyReviews';
 import ProfilePage from './pages/Profile/Profile';
+import {Favorites} from './pages/Favorites/Favorites';
 function App() {
     return (
         <Routes>
@@ -32,7 +33,7 @@ function App() {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/confirmation" element={<Confirmation />} />
-            <Route path="/favorites" element={<>Избранное</>} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/settings" element={<>Настройки</>} />
             <Route path="/support" element={<>Поддержка</>} />
             <Route path="/service">

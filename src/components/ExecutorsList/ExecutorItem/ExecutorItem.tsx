@@ -57,8 +57,10 @@ export const ExecutorItem: FC<IProps> = ({executor, isFavourite}) => {
             <Stack sx={infoContainerStyle}>
                 <Stack direction={'row'} justifyContent={'space-between'}>
                     <Stack>
-                        <Typography>{title}</Typography>
-                        <Typography>{reviewsCount} отзывов</Typography>
+                        <Typography fontSize={'14px'}>{title}</Typography>
+                        <Typography fontSize={'14px'}>
+                            {reviewsCount} отзывов
+                        </Typography>
                     </Stack>
                     <Box>
                         <Stack sx={ratingContainerStyle}>
