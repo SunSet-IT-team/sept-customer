@@ -16,6 +16,7 @@ import {SignUp} from './pages/SignUp/SignUp';
 import {MyOrders} from './pages/MyOrders/MyOrders';
 import {OrderReview} from './pages/OrderReview/OrderReview';
 import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
+import {MyReviews} from './pages/MyReviews/MyReviews';
 function App() {
     return (
         <Routes>
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/my-calls" element={<MyOrders />} />
                 <Route path="/profile" element={<>Profile</>} />
+                <Route path="/my-reviews" element={<MyReviews />} />
             </Route>
             <Route path="/auth" element={<Auth />} />
             <Route path="/sign-up" element={<SignUp />} />
