@@ -20,6 +20,8 @@ import {MyReviews} from './pages/MyReviews/MyReviews';
 import ProfilePage from './pages/Profile/Profile';
 import {Favorites} from './pages/Favorites/Favorites';
 import {SettingsPage} from './pages/Setting/Setting';
+import Support from './pages/Support/Support';
+import SupportChat from './pages/Support/SupportChat';
 function App() {
     return (
         <Routes>
@@ -36,7 +38,8 @@ function App() {
             <Route path="/confirmation" element={<Confirmation />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/support" element={<>Поддержка</>} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/support/chat" element={<SupportChat />} />
             <Route path="/service">
                 <Route path=":service_id/new_order" element={<NewOrder />} />
                 <Route

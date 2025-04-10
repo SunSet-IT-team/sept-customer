@@ -1,6 +1,6 @@
 import {API_ROUTES} from '../..';
 import {IExecutorFull, IExecutorShort} from '../../../types/executor';
-import {axiosInstance} from '../../instance';
+import axiosInstance from '../../instance';
 
 export const ExecutorService = {
     async getAllExecutors({

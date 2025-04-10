@@ -1,6 +1,6 @@
 import {API_ROUTES} from '../..';
 import {IService} from '../../../types/service';
-import {axiosInstance} from '../../instance';
+import axiosInstance from '../../instance';
 
 export const ServicesService = {
     async getAllServices(): Promise<IService[]> {

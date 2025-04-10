@@ -1,5 +1,5 @@
 import {API_ROUTES} from '../..';
-import {axiosInstance} from '../../instance';
+import axiosInstance from '../../instance';
 import {IResetPasswordDTO} from './dto/reset-password.dto';
 
 export const AuthService = {
@@ -21,6 +21,12 @@ export const AuthService = {
                 code,
             },
         });
+        return response.data;
+    },
+    async getUserInfo() {
+        const response = await axiosInstance.get(
+            API_ROUTES.GET_CURRENT_USER_INFO()
+        );
         return response.data;
     },
 };
