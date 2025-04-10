@@ -1,4 +1,4 @@
-export type IReviewData = {
+export type IOrderReview = {
   rating: number
   text: string
 }

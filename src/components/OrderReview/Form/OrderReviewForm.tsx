@@ -8,24 +8,27 @@ import {
 } from '@mui/material';
 import {FC, useCallback} from 'react';
 import {Controller, FormContainer} from 'react-hook-form-mui';
-import {useNavigate} from 'react-router-dom';
+import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {submitButtonSx, textFieldSx} from './styles';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {INewReveiwForm, newReveiwFormShema} from './shema';
 import {newReviewDefaultValues} from './data';
 import {useTypedSelector} from '../../../hooks/useTypedSelector';
 import {useActions} from '../../../hooks/useActions';
-import {newReviewSlice} from '../../../store/new_review/new_review.slice';
+import { OrdersSlice } from '../../../store/orders/orders.slice';
 
 export const OrderReviewForm: FC = () => {
-    const {formData} = useTypedSelector((state) => state.newReviewForm);
-    const {setFormData} = useActions(newReviewSlice.actions);
+    const {order_id} = useParams()
+    if (!order_id) return <Navigate to={"/"} replace/>
+    
+    const formData = useTypedSelector((state) => state.orders.orders.find(order => order.id === order_id)?.review);
+    const {addReview} = useActions(OrdersSlice.actions);
 
     const navigate = useNavigate();
     const submitReview = useCallback(
         function (reviewData: INewReveiwForm) {
             // Тут будет логика, связанная с отправкой данных отзыва
-            setFormData(reviewData);
+            addReview({order_id, formData: reviewData});
             return navigate('../review', {relative: 'path'});
         },
         [navigate]
