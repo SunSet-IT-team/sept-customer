@@ -17,6 +17,10 @@ export const OrderReview: FC = () => {
         return state.orders.orders.find((order) => order.id === order_id);
     });
 
+    const review = useTypedSelector((state) => {
+        return state.newReviewForm.formData
+    });
+
     if (!order) return <Navigate to={'/'} replace />;
 
     return (

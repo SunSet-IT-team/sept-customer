@@ -15,6 +15,7 @@ import {SignIn} from './pages/SignIn/SignIn';
 import {SignUp} from './pages/SignUp/SignUp';
 import {MyOrders} from './pages/MyOrders/MyOrders';
 import {OrderReview} from './pages/OrderReview/OrderReview';
+import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
 function App() {
     return (
         <Routes>
@@ -48,7 +49,7 @@ function App() {
                 <Route path=":order_id/review" element={<OrderReview />} />
                 <Route
                     path=":order_id/add-review"
-                    element={<>Добавить отзыв</>}
+                    element={<NewOrderReview />}
                 />
             </Route>
             <Route path="executor">

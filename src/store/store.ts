@@ -5,12 +5,14 @@ import {favouritesReducer} from './favourites/favourites.slice';
 import {newOrderReducer} from './new_order/new_order.slice';
 import {resetPasswordSlice} from './reset-password/reset-password.slice';
 import { OrdersReducer } from './orders/orders.slice';
+import { newReviewReducer } from './new_review/new_review.slice';
 
 const rootReducer = combineReducers({
     resetPassword: resetPasswordSlice.reducer,
     newOrderForm: newOrderReducer,
     favourites: favouritesReducer,
-    orders: OrdersReducer
+    orders: OrdersReducer,
+    newReviewForm: newReviewReducer
 });
 
 export const store = configureStore({
