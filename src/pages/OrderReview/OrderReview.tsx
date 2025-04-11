@@ -50,6 +50,7 @@ export const OrderReview: FC = () => {
                         order_id={order_id}
                         rating_score={review.rating}
                         review_text={review.text}
+                        disabled
                     />
                 </>
             )}

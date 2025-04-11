@@ -1,6 +1,4 @@
-import {IReviewData} from '../../../types/review';
-
-export const newReviewDefaultValues: IReviewData = {
+export const newReviewDefaultValues: any = {
     rating: 0,
     text: '',
 };

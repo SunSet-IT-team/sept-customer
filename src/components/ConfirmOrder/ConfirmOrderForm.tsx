@@ -18,7 +18,7 @@ export const ConfirmOrderForm: FC = () => {
     const defaultValues = {
         ...formData,
         executor: executor?.title,
-        service: service?.title,
+        service: service?.name,
     };
     return (
         <FormContainer
