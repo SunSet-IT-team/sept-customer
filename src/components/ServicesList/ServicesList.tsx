@@ -17,11 +17,7 @@ export const ServicesList: FC<IProps> = ({servicesList}) => {
                     gridTemplateColumns={'1fr 1fr'}
                 >
                     {servicesList.map((service) => (
-                        <ServiceItem
-                            id={service.id}
-                            title={service.title}
-                            key={service.title}
-                        />
+                        <ServiceItem {...service} key={service.name} />
                     ))}
                 </Box>
             ) : (

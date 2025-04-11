@@ -3,6 +3,9 @@ import axiosInstance from '../../instance';
 import {IResetPasswordDTO} from './dto/reset-password.dto';
 
 export const AuthService = {
+    /**
+     * ХЗ че
+     */
     async resetPassword(data: IResetPasswordDTO) {
         const response = await axiosInstance({
             url: API_ROUTES.RESET_PASSWORD(),
@@ -13,6 +16,10 @@ export const AuthService = {
         });
         return response.data;
     },
+
+    /**
+     * тоже хз че
+     */
     async confirmResetPassword(code: number) {
         const response = await axiosInstance({
             url: API_ROUTES.CONFIRMATION_RESET_PASSWORD(),
@@ -23,6 +30,7 @@ export const AuthService = {
         });
         return response.data;
     },
+
     async getUserInfo() {
         const response = await axiosInstance.get(
             API_ROUTES.GET_CURRENT_USER_INFO()

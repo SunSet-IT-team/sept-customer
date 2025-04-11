@@ -7,18 +7,21 @@ import {ServicesList} from '../../components/ServicesList/ServicesList';
 import {Spinner} from '../../components/Spinner/Spinner';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
+
     const {data: servicesList, isLoading} = useQuery({
         queryFn: () => SERVICES.ServicesService.getAllServices(),
         queryKey: ['get all services'],
     });
 
+    console.log(servicesList);
+
     const filteredServices = useMemo(() => {
         return servicesList?.filter((service) =>
-            service.title.toLowerCase().includes(search.toLowerCase().trim())
+            service.name.toLowerCase().includes(search.toLowerCase().trim())
         );
     }, [search, servicesList]);
 
-    if (isLoading || !servicesList || !servicesList.length) {
+    if (isLoading || !servicesList) {
         return <Spinner />;
     }
 

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {IService} from '../../../types/service';
 import {serviceItemStyle} from './styles';
 
-export const ServiceItem: FC<IService> = ({id, title}) => {
+export const ServiceItem: FC<IService> = ({id, name}) => {
     return (
         <Box
             component={Link}
@@ -12,7 +12,7 @@ export const ServiceItem: FC<IService> = ({id, title}) => {
             sx={serviceItemStyle}
         >
             <Typography variant="h6" fontSize={'18px'}>
-                {title}
+                {name}
             </Typography>
         </Box>
     );

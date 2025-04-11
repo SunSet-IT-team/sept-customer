@@ -1,4 +1,5 @@
 export interface IService {
-    title: string;
+    name: string;
     id: number;
+    priority: number;
 }
