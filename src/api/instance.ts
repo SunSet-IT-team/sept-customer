@@ -5,6 +5,8 @@ const axiosInstance = axios.create({
     headers: {
         'Content-Type': 'application/json',
     },
+    // Понадобиться в дальнейшем для добавления refresh token в cookie
+    // withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -17,6 +19,21 @@ axiosInstance.interceptors.request.use(
     },
     (error) => {
         return Promise.reject(error);
+    }
+);
+
+axiosInstance.interceptors.response.use(
+    (config) => {
+        return config;
+    },
+    async (error) => {
+        /**
+         * @TODO Логика связанная с тем, чтобы сделать isAuthentificated = false
+         */
+        if (error.response.status == 401) {
+            // window.location.href = "/auth"
+        }
+        throw error;
     }
 );
 

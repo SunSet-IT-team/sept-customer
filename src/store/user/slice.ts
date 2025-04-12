@@ -156,6 +156,8 @@ const userSlice = createSlice({
 
 export const {setUser, clearUser, receivedMessage} = userSlice.actions;
 
+// Насколько я понял, то использование данного конфига, само по себе обеспечивает
+// кэширование данных слайса в LocalStorage, поэтому cachedUser не нужен
 const persistConfig = {
     key: 'user',
     storage,

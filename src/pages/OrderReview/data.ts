@@ -1,11 +1,12 @@
-import {IOrderData} from './orderReview.interfaces';
+import { OrderStatus } from '../../types/order';
+import {IOrderData, OrderPaymentType} from './orderReview.interfaces';
 
 export const data: IOrderData = {
     number: '38-19',
     service: 'Сборка септика',
-    status: 'Выполнен',
+    status: OrderStatus.COMPLETED,
     date: '24.05.2025',
-    payment: 'Наличные',
+    payment: OrderPaymentType.CASH,
     address: 'Садовая, д.7',
     comment: 'нужно сегодня',
     phone: '+74930968484',

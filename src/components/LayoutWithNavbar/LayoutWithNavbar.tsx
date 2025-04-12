@@ -4,10 +4,7 @@ import {Outlet, useLocation} from 'react-router-dom';
 import {Navbar} from '../Navbar/Navbar';
 import {useLayoutStyles} from './styles';
 
-/**
- * @TODO переименновать в что-то осмысленное связанное с навигацией
- */
-const Layout: FC = () => {
+export const LayoutWithNavbar: FC = () => {
     /**
      * КОСТЫЛЬ
      */
@@ -23,5 +20,3 @@ const Layout: FC = () => {
         </Box>
     );
 };
-
-export default Layout;

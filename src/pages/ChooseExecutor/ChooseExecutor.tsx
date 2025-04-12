@@ -21,7 +21,7 @@ export const ChooseExecutor: FC = () => {
     } = useInfiniteQuery({
         queryFn: ({pageParam}) =>
             SERVICES.ExecutorService.getAllExecutors({page: pageParam}),
-        queryKey: ['get all exxecutors'],
+        queryKey: ['get all executors'],
         initialPageParam: 1,
         placeholderData: keepPreviousData,
         getNextPageParam: ({nextPage}) => nextPage,

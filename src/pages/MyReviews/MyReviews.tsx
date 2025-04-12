@@ -38,9 +38,9 @@ export const MyReviews: FC = () => {
     return (
         <Box py={'26px'}>
             <Helmet>
-                <title>Мои заказы</title>
+                <title>Мои отзывы</title>
             </Helmet>
-            <PageTitle title="Мои заказы" />
+            <PageTitle title="Мои отзывы" />
             <MyReviewsList orders={ordersData} />
         </Box>
     );

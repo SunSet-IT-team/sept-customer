@@ -1,13 +1,26 @@
+import {OrderStatus} from '../../types/order';
+
 export interface IOrderData {
     number: string;
     service: string;
-    status: 'Выполнен' | 'Заявка принята';
+    status: OrderStatus;
     date: string;
-    payment: 'Наличные' | 'Базналичный расчет';
+    payment: OrderPaymentType;
     address: string;
     comment: string;
     phone: string;
     performer: string;
     volume: string;
     type: string;
+}
+
+export enum OrderPaymentType {
+    /**
+     * Наличные
+     */
+    CASH = 'Наличные',
+    /**
+     * Базналичный расчет
+     */
+    CARD = 'Базналичный расчет',
 }

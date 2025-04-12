@@ -2,12 +2,13 @@ import {Box, Button, Paper, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {statusButtonSx, actionButtonSx, OrderCardSx} from './styles';
 import {Link} from 'react-router-dom';
+import {OrderStatus} from '../../../types/order';
 
 interface IOrderCardProps {
     number: string;
     date: string;
     service: string;
-    status: 'В работе' | 'Выполнен';
+    status: OrderStatus;
     actionHref: string;
     withReview: boolean;
 }
@@ -20,7 +21,11 @@ export const OrderCard: FC<IOrderCardProps> = ({
     actionHref,
     withReview,
 }) => {
-    const actionLabel = withReview ? "Посмотреть" : status === 'В работе' ? 'Обсудить' : 'Оценить';
+    const actionLabel = withReview
+        ? 'Посмотреть'
+        : status === OrderStatus.IN_PROGRESS
+        ? 'Обсудить'
+        : 'Оценить';
 
     return (
         <Paper sx={OrderCardSx} elevation={0}>
