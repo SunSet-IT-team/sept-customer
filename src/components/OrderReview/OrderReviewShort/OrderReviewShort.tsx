@@ -20,7 +20,6 @@ interface IProps {
     order_id: IOrder['id'];
     rating_score: number;
     review_text: string;
-    disabled: boolean;
 }
 
 export const OrderReviewShort: FC<IProps> = ({

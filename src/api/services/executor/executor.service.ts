@@ -7,14 +7,14 @@ export const ExecutorService = {
         page,
     }: {
         page: number;
-    }): Promise<{items: IExecutorShort[]; nextPage: number | null}> {
-        const response = await axiosInstance<{
-            items: IExecutorShort[];
-            nextPage: number | null;
-        }>({
-            url: API_ROUTES.GET_ALL_EXECUTORS(),
-            method: 'GET',
-        });
+    }): Promise<{items: IExecutorShort[]; nextPage: number | null}> {        
+        // const response = await axiosInstance<{
+        //     items: IExecutorShort[];
+        //     nextPage: number | null;
+        // }>({
+        //     url: API_ROUTES.GET_ALL_EXECUTORS(),
+        //     method: 'GET',
+        // });
         const result: Record<
             number,
             {items: IExecutorShort[]; nextPage: number | null}
@@ -164,9 +164,9 @@ export const ExecutorService = {
         return new Promise((res) => {
             setTimeout(() => {
                 res(result[page]);
-            }, 0);
+            }, 1000);
         });
-        return response.data;
+        // return response.data;
     },
 
     async getExecutorById(executor_id: number): Promise<IExecutorFull> {

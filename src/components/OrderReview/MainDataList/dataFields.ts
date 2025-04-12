@@ -1,6 +1,6 @@
-import {IOrderData} from '../../../pages/OrderReview/orderReview.interfaces';
+import { IOrderFullInfo } from "../../../types/order";
 
-export const dataFields: [label: string, key: keyof IOrderData][] = [
+export const dataFields: [label: string, key: keyof IOrderFullInfo][] = [
     ['Дата', 'date'],
     ['Форма оплаты', 'payment'],
     ['Объект', 'address'],

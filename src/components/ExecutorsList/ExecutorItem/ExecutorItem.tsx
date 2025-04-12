@@ -1,19 +1,14 @@
-import StarIcon from '@mui/icons-material/Star';
-import {Box, Button, Stack, Typography} from '@mui/material';
+import {Button} from '@mui/material';
 import {FC} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
 import {newOrderSlice} from '../../../store/new_order/new_order.slice';
-import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
 import {
     aboutButtonStyle,
     chooseButtonStyle,
-    imageContainerStyle,
-    imageStyle,
-    infoContainerStyle,
-    ratingContainerStyle,
-    toggleFavouriteStyle,
 } from './styles';
+import {BaseExecutorItem} from './BaseExecutorItem';
+import { favouritesSlice } from '../../../store/favourites/favourites.slice';
 interface IProps {
     executor: {
         id: number;
@@ -25,10 +20,13 @@ interface IProps {
     isFavourite: boolean;
 }
 
+/**
+ * Обычная карточка исполнителя.
+ * Экран - Выбор исполнителя.
+ */
 export const ExecutorItem: FC<IProps> = ({executor, isFavourite}) => {
     const {service_id} = useParams();
     const {setExecutor} = useActions(newOrderSlice.actions);
-    const {averageRating, imgUrl, reviewsCount, title} = executor;
     const navigate = useNavigate();
 
     const handleChoose = () => {
@@ -40,58 +38,39 @@ export const ExecutorItem: FC<IProps> = ({executor, isFavourite}) => {
         navigate(`/executor/${executor.id}`);
     };
 
+    const {addExecutor, removeExecutor} = useActions(favouritesSlice.actions);
+
+    const toggleFavourite = () => {
+        if (isFavourite) {
+            removeExecutor(executor);
+        } else {
+            addExecutor(executor);
+        }
+    };
+
     return (
-        <Stack direction={'row'} gap={'10px'}>
-            <Box sx={imageContainerStyle}>
-                <img
-                    src={imgUrl}
-                    alt={`${title} картинка`}
-                    style={imageStyle}
-                />
-                <ToggleExecutorFavourite
-                    sx={toggleFavouriteStyle}
-                    executor={executor}
-                    isFavourite={isFavourite}
-                />
-            </Box>
-            <Stack sx={infoContainerStyle}>
-                <Stack direction={'row'} justifyContent={'space-between'}>
-                    <Stack>
-                        <Typography fontSize={'14px'}>{title}</Typography>
-                        <Typography fontSize={'14px'}>
-                            {reviewsCount} отзывов
-                        </Typography>
-                    </Stack>
-                    <Box>
-                        <Stack sx={ratingContainerStyle}>
-                            <StarIcon color="secondary" fontSize="small" />
-                            <Typography variant="body2">
-                                {averageRating}
-                            </Typography>
-                        </Stack>
-                    </Box>
-                </Stack>
-                <Stack
-                    direction={'row'}
-                    justifyContent={'space-between'}
-                    gap={'10px'}
+        <BaseExecutorItem
+            executor={executor}
+            isFavourite={isFavourite}
+            handleFavouriteIconClick={toggleFavourite}
+            mainBtn={
+                <Button
+                    color="secondary"
+                    sx={chooseButtonStyle}
+                    onClick={handleChoose}
                 >
-                    <Button
-                        color="secondary"
-                        sx={chooseButtonStyle}
-                        onClick={handleChoose}
-                    >
-                        Выбрать
-                    </Button>
-                    <Button
-                        color="primary"
-                        sx={aboutButtonStyle}
-                        onClick={handleAbout}
-                    >
-                        Подробнее
-                    </Button>
-                </Stack>
-            </Stack>
-        </Stack>
+                    Выбрать
+                </Button>
+            }
+            secondBtn={
+                <Button
+                    color="primary"
+                    sx={aboutButtonStyle}
+                    onClick={handleAbout}
+                >
+                    Подробнее
+                </Button>
+            }
+        />
     );
 };

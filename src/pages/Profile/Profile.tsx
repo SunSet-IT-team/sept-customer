@@ -26,7 +26,7 @@ const ProfilePage: React.FC = () => {
         {
             icon: <CalendarTodayRoundedIcon />,
             text: 'Мои вызовы',
-            path: '/my-calls',
+            path: '/my-orders',
         },
         {
             icon: <FavoriteBorderRoundedIcon />,
