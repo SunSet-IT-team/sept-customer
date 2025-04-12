@@ -1,19 +1,20 @@
 import {Box, Typography} from '@mui/material';
 import {FC} from 'react';
+import { IOrderShortInfo } from '../../types/order';
+import { dataFields } from './dataFields';
 
 interface IProps {
-    order_data: any;
+    order_data: IOrderShortInfo;
 }
 
+/**
+ * Верхняя часть с краткой информацией об заказе.
+ * Испльзуется на странице создания нового отзыва.
+ */
 export const OrderInfo: FC<IProps> = ({order_data}) => {
     return (
         <Box>
-            {[
-                ['Дата', order_data.date],
-                ['Услуга', order_data.type],
-                ['Статус', order_data.status],
-                ['Исполнитель', order_data.executor],
-            ].map(([label, value]) => {
+            {dataFields.map(([label, key]) => {
                 return (
                     <Typography
                         key={label}
@@ -21,7 +22,7 @@ export const OrderInfo: FC<IProps> = ({order_data}) => {
                             fontWeight: '500',
                             fontSize: '20px',
                         }}
-                    >{`${label}: ${value}`}</Typography>
+                    >{`${label}: ${order_data[key]}`}</Typography>
                 );
             })}
         </Box>

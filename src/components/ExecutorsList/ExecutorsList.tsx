@@ -3,16 +3,36 @@ import {FC, RefCallback} from 'react';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {IExecutorShort} from '../../types/executor';
 import {ExecutorItem} from './ExecutorItem/ExecutorItem';
+import { ExecutorItemFavourite } from './ExecutorItem/ExecutorItemFavorite';
+
+/**
+ * Тип используемых видов карточек исполнителей в списке
+ */
+export enum ExecutorItemType {
+    /**
+     * Обычная карточка исполнителя.
+     * Экран - Выбор исполнителя.
+     */
+    DEFAULT,
+
+    /**
+     * Кароточка с избранным исполнителем.
+     * Экран - Личный профиль - Избранное
+     */
+    FAVORITE,
+}
 
 interface IProps {
+    itemType?: ExecutorItemType;
     executors: IExecutorShort[];
     observedRef: RefCallback<HTMLDivElement>;
 }
 
-/**
- * @TODO вынести исполнителя в отдельный компонент и отдельный нормальный тип
- */
-export const ExecutorsList: FC<IProps> = ({executors, observedRef}) => {
+export const ExecutorsList: FC<IProps> = ({
+    itemType = ExecutorItemType.DEFAULT,
+    executors,
+    observedRef,
+}) => {
     const {executors: favouriteExecutors} = useTypedSelector(
         (state) => state.favourites
     );
@@ -32,10 +52,16 @@ export const ExecutorsList: FC<IProps> = ({executors, observedRef}) => {
                         }
                         key={executor.title + executor.id}
                     >
-                        <ExecutorItem
-                            executor={executor}
-                            isFavourite={isFavourite}
-                        />
+                        {itemType === ExecutorItemType.DEFAULT ? (
+                            <ExecutorItem
+                                executor={executor}
+                                isFavourite={isFavourite}
+                            />
+                        ) : (
+                            <ExecutorItemFavourite
+                                executor={executor}
+                            />
+                        )}
                     </Box>
                 );
             })}

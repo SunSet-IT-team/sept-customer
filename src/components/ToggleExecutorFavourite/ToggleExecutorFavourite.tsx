@@ -2,33 +2,22 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box, SxProps, Theme} from '@mui/material';
 import {FC} from 'react';
-import {useActions} from '../../hooks/useActions';
-import {favouritesSlice} from '../../store/favourites/favourites.slice';
 import {IExecutorShort} from '../../types/executor';
 
 interface IProps {
     executor: IExecutorShort;
     isFavourite: boolean;
     sx?: SxProps<Theme>;
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
 export const ToggleExecutorFavourite: FC<IProps> = ({
-    executor,
     isFavourite,
     sx,
+    onClick
 }) => {
-    const {addExecutor, removeExecutor} = useActions(favouritesSlice.actions);
-
-    const toggleFavourite = () => {
-        if (isFavourite) {
-            removeExecutor(executor);
-        } else {
-            addExecutor(executor);
-        }
-    };
-
     return (
-        <Box sx={sx} onClick={toggleFavourite}>
+        <Box sx={sx} onClick={onClick}>
             {isFavourite ? (
                 <FavoriteIcon sx={{color: 'secondary.main'}} />
             ) : (

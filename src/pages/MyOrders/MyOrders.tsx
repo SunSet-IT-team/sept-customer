@@ -16,7 +16,6 @@ export const MyOrders: FC = () => {
     if (isLoading || !ordersData || !ordersData.length) {
         return <Spinner />;
     }
-    console.log(ordersData);
 
     return (
         <Box py={'26px'}>

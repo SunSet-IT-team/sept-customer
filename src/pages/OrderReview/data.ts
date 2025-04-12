@@ -1,7 +1,7 @@
-import { OrderStatus } from '../../types/order';
-import {IOrderData, OrderPaymentType} from './orderReview.interfaces';
+import {OrderStatus} from '../../types/order';
+import {IOrderFullInfo, OrderPaymentType} from '../../types/order';
 
-export const data: IOrderData = {
+export const data: IOrderFullInfo = {
     number: '38-19',
     service: 'Сборка септика',
     status: OrderStatus.COMPLETED,

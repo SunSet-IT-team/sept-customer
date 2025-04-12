@@ -1,11 +1,11 @@
 import {Box} from '@mui/material';
 import {DataItem} from '../DataItem/DataItem';
-import {IOrderData} from '../../../pages/OrderReview/orderReview.interfaces';
 import {FC} from 'react';
 import { dataFields } from './dataFields';
+import { IOrderFullInfo } from '../../../types/order';
 
 interface IProps {
-    data: IOrderData;
+    data: IOrderFullInfo;
 }
 
 export const MainDataList: FC<IProps> = ({data}) => {
