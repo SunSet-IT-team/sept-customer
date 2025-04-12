@@ -1,13 +1,14 @@
+import {Navigate, useParams} from 'react-router-dom';
 import {Box, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {Navigate, useParams} from 'react-router-dom';
 import {OrderReviewBody} from '../../components/OrderReview/OrderReviewBody/OrderReviewBody';
-import {data} from './data';
 import {OrderReviewShort} from '../../components/OrderReview/OrderReviewShort/OrderReviewShort';
+import {Spinner} from '../../components/Spinner/Spinner';
 import {myRewiewTextSx} from './styles';
+import {data} from './data';
+import {useFetchOrderById} from '../../hooks/Orders/useFetchOrderById';
 
 export const OrderReview: FC = () => {
     const {order_id} = useParams();
@@ -15,18 +16,14 @@ export const OrderReview: FC = () => {
 
     if (!order_id) return <Navigate to={'/'} replace />;
 
-    const {order, review} = useTypedSelector((state) => {
-        const order = state.orders.orders.find(
-            (order) => order.id === order_id
-        );
-        const review = order?.review;
-        return {
-            order,
-            review,
-        };
-    });
+    const {data: order, isLoading, isError} = useFetchOrderById(order_id);
+    const review = order?.review;
 
-    if (!order) return <Navigate to={'/'} replace />;
+    if (isLoading) {
+        return <Spinner />;
+    }
+
+    if (isError || !order) return <Navigate to={'/'} replace />;
 
     return (
         <Box py={'26px'} px={'35px'}>

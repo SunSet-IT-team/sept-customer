@@ -2,17 +2,17 @@ import {FC} from 'react';
 import {Avatar, Box, IconButton, Stack, Typography} from '@mui/material';
 import {FavoriteBorder} from '@mui/icons-material';
 import {OrderReviewShort} from '../OrderReview/OrderReviewShort/OrderReviewShort';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import {useStyles} from './styles';
 
 interface IProps {
     orders: any;
 }
 
 export const MyReviewsList: FC<IProps> = ({orders}) => {
-  // const orders = useTypedSelector((state) => state.orders.orders);
+    const styles = useStyles();
 
     return (
-        <Stack spacing={'45px'} mt={'35px'} px={"20px"}>
+        <Stack spacing={'45px'} mt={'35px'} px={'20px'}>
             {orders.map((order: any) => {
                 return (
                     <Box>
@@ -23,26 +23,8 @@ export const MyReviewsList: FC<IProps> = ({orders}) => {
                         >
                             {/* Левая часть — аватар */}
                             <Box position="relative">
-                                <Avatar
-                                    variant="rounded"
-                                    sx={{
-                                        width: 71,
-                                        height: 71,
-                                        bgcolor: 'grey.300',
-                                        borderRadius: 2,
-                                    }}
-                                />
-                                <IconButton
-                                    size="small"
-                                    sx={{
-                                        position: 'absolute',
-                                        top: -6,
-                                        right: -6,
-                                        bgcolor: 'white',
-                                        border: '1px solid #ccc',
-                                        p: '2px',
-                                    }}
-                                >
+                                <Avatar variant="rounded" sx={styles.avatar} />
+                                <IconButton size="small" sx={styles.heartBtn}>
                                     <FavoriteBorder fontSize="small" />
                                 </IconButton>
                             </Box>

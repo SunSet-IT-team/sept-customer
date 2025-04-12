@@ -46,4 +46,4 @@ const persistConfig = {
     storage,
 };
 
-export const OrdersReducer = persistReducer(persistConfig, OrdersSlice.reducer);
+export const ordersReducer = persistReducer(persistConfig, OrdersSlice.reducer);

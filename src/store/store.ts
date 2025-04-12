@@ -4,14 +4,14 @@ import {persistStore} from 'redux-persist';
 import {favouritesReducer} from './favourites/favourites.slice';
 import {newOrderReducer} from './new_order/new_order.slice';
 import {resetPasswordSlice} from './reset-password/reset-password.slice';
-import {OrdersReducer} from './orders/orders.slice';
+import {ordersReducer} from './orders/orders.slice';
 import {userReducer} from './user/slice';
 
 const rootReducer = combineReducers({
     resetPassword: resetPasswordSlice.reducer,
     newOrderForm: newOrderReducer,
     favourites: favouritesReducer,
-    orders: OrdersReducer,
+    orders: ordersReducer,
     user: userReducer,
 });
 

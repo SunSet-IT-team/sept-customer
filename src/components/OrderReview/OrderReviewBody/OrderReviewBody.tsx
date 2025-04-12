@@ -1,7 +1,7 @@
 import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {IOrderData} from '../../../pages/OrderReview/orderReview.interfaces';
-import {MainDataList} from '../MainDataList';
+import {MainDataList} from '../MainDataList/MainDataList';
 import {ActionButton} from '../ActionButton/ActionButton';
 import {titleBefDataSx} from './styles';
 

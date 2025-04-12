@@ -13,17 +13,21 @@ import {deleteButtonSx, editButtonSx} from './styles';
 import {useMediaQuery} from 'usehooks-ts';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
-import { OrdersSlice } from '../../../store/orders/orders.slice';
-import { IOrder } from '../../../types/order';
+import {OrdersSlice} from '../../../store/orders/orders.slice';
+import {IOrder} from '../../../types/order';
 
 interface IProps {
-    order_id: IOrder["id"]
+    order_id: IOrder['id'];
     rating_score: number;
     review_text: string;
-    disabled: boolean
+    disabled: boolean;
 }
 
-export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_text, disabled}) => {
+export const OrderReviewShort: FC<IProps> = ({
+    order_id,
+    rating_score,
+    review_text,
+}) => {
     const isMobileSmall = useMediaQuery('(max-width:480px)');
     const navigate = useNavigate();
     const {deleteReview} = useActions(OrdersSlice.actions);
@@ -37,7 +41,7 @@ export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_tex
 
     const deleteAction = useCallback(
         function () {
-            deleteReview({order_id})
+            deleteReview({order_id});
         },
         [deleteReview]
     );
@@ -79,12 +83,14 @@ export const OrderReviewShort: FC<IProps> = ({order_id, rating_score, review_tex
                     variant="contained"
                     sx={editButtonSx}
                     onClick={editAction}
-                    disabled={disabled}
                 >
                     Редактировать
                 </Button>
-                <Button variant="contained" sx={deleteButtonSx} onClick={deleteAction}
-                disabled={disabled}>
+                <Button
+                    variant="contained"
+                    sx={deleteButtonSx}
+                    onClick={deleteAction}
+                >
                     Удалить
                 </Button>
             </Stack>
