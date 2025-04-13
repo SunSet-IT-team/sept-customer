@@ -8,10 +8,32 @@ import {ISignInForm} from './form.type';
 import {signInFormSchema} from './schema';
 import {SignInFormContent} from './SignInFormContent/SignInFormContent';
 import {buttonStyles, linkStyles} from './styles';
+import {SERVICES} from '../../api';
+import {toast} from 'react-toastify';
+import {useAppDispatch} from '../../store/store';
+import {auth} from '../../store/user/auth';
+import {setUser} from '../../store/user/slice';
+import {mappginServerCustomer} from '../../api/services/auth/mapping/customer';
 export const SignInForm: FC = () => {
-    const onSubmit = (data: ISignInForm) => {
-        console.log(data);
+    const dispatch = useAppDispatch();
+
+    /**
+     * Вход по логину
+     */
+    const onSubmit = async (data: ISignInForm) => {
+        try {
+            const res = await SERVICES.AuthService.login(data);
+            if (!res.success) return;
+
+            auth(res.data.token);
+            dispatch(setUser(mappginServerCustomer(res.data.user)));
+        } catch (error) {
+            const message = error?.response?.data?.message;
+
+            toast.error(message || 'Ошибка авторизации');
+        }
     };
+
     return (
         <FormContainer
             onSuccess={onSubmit}

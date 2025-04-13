@@ -23,10 +23,35 @@ import {SettingsPage} from './pages/Setting/Setting';
 import Support from './pages/Support/Support';
 import SupportChat from './pages/Support/SupportChat';
 import {useTypedSelector} from './hooks/useTypedSelector';
+import {useEffect} from 'react';
+import {useAppDispatch} from './store/store';
+import LoadPage from './pages/LoadPage';
+import {fetchUserData} from './store/user/thunk';
+
 function App() {
     const {user, isInited, isLoading} = useTypedSelector((state) => state.user);
-    // const isAuthenticated = user && isInited && !isLoading;
-    const isAuthenticated = false;
+    const token = localStorage.getItem('token');
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (isInited) return;
+
+        const fetching = dispatch(fetchUserData());
+
+        return () => {
+            fetching.abort();
+        };
+    }, [isInited]);
+
+    const isAuthenticated = user;
+
+    if (!isInited && token)
+        return (
+            <Routes>
+                <Route index element={<LoadPage />} />
+            </Routes>
+        );
 
     return (
         <Routes>

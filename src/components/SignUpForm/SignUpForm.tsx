@@ -7,26 +7,39 @@ import {IRegisterForm} from './form.type';
 import {signUpFormSchema} from './schema';
 import {SignUpFormContent} from './SignUpFormContent/SignUpFormContent';
 import {signUpButtonStyles} from './styles';
-import { SERVICES } from '../../api';
-import { IRegisterDTO } from '../../api/services/auth/dto/register.dto';
-import { useNavigate } from 'react-router-dom';
+import {SERVICES} from '../../api';
+import {IRegisterDTO} from '../../api/services/auth/dto/register.dto';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {useAppDispatch} from '../../store/store';
+import {setVerigyData} from '../../store/user/slice';
 
 export const SignUpForm: FC = () => {
-    const navigate = useNavigate()
-    
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const onSubmit = async (data: IRegisterForm) => {
-        // Тут данные с формы и данные для api сервака различаются
+        // Формируем данные
         const sendingData: IRegisterDTO = {
             email: data.email,
             password: data.password,
-            address: 'ул. Ленина, д. 1',
+            firstName: data.fullname,
+            phone: data.phone,
+            address: 'test',
         };
+
         try {
-            const {token} = await SERVICES.AuthService.register(sendingData);
-            window.localStorage.setItem("token", token)
-            navigate('/sign-in');
+            const {success} = await SERVICES.AuthService.register(sendingData);
+            dispatch(
+                setVerigyData({
+                    email: data.email,
+                })
+            );
+            if (success) navigate('/confirmation');
         } catch (error) {
-            console.error(`Ошибка регистрации!\n\n${error}`);
+            console.log(error);
+
+            toast.error(`Ошибка регистрации!`);
         }
     };
     return (

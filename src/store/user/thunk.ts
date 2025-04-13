@@ -15,6 +15,9 @@ export const fetchUserData = createAsyncThunk<Customer | null, undefined>(
 
             const {data} = await SERVICES.AuthService.getUserInfo();
 
+            console.log('getUserInfo');
+            console.log(data);
+
             // Значит ошибка
             if (data.error) return null;
 

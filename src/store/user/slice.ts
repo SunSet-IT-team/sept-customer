@@ -5,7 +5,7 @@ import {fetchUserData} from './thunk';
 import {persistReducer} from 'redux-persist';
 import {Chat, Message} from '../../types/chat';
 import {Executor, ExecutorServiceType} from '../../types/executor';
-import {Customer} from '../../types/user';
+import {Customer, VerifyData} from '../../types/user';
 
 /**
  * Слайс для хранения данных текущего пользователя
@@ -16,86 +16,30 @@ interface UserSlice {
     isInited: boolean;
     isLoading: boolean;
     chat: Chat | null;
+    verigyData?: VerifyData;
 }
 
-const cachedUser = localStorage.getItem('token')
-    ? JSON.parse(localStorage.getItem('cachedUser') ?? '""')
-    : null;
-
-export const placeholderExecutor: Executor = {
-    id: 1,
-    priority: 100,
-    name: 'Техническая поддержка',
-    email: 'test@mail.ru',
-    phone: '89009009999',
-    profileImage: '',
-    about: 'Самая лучшая компания',
-    experience: '20 лет',
-    typeService: ExecutorServiceType.LEGAL_ENTITY,
-    city: 'Воронеж',
-    orderQty: 20,
-    docs: {
-        register: '',
-        approve: '',
-    },
-    rating: {
-        value: 4.8,
-        count: 100,
-    },
-};
 const initialState: UserSlice = {
     user: null,
     isInited: false,
 
     isLoading: true,
-    chat: {
-        id: 1,
-        interlocutor: placeholderExecutor,
-        messages: [
-            {
-                id: 1,
-                chatId: 1,
-                content: 'Привет мир',
-                senderId: 1,
-                createdAt: '10:10',
-                readed: true,
-            },
-            {
-                id: 2,
-                chatId: 1,
-                content:
-                    'Добрый день, хочу уточнить детали: как будет проводиться сборка',
-                senderId: 1,
-                createdAt: '10:10',
-                readed: true,
-            },
-            {
-                id: 3,
-                chatId: 1,
-                content: 'Добрый, да, конечно, сейчас расскажем',
-                senderId: 2,
-                createdAt: '10:10',
-                readed: true,
-            },
-            {
-                id: 4,
-                chatId: 1,
-                content: 'Спасибо!',
-                senderId: 1,
-                createdAt: '10:10',
-                readed: false,
-            },
-        ],
-    },
+    chat: null,
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+        /**
+         * Установить текущего пользователя
+         */
         setUser(state, action: PayloadAction<Customer | null>) {
             state.user = action.payload;
+            // Сбрасываем данные для проверки
+            state.verigyData = undefined;
         },
+
         clearUser(state) {
             state.user = null;
             logout();
@@ -126,6 +70,13 @@ const userSlice = createSlice({
 
             if (chat) chat.messages.push(message);
         },
+
+        /**
+         * Сохраняем данные для проверки
+         */
+        setVerigyData(state, action: PayloadAction<VerifyData | undefined>) {
+            state.verigyData = action.payload;
+        },
     },
     extraReducers: (builder) => {
         /**
@@ -137,12 +88,6 @@ const userSlice = createSlice({
                 state.user = action.payload;
                 state.isInited = true;
                 state.isLoading = false;
-
-                // Кеширование
-                localStorage.setItem(
-                    'cachedUser',
-                    JSON.stringify(action.payload)
-                );
             }
         );
 
@@ -154,7 +99,8 @@ const userSlice = createSlice({
     },
 });
 
-export const {setUser, clearUser, receivedMessage} = userSlice.actions;
+export const {setUser, clearUser, receivedMessage, setVerigyData} =
+    userSlice.actions;
 
 // Насколько я понял, то использование данного конфига, само по себе обеспечивает
 // кэширование данных слайса в LocalStorage, поэтому cachedUser не нужен

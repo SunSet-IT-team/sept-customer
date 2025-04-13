@@ -11,14 +11,28 @@ export type Customer = WithPriority &
     WithName &
     WithEmail &
     WithPhone & {
-        profileImage: string;
-        orderQty: number;
-        addresses: Address[];
+        profile: Profile;
     };
+
+/**
+ * Профиль
+ */
+export type Profile = {
+    profileImage: string;
+    orderQty: number;
+    addresses: Address[];
+};
 
 /**
  * Адрес
  */
 export type Address = WithId & {
     address: string;
+};
+
+/**
+ * Данные для подтверждения
+ */
+export type VerifyData = {
+    email: string;
 };

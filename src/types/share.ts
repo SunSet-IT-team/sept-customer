@@ -5,7 +5,7 @@ import {SxProps} from '@mui/material';
  * Id
  */
 export type WithId = {
-    id: number;
+    id: string;
 };
 
 /**
@@ -70,7 +70,7 @@ export type Filter = {
 /**
  * Ответ сервера
  */
-export type ServerAns<T> = T & {
+export interface IServerAns {
     success: boolean;
     error?: string;
-};
+}

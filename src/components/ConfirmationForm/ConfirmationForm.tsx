@@ -3,8 +3,14 @@ import {Controller, useForm} from 'react-hook-form';
 import {useConfirmation} from '../../hooks/useConfirmation';
 import {OtpField} from '../ui/Inputs/OtpField/OtpField';
 import {IConfirmationForm} from './form.type';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {toast} from 'react-toastify';
+import {SERVICES} from '../../api';
+import {useNavigate} from 'react-router-dom';
 export const ConfirmationForm: FC = () => {
-    const {mutateAsync, isError} = useConfirmation();
+    const {email} = useTypedSelector((state) => state.user.verigyData);
+    const navigate = useNavigate();
+
     const {
         control,
         watch,
@@ -19,19 +25,43 @@ export const ConfirmationForm: FC = () => {
 
     const code = watch('verification_code');
 
-    useEffect(() => {
-        if (code.length === 5) {
-            mutateAsync(+code);
-        } else {
-            clearErrors('verification_code');
+    const handleChageCode = async () => {
+        clearErrors('verification_code');
+
+        if (code.length !== 6) return;
+
+        if (!email) {
+            toast.error('Не указан email для сброса пароля');
+            return;
         }
-    }, [code, mutateAsync, clearErrors]);
+
+        try {
+            const res = await SERVICES.AuthService.verifyEmail({
+                email,
+                code,
+            });
+
+            console.log(res);
+
+            if (!res.success) {
+                const m = res.error || 'Ошибка сервера';
+                toast.error(m);
+                setError('verification_code', {message: 'Неверный код'});
+            }
+
+            navigate('/sign-in');
+        } catch (error) {
+            const message =
+                error?.response?.data?.message || 'Ошибка авторизации';
+
+            toast.error(message);
+            setError('verification_code', {message});
+        }
+    };
 
     useEffect(() => {
-        if (isError) {
-            setError('verification_code', {message: 'Неверный код'});
-        }
-    }, [isError, setError]);
+        handleChageCode();
+    }, [code]);
 
     return (
         <form>

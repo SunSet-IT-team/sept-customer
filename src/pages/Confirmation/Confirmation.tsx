@@ -3,24 +3,27 @@ import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {ConfirmationForm} from '../../components/ConfirmationForm/ConfirmationForm';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
-import {useResetPassword} from '../../hooks/useResetPassword';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {toast} from 'react-toastify';
+import {SERVICES} from '../../api';
 
 export const Confirmation: FC = () => {
-    const {email, new_password, userId} = useTypedSelector(
-        (state) => state.resetPassword
-    );
+    const verifyData = useTypedSelector((state) => state.user.verigyData);
 
-    const {mutateAsync} = useResetPassword();
-    const handleResendCode = () => {
-        if (userId !== null) {
-            mutateAsync({
-                email,
-                new_password,
-                userId,
-            });
+    /**
+     * Обновить код
+     */
+    const handleResendCode = async () => {
+        if (verifyData || !verifyData.email) {
+            toast.error('Почта не указана');
+            return;
         }
+
+        const data = await SERVICES.AuthService.resendCode(verifyData.email);
+        console.log(data);
+        toast.success('Код выслан заново');
     };
+
     return (
         <>
             <Helmet>

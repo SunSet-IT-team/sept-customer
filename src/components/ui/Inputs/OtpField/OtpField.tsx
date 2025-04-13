@@ -13,7 +13,7 @@ export const OtpField: FC<{
         <MuiOtpInput
             sx={otpInputStyles}
             {...field}
-            length={5}
+            length={6}
             justifyContent={'center'}
             TextFieldsProps={{
                 error: !!errorMessage,
