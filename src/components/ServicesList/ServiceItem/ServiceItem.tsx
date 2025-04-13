@@ -1,18 +1,21 @@
 import {Box, Typography} from '@mui/material';
-import {FC} from 'react';
 import {Link} from 'react-router-dom';
 import {IService} from '../../../types/service';
 import {serviceItemStyle} from './styles';
 
-export const ServiceItem: FC<IService> = ({id, name}) => {
+interface ServiceItemProps {
+    service: IService;
+    handleClick?: () => void;
+}
+
+/**
+ * Отображение карточки услуги
+ */
+export const ServiceItem = ({service, handleClick}: ServiceItemProps) => {
     return (
-        <Box
-            component={Link}
-            to={`service/${id}/new_order`}
-            sx={serviceItemStyle}
-        >
+        <Box onClick={handleClick || undefined} sx={serviceItemStyle}>
             <Typography variant="h6" fontSize={'18px'}>
-                {name}
+                {service.name}
             </Typography>
         </Box>
     );

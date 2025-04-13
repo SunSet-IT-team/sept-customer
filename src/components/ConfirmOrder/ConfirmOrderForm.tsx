@@ -11,6 +11,9 @@ export const ConfirmOrderForm: FC = () => {
         (state) => state.newOrderForm
     );
 
+    console.log(formData);
+    console.log(service);
+
     const onSubmit = () => {
         console.log({...formData, ...executor});
         navigate(`/order/order_created/${10}`); //Здесь захардкожено значение, пока нет интеграции с сервером
