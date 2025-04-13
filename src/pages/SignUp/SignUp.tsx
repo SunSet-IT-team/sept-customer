@@ -10,9 +10,18 @@ export const SignUp: FC = () => {
             <Helmet>
                 <title>Регистрация</title>
             </Helmet>
-            <Box position={'relative'} py={'26px'} px={'33px'}>
+            <Box
+                position={'relative'}
+                py={'26px'}
+                px={'33px'}
+                minHeight={'100dvh'}
+                display={'flex'}
+                flexDirection={'column'}
+            >
                 <PageTitle title="Регистрация" />
-                <SignUpForm />
+                <Box my={'auto'}>
+                    <SignUpForm />
+                </Box>
             </Box>
         </>
     );

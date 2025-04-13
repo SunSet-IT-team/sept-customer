@@ -26,7 +26,7 @@ import {useTypedSelector} from './hooks/useTypedSelector';
 function App() {
     const {user, isInited, isLoading} = useTypedSelector((state) => state.user);
     // const isAuthenticated = user && isInited && !isLoading;
-    const isAuthenticated = true
+    const isAuthenticated = false;
 
     return (
         <Routes>
