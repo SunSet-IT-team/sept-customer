@@ -1,5 +1,8 @@
+/**
+ * Тип услуги
+ */
 export interface IService {
     name: string;
-    id: number;
+    id: string;
     priority: number;
 }

@@ -5,15 +5,17 @@ import {FC, useMemo, useState} from 'react';
 import {SERVICES} from '../../api';
 import {ServicesList} from '../../components/ServicesList/ServicesList';
 import {Spinner} from '../../components/Spinner/Spinner';
+import {mappginServerService} from '../../api/services/services/mapping/service';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
 
     const {data: servicesList, isLoading} = useQuery({
         queryFn: () => SERVICES.ServicesService.getAllServices(),
         queryKey: ['get all services'],
+        select: (data) => {
+            return data.data.items;
+        },
     });
-
-    console.log(servicesList);
 
     const filteredServices = useMemo(() => {
         return servicesList?.filter((service) =>

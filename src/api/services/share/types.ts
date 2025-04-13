@@ -32,3 +32,12 @@ export type AddressResponse = {
     id: string;
     value: string;
 };
+
+/**
+ * Услуга
+ */
+export type ServiceResponse = {
+    id: string;
+    name: string;
+    priority: number;
+};
