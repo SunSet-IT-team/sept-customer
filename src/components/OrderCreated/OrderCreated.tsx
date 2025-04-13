@@ -3,7 +3,7 @@ import {FC, useEffect} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {Link, useParams} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
-import {newOrderSlice} from '../../store/new_order/new_order.slice';
+import {newOrderSlice} from '../../store/newOrder/newOrder.slice';
 import {
     buttonStackStyle,
     buttonStyle,

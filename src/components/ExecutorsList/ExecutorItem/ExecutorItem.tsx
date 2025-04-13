@@ -2,13 +2,10 @@ import {Button} from '@mui/material';
 import {FC} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
-import {newOrderSlice} from '../../../store/new_order/new_order.slice';
-import {
-    aboutButtonStyle,
-    chooseButtonStyle,
-} from './styles';
+import {newOrderSlice} from '../../../store/newOrder/newOrder.slice';
+import {aboutButtonStyle, chooseButtonStyle} from './styles';
 import {BaseExecutorItem} from './BaseExecutorItem';
-import { favouritesSlice } from '../../../store/favourites/favourites.slice';
+import {favouritesSlice} from '../../../store/favourites/favourites.slice';
 interface IProps {
     executor: {
         id: number;

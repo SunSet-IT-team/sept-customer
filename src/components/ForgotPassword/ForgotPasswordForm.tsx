@@ -5,7 +5,7 @@ import {FormContainer} from 'react-hook-form-mui';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
 // import {useResetPassword} from '../../hooks/useResetPassword';
-import {resetPasswordSlice} from '../../store/reset-password/reset-password.slice';
+import {resetPasswordSlice} from '../../store/resetPassword/resetPassword.slice';
 import {forgotPasswordDefaultValues} from './data';
 import {ForgotPasswordFormContent} from './ForgotPasswordContent/ForgotPasswordContent';
 import {IForgotPasswordForm} from './form.type';

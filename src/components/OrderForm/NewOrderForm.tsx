@@ -5,7 +5,7 @@ import {FormContainer} from 'react-hook-form-mui';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {newOrderSlice} from '../../store/new_order/new_order.slice';
+import {newOrderSlice} from '../../store/newOrder/newOrder.slice';
 import {newOrderDefaultValues} from './data';
 import {NewOrderFormContent} from './NewOrderFormContent/NewOrderFormContent';
 import {INewOrderForm, newOrderFormSchema} from './schema';

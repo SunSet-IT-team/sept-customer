@@ -2,8 +2,8 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import {persistStore} from 'redux-persist';
 import {favouritesReducer} from './favourites/favourites.slice';
-import {newOrderReducer} from './new_order/new_order.slice';
-import {resetPasswordSlice} from './reset-password/reset-password.slice';
+import {newOrderReducer} from './newOrder/newOrder.slice';
+import {resetPasswordSlice} from './resetPassword/resetPassword.slice';
 import {ordersReducer} from './orders/orders.slice';
 import {userReducer} from './user/slice';
 
