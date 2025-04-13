@@ -10,6 +10,10 @@ import {newOrderSlice} from '../../store/newOrder/newOrder.slice';
 interface IProps {
     servicesList: IService[];
 }
+
+/**
+ * Отображение списка услуг
+ */
 export const ServicesList: FC<IProps> = ({servicesList}) => {
     const {setService} = useActions(newOrderSlice.actions);
     const navigate = useNavigate();

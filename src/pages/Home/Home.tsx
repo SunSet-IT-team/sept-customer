@@ -6,14 +6,17 @@ import {SERVICES} from '../../api';
 import {ServicesList} from '../../components/ServicesList/ServicesList';
 import {Spinner} from '../../components/Spinner/Spinner';
 import {mappginServerService} from '../../api/services/services/mapping/service';
+import {useStyles} from './styles';
+import {InputSearch} from '../../components/ui/Inputs/InputSearch';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
+    const styles = useStyles();
 
     const {data: servicesList, isLoading} = useQuery({
         queryFn: () => SERVICES.ServicesService.getAllServices(),
         queryKey: ['get all services'],
         select: (data) => {
-            return data.data.items;
+            return data.data.items.map((el) => mappginServerService(el));
         },
     });
 
@@ -28,62 +31,10 @@ export const Home: FC = () => {
     }
 
     return (
-        <Box mt={'50px'}>
-            <TextField
-                id="outlined-basic"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                variant="outlined"
-                fullWidth
-                type="text"
-                placeholder="Найти услугу..."
-                sx={{
-                    '& .MuiInputBase-input': {
-                        padding: '10px',
-                        '::placeholder': {
-                            color: 'black',
-                            opacity: 1,
-                            fontStyle: 'italic',
-                            textAlign: 'center',
-                        },
-                    },
-                    '& .MuiInputAdornment-root': {
-                        height: '100%',
-                    },
-                }}
-                slotProps={{
-                    input: {
-                        endAdornment: (
-                            <InputAdornment
-                                position="end"
-                                sx={{height: '100%'}}
-                            >
-                                <Box
-                                    sx={{
-                                        height: '100%',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        backgroundColor: 'primary.main',
-                                        padding: 1.1,
-                                        marginRight: '-13px',
-                                        borderRadius: '10px',
-                                    }}
-                                >
-                                    <Search sx={{color: 'white'}} />
-                                </Box>
-                            </InputAdornment>
-                        ),
-                    },
-                }}
-            />
+        <Box sx={styles.container}>
+            <InputSearch onChange={setSearch} value={search} />
 
-            <Typography
-                variant="h5"
-                fontWeight={'bold'}
-                textAlign={'center'}
-                my={'28px'}
-            >
+            <Typography variant="h5" sx={styles.title}>
                 Наши услуги
             </Typography>
             {filteredServices && (
