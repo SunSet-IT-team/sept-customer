@@ -12,3 +12,5 @@ export const GET_EXECUTOR_BY_ID = (executor_id: number) =>
     `executor/${executor_id}`;
 
 export const GET_ME = () => '/customer/me';
+
+export const ORDER = () => '/order';

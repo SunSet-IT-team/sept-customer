@@ -6,14 +6,10 @@ import {newOrderSlice} from '../../../store/newOrder/newOrder.slice';
 import {aboutButtonStyle, chooseButtonStyle} from './styles';
 import {BaseExecutorItem} from './BaseExecutorItem';
 import {favouritesSlice} from '../../../store/favourites/favourites.slice';
+import {IExecutor} from '../../../types/executor';
+
 interface IProps {
-    executor: {
-        id: number;
-        title: string;
-        reviewsCount: number;
-        averageRating: number;
-        imgUrl: string;
-    };
+    executor: IExecutor;
     isFavourite: boolean;
 }
 

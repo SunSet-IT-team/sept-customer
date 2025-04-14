@@ -8,7 +8,7 @@ import {ExecutorResponse} from '../../share/types';
 export const mappingServerExecutors = (data: ExecutorResponse): IExecutor => {
     return {
         id: data.profile.id,
-        title: data.name,
+        title: data.profile.companyName,
         averageRating: data.profile.rating,
         description: data.profile.about,
         callsCount: data.profile.completedOrders,

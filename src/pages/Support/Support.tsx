@@ -42,7 +42,9 @@ const Support = () => {
     };
     return (
         <Box sx={{height: '100dvh'}}>
-            <ChatHeader interlocutor={chat.interlocutor} />
+            {chat?.interlocutor && (
+                <ChatHeader interlocutor={chat.interlocutor} />
+            )}
             <Box sx={{p: 4}}>
                 {/* Категории вопросов */}
 

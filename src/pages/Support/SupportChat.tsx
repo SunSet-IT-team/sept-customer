@@ -11,9 +11,11 @@ const SupportChat = () => {
     const [searchParams] = useSearchParams();
     const question = searchParams.get('question');
 
-    const {additionalInfo, ...chat} = useTypedSelector(getSupportChat);
+    const chatData = useTypedSelector(getSupportChat);
 
-    if (!chat) return <>Какая-то ошибка</>;
+    if (!chatData) return <>Какая-то ошибка</>;
+
+    const {additionalInfo, ...chat} = chatData;
 
     console.log(chat);
 

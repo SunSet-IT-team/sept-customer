@@ -11,8 +11,8 @@ export const newOrderInputsData = [
 ];
 
 export const paymentTypes = [
-    {label: 'Наличные', id: 'cash'},
-    {label: 'Безналичный расчет', id: 'wire_transfer'},
+    {label: 'Наличные', id: 'Наличные'},
+    {label: 'Безналичный расчет', id: 'Безналичный расчет'},
 ];
 
 export const newOrderDefaultValues = {

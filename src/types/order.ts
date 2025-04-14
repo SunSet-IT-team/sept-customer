@@ -75,15 +75,27 @@ export enum OrderPaymentType {
  */
 export enum OrderStatus {
     /**
+     * В ожидании
+     */
+    PENDING = 'PENDING',
+
+    /**
      * В работе
      */
-    IN_PROGRESS = 'В работе',
+    IN_PROGRESS = 'IN_PROGRESS',
+
     /**
      * Выполнен
      */
-    COMPLETED = 'Выполнен',
+    COMPLETED = 'COMPLETED',
+
     /**
      * Заявка принята
      */
-    CONFIRMED = 'Заявка принята',
+    CONFIRMED = 'CONFIRMED',
+
+    /**
+     * Заявка отменена
+     */
+    REJECTED = 'REJECTED',
 }

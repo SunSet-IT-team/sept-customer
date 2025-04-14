@@ -6,6 +6,7 @@
  */
 
 import {ExecutorServiceType} from '../../../types/executor';
+import {OrderStatus} from '../../../types/order';
 
 /**
  * Покупатель
@@ -73,4 +74,27 @@ export type ExecutorProfileResponse = {
     profilePhoto: null | string;
     rating: number;
     workFormat: ExecutorServiceType;
+};
+
+/**
+ * Заказ
+ */
+export type OrderResponse = {
+    address: AddressResponse[];
+    addressId: number;
+    comment: string | null;
+    customerId: number;
+    distanceToSeptic: number;
+    executorId: number | null;
+    id: number;
+    objectType: string;
+    paymentMethod: string;
+    price: number | null;
+    priority: number;
+    septicConstructionType: string;
+    septicDepth: number;
+    septicVolume: number;
+    service: ServiceResponse | null;
+    serviceId: number;
+    orderStaus: OrderStatus;
 };

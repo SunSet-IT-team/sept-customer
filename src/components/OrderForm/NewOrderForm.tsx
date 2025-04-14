@@ -17,7 +17,6 @@ export const NewOrderForm: FC = () => {
     const {formData} = useTypedSelector((state) => state.newOrderForm);
 
     const onSubmit = (data: INewOrderForm) => {
-        console.log(data);
         setFormData(data);
         navigate('choose_executor');
     };
