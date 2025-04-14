@@ -1,4 +1,4 @@
-import { IExecutorShort } from './executor';
+import {IExecutor} from './executor';
 import {IOrderReview} from './review';
 
 /**
@@ -39,21 +39,20 @@ export interface IOrderShortInfo {
     executor: string;
 }
 
-
 /**
  * Экран - мои отзывы
  */
 export interface IOrderWithReview {
-    id: IOrder["id"];
-    name: IOrder["orderName"];
-    date: IOrder["date"];
+    id: IOrder['id'];
+    name: IOrder['orderName'];
+    date: IOrder['date'];
     address: string;
     review: IOrderReview;
 }
 
 export interface IOrderWithReviewData {
     orderWithReview: IOrderWithReview;
-    executor: IExecutorShort;
+    executor: IExecutor;
     isFavourite: boolean;
 }
 

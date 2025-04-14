@@ -1,5 +1,5 @@
-import {IExecutorShort} from '../../types/executor';
+import {IExecutor} from '../../types/executor';
 
 export interface IInitialStateFavourites {
-    executors: IExecutorShort[];
+    executors: IExecutor[];
 }

@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {INewOrderForm} from '../../components/OrderForm/schema';
-import {IExecutorShort} from '../../types/executor';
+import {IExecutor} from '../../types/executor';
 import {IService} from '../../types/service';
 import {IInitialStateNewOrder} from './state.interface';
 
@@ -25,7 +25,7 @@ export const newOrderSlice = createSlice({
         ) {
             state.formData = action.payload;
         },
-        setExecutor(state, action: PayloadAction<IExecutorShort | null>) {
+        setExecutor(state, action: PayloadAction<IExecutor | null>) {
             state.executor = action.payload;
         },
     },

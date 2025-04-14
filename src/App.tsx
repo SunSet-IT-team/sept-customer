@@ -35,8 +35,6 @@ function App() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (isInited) return;
-
         const fetching = dispatch(fetchUserData());
 
         return () => {
@@ -44,7 +42,7 @@ function App() {
         };
     }, [isInited]);
 
-    const isAuthenticated = user;
+    const isAuthenticated = user && isInited && !isLoading;
 
     if (!isInited && token)
         return (

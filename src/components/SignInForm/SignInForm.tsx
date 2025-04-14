@@ -13,7 +13,7 @@ import {toast} from 'react-toastify';
 import {useAppDispatch} from '../../store/store';
 import {auth} from '../../store/user/auth';
 import {setUser} from '../../store/user/slice';
-import {mappginServerCustomer} from '../../api/services/auth/mapping/customer';
+import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
 export const SignInForm: FC = () => {
     const dispatch = useAppDispatch();
 
@@ -26,7 +26,7 @@ export const SignInForm: FC = () => {
             if (!res.success) return;
 
             auth(res.data.token);
-            dispatch(setUser(mappginServerCustomer(res.data.user)));
+            dispatch(setUser(mappingServerCustomer(res.data.user)));
         } catch (error) {
             const message = error?.response?.data?.message;
 

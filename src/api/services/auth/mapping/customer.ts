@@ -6,7 +6,7 @@ import {mappingServerAddress} from './address';
  * Фунция состыкования данных с севера под наши данные
  * Функция переводит пользователя
  */
-export const mappginServerCustomer = (data: CustomerResponse): Customer => {
+export const mappingServerCustomer = (data: CustomerResponse): Customer => {
     return {
         id: `${data.id}`,
         name: data.name,

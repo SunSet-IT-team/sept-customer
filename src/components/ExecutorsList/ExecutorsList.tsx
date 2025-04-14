@@ -1,9 +1,9 @@
 import {Box, Stack} from '@mui/material';
 import {FC, RefCallback} from 'react';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {IExecutorShort} from '../../types/executor';
+import {IExecutor} from '../../types/executor';
 import {ExecutorItem} from './ExecutorItem/ExecutorItem';
-import { ExecutorItemFavourite } from './ExecutorItem/ExecutorItemFavorite';
+import {ExecutorItemFavourite} from './ExecutorItem/ExecutorItemFavorite';
 
 /**
  * Тип используемых видов карточек исполнителей в списке
@@ -24,7 +24,7 @@ export enum ExecutorItemType {
 
 interface IProps {
     itemType?: ExecutorItemType;
-    executors: IExecutorShort[];
+    executors: IExecutor[];
     observedRef: RefCallback<HTMLDivElement>;
 }
 
@@ -58,9 +58,7 @@ export const ExecutorsList: FC<IProps> = ({
                                 isFavourite={isFavourite}
                             />
                         ) : (
-                            <ExecutorItemFavourite
-                                executor={executor}
-                            />
+                            <ExecutorItemFavourite executor={executor} />
                         )}
                     </Box>
                 );

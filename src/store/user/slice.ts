@@ -86,8 +86,6 @@ const userSlice = createSlice({
             fetchUserData.fulfilled,
             (state, action: PayloadAction<Customer | null>) => {
                 state.user = action.payload;
-                console.log(state.user);
-
                 state.isInited = true;
                 state.isLoading = false;
             }

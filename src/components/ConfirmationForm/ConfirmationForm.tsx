@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import {auth} from '../../store/user/auth';
 import {setUser} from '../../store/user/slice';
 import {useAppDispatch} from '../../store/store';
-import {mappginServerCustomer} from '../../api/services/auth/mapping/customer';
+import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
 
 /**
  * Шаблон формы подтверждения кода
@@ -55,7 +55,7 @@ export const ConfirmationForm: FC = () => {
             }
 
             auth(res.data.token);
-            dispatch(setUser(mappginServerCustomer(res.data.user)));
+            dispatch(setUser(mappingServerCustomer(res.data.user)));
         } catch (error) {
             const message =
                 error?.response?.data?.message || 'Ошибка авторизации';

@@ -5,6 +5,8 @@
  * RESPONSE - ТО, что ПОЛУЧАЕМ
  */
 
+import {ExecutorServiceType} from '../../../types/executor';
+
 /**
  * Покупатель
  */
@@ -42,4 +44,33 @@ export type ServiceResponse = {
     id: string;
     name: string;
     priority: number;
+};
+
+/**
+ * Исполнитель
+ */
+export type ExecutorResponse = {
+    id: number;
+    email: string;
+    name: string;
+    role: 'EXECUTOR';
+    profile: ExecutorProfileResponse;
+};
+
+/**
+ * Профиль
+ */
+export type ExecutorProfileResponse = {
+    about: string;
+    city: string | null;
+    companyName: string;
+    completedOrders: number;
+    description: null | string;
+    experience: number;
+    id: number;
+    phone: string;
+    priority: number;
+    profilePhoto: null | string;
+    rating: number;
+    workFormat: ExecutorServiceType;
 };

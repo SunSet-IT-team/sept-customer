@@ -49,7 +49,6 @@ export const AboutExecutor: FC = () => {
         reviews,
         title,
         reviewsCount,
-        ratingsCount,
     } = executor;
 
     const isFavourite = favouriteExecutors.some(
@@ -72,7 +71,7 @@ export const AboutExecutor: FC = () => {
                     <Stack sx={ratingStackStyle}>
                         <StarIcon color="secondary" fontSize="small" />
                         <Typography>{averageRating}</Typography>
-                        <Typography>{ratingsCount} оценок</Typography>
+                        <Typography>{reviewsCount} оценок</Typography>
                     </Stack>
                 </Box>
             </Stack>

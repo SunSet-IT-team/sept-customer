@@ -4,11 +4,11 @@ import {OrderReviewShort} from '../../OrderReview/OrderReviewShort/OrderReviewSh
 import {IOrderWithReview} from '../../../types/order';
 import {imageStyle, useStyles} from './styles';
 import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
-import {IExecutorShort} from '../../../types/executor';
+import {IExecutor} from '../../../types/executor';
 
 interface IProps {
     order: IOrderWithReview;
-    executor: IExecutorShort;
+    executor: IExecutor;
     isFavourite: boolean;
 }
 
@@ -16,15 +16,19 @@ interface IProps {
  * Карточка отзыва пользователя небольшой с информацией о заказе
  * Экран - мои отзывы
  */
-export const ReviewItem: FC<IProps> = ({order, executor, isFavourite: isFavouriteInit}) => {
+export const ReviewItem: FC<IProps> = ({
+    order,
+    executor,
+    isFavourite: isFavouriteInit,
+}) => {
     console.log(isFavouriteInit);
-    
+
     const [isFavourite, setFavourite] = useState<boolean>(isFavouriteInit);
     const styles = useStyles();
 
     const toggleFavourite = () => {
-        setFavourite(isFavourite => !isFavourite)
-    }
+        setFavourite((isFavourite) => !isFavourite);
+    };
 
     return (
         <Box>

@@ -5,7 +5,7 @@ import {FC, useMemo, useState} from 'react';
 import {SERVICES} from '../../api';
 import {ServicesList} from '../../components/ServicesList/ServicesList';
 import {Spinner} from '../../components/Spinner/Spinner';
-import {mappginServerService} from '../../api/services/services/mapping/service';
+import {mappingServerService} from '../../api/services/services/mapping/service';
 import {useStyles} from './styles';
 import {InputSearch} from '../../components/ui/Inputs/InputSearch';
 export const Home: FC = () => {
@@ -16,7 +16,7 @@ export const Home: FC = () => {
         queryFn: () => SERVICES.ServicesService.getAllServices(),
         queryKey: ['get all services'],
         select: (data) => {
-            return data.data.items.map((el) => mappginServerService(el));
+            return data.data.items.map((el) => mappingServerService(el));
         },
     });
 

@@ -1,11 +1,15 @@
 import {WithPriority, WithId, WithName, WithEmail, WithPhone} from './share';
 
-export interface IExecutorShort {
+export interface IExecutor {
     id: number;
     title: string;
     reviewsCount: number;
     averageRating: number;
     imgUrl: string;
+    description: string;
+    callsCount: number;
+    experience: number;
+    reviews: IReview[];
 }
 
 export interface IReview {
@@ -13,14 +17,6 @@ export interface IReview {
     username: string;
     rating: number;
     text: string;
-}
-
-export interface IExecutorFull extends IExecutorShort {
-    description: string;
-    callsCount: number;
-    experience: number;
-    reviews: IReview[];
-    ratingsCount: number;
 }
 
 /**
@@ -51,12 +47,18 @@ export type Executor = WithPriority &
  * Формы оказания услуг
  */
 export enum ExecutorServiceType {
-    // ИП
-    SOLE = 'SOLE',
+    /**
+     * Физ лицо
+     */
+    INDIVIDUAL = 'INDIVIDUAL',
 
-    // Юридическое лицо
+    /**
+     * ООО
+     */
     LEGAL_ENTITY = 'LEGAL_ENTITY',
 
-    // Частник
-    PRIVATE_PERSON = 'PRIVATE_PERSON',
+    /**
+     * ИП
+     */
+    SOLE_PROPRIETOR = 'SOLE_PROPRIETOR',
 }

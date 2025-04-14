@@ -9,6 +9,7 @@ import {ExecutorsList} from '../../components/ExecutorsList/ExecutorsList';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {Spinner} from '../../components/Spinner/Spinner';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {mappingServerExecutors} from '../../api/services/executor/mapping/executor';
 export const ChooseExecutor: FC = () => {
     const {ref, inView} = useInView();
 
@@ -24,9 +25,18 @@ export const ChooseExecutor: FC = () => {
         queryKey: ['get all executors'],
         initialPageParam: 1,
         placeholderData: keepPreviousData,
-        getNextPageParam: ({nextPage}) => nextPage,
-        select: (data) => data.pages.flatMap((page) => page.items),
+        getNextPageParam: (data) => {
+            let nextPage = data.data.page + 1;
+            if (nextPage > data.data.pages) nextPage = null;
+
+            return nextPage;
+        },
+        select: (data) =>
+            data.pages.flatMap((page) => {
+                return page.data.items.map((el) => mappingServerExecutors(el));
+            }),
     });
+
     const navigate = useNavigate();
     const {formData} = useTypedSelector((state) => state.newOrderForm);
 
