@@ -7,7 +7,7 @@ import {AddressResponse} from '../../share/types';
  */
 export const mappingServerAddress = (data: AddressResponse): Address => {
     return {
-        id: data.id,
+        id: `${data.id}`,
         address: data.value,
     };
 };

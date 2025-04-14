@@ -1,6 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {Customer} from '../../types/user';
 import {SERVICES} from '../../api';
+import {mappginServerCustomer} from '../../api/services/auth/mapping/customer';
 
 /**
  * Запрашиваем данные об админе
@@ -13,22 +14,17 @@ export const fetchUserData = createAsyncThunk<Customer | null, undefined>(
 
             if (!token) return null;
 
-            const {data} = await SERVICES.AuthService.getUserInfo();
+            const res = await SERVICES.AuthService.getUserInfo();
 
-            console.log('getUserInfo');
-            console.log(data);
+            console.log(res);
 
             // Значит ошибка
-            if (data.error) return null;
+            if (res.error) return null;
 
-            // const adminData: Customer = {
-            //     id: data.id,
-            //     email: data.email,
-            //     login: 'admin',
-            // };
-
-            return null;
+            return mappginServerCustomer(res.data);
         } catch (error: any) {
+            console.log(error);
+
             return rejectWithValue(
                 error.response?.data?.message || 'Ошибка загрузки пользователя'
             );

@@ -1,5 +1,6 @@
 import {API_ROUTES} from '../..';
 import axiosInstance from '../../instance';
+import {IGetMeResponse} from './dto/getMe.dto';
 import {ILoginDTO, ILoginResponse} from './dto/login.dto';
 import {IRegisterDTO, IRegisterResponse} from './dto/register.dto';
 import {IResetPasswordDTO} from './dto/reset-password.dto';
@@ -86,7 +87,9 @@ export const AuthService = {
      * Получить инфу о пользователе
      */
     async getUserInfo() {
-        const response = await axiosInstance.get(API_ROUTES.GET_ME());
+        const response = await axiosInstance.get<IGetMeResponse>(
+            API_ROUTES.GET_ME()
+        );
         return response.data;
     },
 };

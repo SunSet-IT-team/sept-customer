@@ -8,17 +8,17 @@ import {mappingServerAddress} from './address';
  */
 export const mappginServerCustomer = (data: CustomerResponse): Customer => {
     return {
-        id: data.id,
-        name: data.firstName,
+        id: `${data.id}`,
+        name: data.name,
         email: data.email,
-        phone: '89009009090',
-        priority: 100,
+        phone: data.profile.phone,
+        priority: data.profile.priority,
         profile: {
             addresses: data.profile.addresses.map((el) =>
                 mappingServerAddress(el)
             ),
             orderQty: data.profile.ordersCount,
-            profileImage: '',
+            profileImage: data.profile.profilePhoto || '',
         },
     };
 };

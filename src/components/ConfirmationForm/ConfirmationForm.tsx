@@ -1,15 +1,22 @@
 import {FC, useEffect} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {useConfirmation} from '../../hooks/useConfirmation';
 import {OtpField} from '../ui/Inputs/OtpField/OtpField';
 import {IConfirmationForm} from './form.type';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';
 import {useNavigate} from 'react-router-dom';
+import {auth} from '../../store/user/auth';
+import {setUser} from '../../store/user/slice';
+import {useAppDispatch} from '../../store/store';
+import {mappginServerCustomer} from '../../api/services/auth/mapping/customer';
+
+/**
+ * Шаблон формы подтверждения кода
+ */
 export const ConfirmationForm: FC = () => {
     const {email} = useTypedSelector((state) => state.user.verigyData);
-    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const {
         control,
@@ -41,15 +48,14 @@ export const ConfirmationForm: FC = () => {
                 code,
             });
 
-            console.log(res);
-
             if (!res.success) {
                 const m = res.error || 'Ошибка сервера';
                 toast.error(m);
                 setError('verification_code', {message: 'Неверный код'});
             }
 
-            navigate('/sign-in');
+            auth(res.data.token);
+            dispatch(setUser(mappginServerCustomer(res.data.user)));
         } catch (error) {
             const message =
                 error?.response?.data?.message || 'Ошибка авторизации';

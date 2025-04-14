@@ -86,6 +86,8 @@ const userSlice = createSlice({
             fetchUserData.fulfilled,
             (state, action: PayloadAction<Customer | null>) => {
                 state.user = action.payload;
+                console.log(state.user);
+
                 state.isInited = true;
                 state.isLoading = false;
             }
@@ -109,4 +111,5 @@ const persistConfig = {
     storage,
 };
 
-export const userReducer = persistReducer(persistConfig, userSlice.reducer);
+export const userReducer = userSlice.reducer;
+// export const userReducer = persistReducer(persistConfig, userSlice.reducer);

@@ -10,9 +10,8 @@
  */
 export type CustomerResponse = {
     email: string;
-    firstName: string;
-    id: string;
-    lastName: string | null;
+    name: string;
+    id: number;
     profile: ProfileResponse;
     role: 'CUSTOMER';
 };
@@ -23,13 +22,16 @@ export type CustomerResponse = {
 export type ProfileResponse = {
     addresses: AddressResponse[];
     ordersCount: number;
+    phone: string;
+    priority: number;
+    profilePhoto: string | null;
 };
 
 /**
  * Адресс
  */
 export type AddressResponse = {
-    id: string;
+    id: number;
     value: string;
 };
 

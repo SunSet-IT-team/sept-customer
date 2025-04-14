@@ -1,4 +1,5 @@
 import {IServerAns} from '../../../../types/share';
+import {CustomerResponse} from '../../share/types';
 
 export interface IRegisterDTO {
     email: string;
@@ -8,4 +9,9 @@ export interface IRegisterDTO {
     address?: string;
 }
 
-export interface IRegisterResponse extends IServerAns {}
+export interface IRegisterResponse extends IServerAns {
+    data: {
+        message: string;
+        user: CustomerResponse;
+    };
+}
