@@ -2,6 +2,7 @@ import {API_ROUTES} from '../..';
 import {ordersWithReviewData} from '../../../pages/MyReviews/data';
 import axiosInstance from '../../instance';
 import {ICreateOrderDTO, ICreateOrderResponse} from './dto/createOrder.dto';
+import {IGetOrderResponse} from './dto/getOrder.dto';
 import {IGetOrdersDTO, IGetOrdersResponse} from './dto/getOrders.dto';
 
 export const OrderService = {
@@ -47,12 +48,11 @@ export const OrderService = {
      * Получить заказ по id
      */
     async getOrderById(id: number | string) {
-        const response = await axiosInstance({
+        const response = await axiosInstance<IGetOrderResponse>({
             url: API_ROUTES.ORDER_BY_ID(id),
             method: 'GET',
         });
-        console.log(response);
 
-        return null;
+        return response.data;
     },
 };

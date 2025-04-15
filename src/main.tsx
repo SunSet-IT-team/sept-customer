@@ -7,7 +7,6 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import {CheckIsMobile} from './components/CheckIsMobile/CheckIsMobile.tsx';
 import {Providers} from './components/Providers/Providers.tsx';
-import './index.css';
 import {ToastContainer} from 'react-toastify';
 
 createRoot(document.getElementById('root')!).render(

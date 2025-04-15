@@ -14,9 +14,7 @@ import {useFetchExecutors} from '../../hooks/Executors/useFetchExecutors';
  * КОСТЫЛЬ - ПЕРЕДЕЛАТЬ
  */
 export const Favorites: FC = () => {
-    const {ref, inView} = useInView();
-
-    const {data: executors, isLoading} = useFetchExecutors();
+    const {executors, isLoading, ref} = useFetchExecutors();
 
     if (isLoading || !executors) {
         return <Spinner />;

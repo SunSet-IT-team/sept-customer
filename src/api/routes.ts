@@ -15,5 +15,4 @@ export const GET_ME = () => '/customer/me';
 
 export const ORDER = () => '/order';
 export const ORDER_MY = () => '/order/my';
-export const ORDER_BY_ID = (order_id: number | string) =>
-    `executor/${order_id}`;
+export const ORDER_BY_ID = (order_id: number | string) => `order/${order_id}`;

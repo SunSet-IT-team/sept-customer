@@ -16,7 +16,7 @@ export const mappingServerOrder = (data: OrderResponse): IOrder => {
         id: `${data.id}`,
         date: new Date(data.workDate).toLocaleDateString('ru'),
         orderName: 'Название заказа',
-        status: data.orderStaus,
+        status: data.status || data.orderStaus,
         service: mappingServerService(data.service),
         review: null,
         volume: `${data.septicVolume}`,

@@ -1,37 +1,70 @@
-import {Theme} from '@emotion/react';
-import {SxProps} from '@mui/material';
+import {useTheme} from '@mui/material/styles';
+import {StylesDictionary} from '../../../types/share';
 
-export const baseButtonSx: SxProps<Theme> = {
-    borderRadius: '10px',
-    minWidth: '80px',
-    fontSize: '13px',
-    px: 1,
-    py: 0.5,
-    height: '44px',
-    textTransform: "none"
-};
+export const useStyles = (): StylesDictionary => {
+    const theme = useTheme();
 
-export const statusButtonSx: SxProps<Theme> = {
-    ...baseButtonSx,
-    '&.Mui-disabled': {
-        backgroundColor: 'white',
-        color: '#000',
-    },
-};
-
-export const actionButtonSx: SxProps<Theme> = {
-    ...baseButtonSx,
-    backgroundColor: 'secondary.main',
-    color: 'white',
-    px: 3,
-};
-
-export const OrderCardSx: SxProps<Theme> = {
-    px: '20px',
-    py: '28px',
-    borderRadius: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 1,
-    backgroundColor: '#F6F6F6',
+    return {
+        title: {
+            opacity: 0.8,
+            mb: '20px',
+            fontWeight: 600,
+            fontSize: '18px',
+        },
+        label: {
+            fontSize: '14px',
+        },
+        buttons: {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
+            textAlign: 'right',
+            flex: '0 1 139px',
+        },
+        baseButtonSx: {
+            borderRadius: '10px',
+            minWidth: '80px',
+            fontSize: '13px',
+            px: 1,
+            py: 0.5,
+            height: '44px',
+            textTransform: 'none',
+        },
+        statusButtonSx: {
+            borderRadius: '10px',
+            minWidth: '80px',
+            fontSize: '13px',
+            px: 1,
+            py: 0.5,
+            height: '44px',
+            textTransform: 'none',
+            '&.Mui-disabled': {
+                backgroundColor: 'white',
+                color: '#000',
+            },
+        },
+        actionButtonSx: {
+            borderRadius: '10px',
+            minWidth: '80px',
+            fontSize: '13px',
+            px: 1,
+            py: 0.5,
+            height: '44px',
+            backgroundColor: theme.palette.secondary.main,
+            color: 'white',
+            '&.Mui-disabled': {
+                backgroundColor: 'white',
+                color: '#000',
+            },
+        },
+        OrderCardSx: {
+            px: '20px',
+            py: '28px',
+            borderRadius: '10px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1,
+            backgroundColor: '#F6F6F6',
+        },
+    };
 };

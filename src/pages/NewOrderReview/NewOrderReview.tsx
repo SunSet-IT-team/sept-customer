@@ -4,9 +4,9 @@ import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {useParams} from 'react-router-dom';
 import {OrderInfo} from '../../components/OrderInfo/OrderIfo';
-import {orderTitleSx} from '../../components/OrderReview/Form/styles';
+import {orderTitleSx} from '../../components/OrderElements/Form/styles';
 import {order_data} from './data';
-import {OrderReviewForm} from '../../components/OrderReview/Form/OrderReviewForm';
+import {OrderReviewForm} from '../../components/OrderElements/Form/OrderReviewForm';
 
 export const NewOrderReview: FC = () => {
     const {order_id} = useParams();

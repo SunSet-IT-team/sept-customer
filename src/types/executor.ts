@@ -4,6 +4,7 @@ export interface IExecutor {
     id: number;
     title: string;
     reviewsCount: number;
+    phone: string;
     averageRating: number;
     imgUrl: string;
     description: string;

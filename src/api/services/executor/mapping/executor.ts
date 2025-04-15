@@ -15,6 +15,7 @@ export const mappingServerExecutors = (data: ExecutorResponse): IExecutor => {
         experience: data.profile.experience,
         reviews: [],
         reviewsCount: 10,
+        phone: data.profile.phone,
         imgUrl: data.profile.profilePhoto,
     };
 };

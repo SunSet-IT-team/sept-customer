@@ -14,7 +14,7 @@ import {OrderChat} from './pages/OrderChat/OrderChat';
 import {SignIn} from './pages/SignIn/SignIn';
 import {SignUp} from './pages/SignUp/SignUp';
 import {MyOrders} from './pages/MyOrders/MyOrders';
-import {OrderReview} from './pages/OrderReview/OrderReview';
+import {Order} from './pages/Order/Order';
 import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
 import {MyReviews} from './pages/MyReviews/MyReviews';
 import ProfilePage from './pages/Profile/Profile';
@@ -106,12 +106,12 @@ function App() {
                     />
                 </Route>
                 <Route path="order">
+                    <Route path=":order_id" element={<Order />} />
                     <Route
                         path="order_created/:order_id"
                         element={<OrderCreated />}
                     />
                     <Route path=":order_id/chat" element={<OrderChat />} />
-                    <Route path=":order_id/review" element={<OrderReview />} />
                     <Route
                         path=":order_id/add-review"
                         element={<NewOrderReview />}

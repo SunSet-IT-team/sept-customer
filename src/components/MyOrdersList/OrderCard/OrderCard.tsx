@@ -1,79 +1,51 @@
 import {Box, Button, Paper, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
-import {statusButtonSx, actionButtonSx, OrderCardSx} from './styles';
+import {useStyles} from './styles';
 import {Link} from 'react-router-dom';
-import {OrderStatus} from '../../../types/order';
+import {IOrder, OrderStatus} from '../../../types/order';
+import {
+    formatOrderStatus,
+    formatOrderStatusButton,
+} from '../../../utils/formaters';
 
 interface IOrderCardProps {
-    number: string;
-    date: string;
-    service: string;
-    status: OrderStatus;
-    actionHref: string;
-    withReview: boolean;
+    order: IOrder;
 }
 
-export const OrderCard: FC<IOrderCardProps> = ({
-    number,
-    date,
-    service,
-    status,
-    actionHref,
-    withReview,
-}) => {
-    const actionLabel = withReview
-        ? 'Посмотреть'
-        : status === OrderStatus.IN_PROGRESS
-        ? 'Обсудить'
-        : 'Оценить';
+export const OrderCard: FC<IOrderCardProps> = ({order}) => {
+    const styles = useStyles();
 
     return (
-        <Paper sx={OrderCardSx} elevation={0}>
+        <Paper sx={styles.OrderCardSx} elevation={0}>
             <Stack direction="row" spacing={2}>
                 <Box flex={'1 1 auto'}>
-                    <Typography
-                        fontWeight="600"
-                        fontSize="18px"
-                        variant="h6"
-                        sx={{
-                            opacity: 0.8,
-                            mb: '20px',
-                        }}
-                    >
-                        Заявка №{number}
+                    <Typography variant="h6" sx={styles.title}>
+                        Заявка №{order.id}
                     </Typography>
-                    <Typography fontSize="14px">
-                        <strong>Дата:</strong> {date}
+                    <Typography sx={styles.label}>
+                        <strong>Дата:</strong> {order.date}
                     </Typography>
-                    <Typography fontSize="14px">
-                        <strong>Услуга:</strong> {service}
+                    <Typography sx={styles.label}>
+                        <strong>Услуга:</strong> {order.service.name}
                     </Typography>
                 </Box>
-                <Box
-                    flex={'0 1 139px'}
-                    textAlign="right"
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '10px',
-                    }}
-                >
+                <Box sx={styles.buttons}>
                     <Button
                         disableElevation
                         variant="contained"
                         disabled
-                        sx={statusButtonSx}
+                        sx={styles.statusButtonSx}
                     >
-                        {status}
+                        {formatOrderStatus(order.status)}
                     </Button>
                     <Button
                         disableElevation
                         variant="contained"
-                        sx={actionButtonSx}
+                        sx={styles.actionButtonSx}
                         component={Link}
-                        to={actionHref}
+                        to={`/order/${order.id}`}
                     >
-                        {actionLabel}
+                        {formatOrderStatusButton(order)}
                     </Button>
                 </Box>
             </Stack>

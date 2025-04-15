@@ -1,6 +1,6 @@
 import {FC, useState} from 'react';
 import {Box, Stack, Typography} from '@mui/material';
-import {OrderReviewShort} from '../../OrderReview/OrderReviewShort/OrderReviewShort';
+import {OrderReviewShort} from '../../OrderElements/OrderReviewShort/OrderReviewShort';
 import {IOrder} from '../../../types/order';
 import {imageStyle, useStyles} from './styles';
 import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';

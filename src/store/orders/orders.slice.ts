@@ -3,7 +3,7 @@ import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import {IInitialStateOrders} from './state.interface';
 import {IOrder} from '../../types/order';
-import {INewReveiwForm} from '../../components/OrderReview/Form/shema';
+import {INewReveiwForm} from '../../components/OrderElements/Form/shema';
 
 const initialState: IInitialStateOrders = {
     orders: [],

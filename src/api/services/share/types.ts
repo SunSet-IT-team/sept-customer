@@ -97,5 +97,6 @@ export type OrderResponse = {
     service: ServiceResponse | null;
     serviceId: number;
     orderStaus: OrderStatus;
+    status: OrderStatus;
     workDate: string;
 };
