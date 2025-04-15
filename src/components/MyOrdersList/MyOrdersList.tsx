@@ -1,13 +1,14 @@
 import {Box, Stack} from '@mui/material';
-import {FC} from 'react';
+import {FC, RefCallback} from 'react';
 import {OrderCard} from './OrderCard/OrderCard';
 import {IOrder, OrderStatus} from '../../types/order';
 
 interface IProps {
     orders: IOrder[];
+    observedRef: RefCallback<HTMLDivElement>;
 }
 
-export const MyOrdersList: FC<IProps> = ({orders}) => {
+export const MyOrdersList: FC<IProps> = ({orders, observedRef}) => {
     return (
         <Stack spacing={'25px'} mt={'25px'}>
             {orders.map(({id, date, orderName, status, review}: IOrder) => {
@@ -29,6 +30,7 @@ export const MyOrdersList: FC<IProps> = ({orders}) => {
                     </Box>
                 );
             })}
+            <Box ref={observedRef}></Box>
         </Stack>
     );
 };

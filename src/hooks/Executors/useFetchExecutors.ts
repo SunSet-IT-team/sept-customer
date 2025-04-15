@@ -1,29 +1,25 @@
-import {
-    keepPreviousData,
-    useInfiniteQuery,
-    useQuery,
-} from '@tanstack/react-query';
+import {useInfiniteQuery, keepPreviousData} from '@tanstack/react-query';
 import {SERVICES} from '../../api';
-import {mappingServerOrder} from '../../api/services/order/mapping/order';
-import {useEffect} from 'react';
+import {mappingServerExecutors} from '../../api/services/executor/mapping/executor';
 import {useInView} from 'react-intersection-observer';
+import {useEffect} from 'react';
 
 /**
- * Получение всех заказов пользователя
+ * Бесконечно получать исполнителей
  */
-export const useFetchOrders = () => {
+export const useFetchExecutors = () => {
     const {ref, inView} = useInView();
 
     const {
-        data: orders,
+        data: executors,
         isLoading,
         fetchNextPage,
         hasNextPage,
         isSuccess,
     } = useInfiniteQuery({
         queryFn: ({pageParam}) =>
-            SERVICES.OrderService.getUserOrders({page: pageParam}),
-        queryKey: ['get all user orders'],
+            SERVICES.ExecutorService.getAllExecutors({page: pageParam}),
+        queryKey: ['get all favorite executors'],
         initialPageParam: 1,
         placeholderData: keepPreviousData,
         getNextPageParam: (data) => {
@@ -34,7 +30,7 @@ export const useFetchOrders = () => {
         },
         select: (data) =>
             data.pages.flatMap((page) => {
-                return page.data.items.map((el) => mappingServerOrder(el));
+                return page.data.items.map((el) => mappingServerExecutors(el));
             }),
     });
 
@@ -44,5 +40,5 @@ export const useFetchOrders = () => {
         }
     }, [inView, isSuccess, hasNextPage, fetchNextPage]);
 
-    return {orders, isLoading, ref};
+    return {executors, isLoading, ref};
 };

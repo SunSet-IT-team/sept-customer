@@ -28,6 +28,9 @@ interface IProps {
     observedRef: RefCallback<HTMLDivElement>;
 }
 
+/**
+ * Лист исполнителей
+ */
 export const ExecutorsList: FC<IProps> = ({
     itemType = ExecutorItemType.DEFAULT,
     executors,
@@ -46,12 +49,7 @@ export const ExecutorsList: FC<IProps> = ({
                 );
 
                 return (
-                    <Box
-                        ref={
-                            index === executors.length - 4 ? observedRef : null
-                        }
-                        key={executor.title + executor.id}
-                    >
+                    <Box key={executor.title + executor.id}>
                         {itemType === ExecutorItemType.DEFAULT ? (
                             <ExecutorItem
                                 executor={executor}
@@ -63,6 +61,7 @@ export const ExecutorsList: FC<IProps> = ({
                     </Box>
                 );
             })}
+            <Box ref={observedRef}></Box>
         </Stack>
     );
 };

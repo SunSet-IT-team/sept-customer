@@ -1,8 +1,8 @@
 import {API_ROUTES} from '../..';
-import {ordersData} from '../../../pages/MyOrders/data';
 import {ordersWithReviewData} from '../../../pages/MyReviews/data';
 import axiosInstance from '../../instance';
 import {ICreateOrderDTO, ICreateOrderResponse} from './dto/createOrder.dto';
+import {IGetOrdersDTO, IGetOrdersResponse} from './dto/getOrders.dto';
 
 export const OrderService = {
     /**
@@ -27,21 +27,32 @@ export const OrderService = {
         return ordersWithReviewData;
     },
 
-    async getUserOrders() {
-        await new Promise<void>((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 1000);
+    /**
+     * Получить все созданные заказы
+     */
+    async getUserOrders(data: IGetOrdersDTO) {
+        const page = data.page || 1;
+        const limit = data.limit || 10;
+        const url = `${API_ROUTES.ORDER_MY()}?page=${page}&limit=${limit}`;
+
+        const response = await axiosInstance<IGetOrdersResponse>({
+            url,
+            method: 'GET',
         });
-        return ordersData;
+        console.log(response);
+        return response.data;
     },
 
-    async getOrderById(id: any) {
-        await new Promise<void>((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 1000);
+    /**
+     * Получить заказ по id
+     */
+    async getOrderById(id: number | string) {
+        const response = await axiosInstance({
+            url: API_ROUTES.ORDER_BY_ID(id),
+            method: 'GET',
         });
-        return ordersData.find((order) => order.id === id);
+        console.log(response);
+
+        return null;
     },
 };

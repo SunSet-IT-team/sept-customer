@@ -1,16 +1,14 @@
 import {Box} from '@mui/material';
-import {keepPreviousData, useInfiniteQuery} from '@tanstack/react-query';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {useInView} from 'react-intersection-observer';
-import {SERVICES} from '../../api';
 import {
     ExecutorItemType,
     ExecutorsList,
 } from '../../components/ExecutorsList/ExecutorsList';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {Spinner} from '../../components/Spinner/Spinner';
-import {mappingServerExecutors} from '../../api/services/executor/mapping/executor';
+import {useFetchExecutors} from '../../hooks/Executors/useFetchExecutors';
 
 /**
  * КОСТЫЛЬ - ПЕРЕДЕЛАТЬ
@@ -18,23 +16,7 @@ import {mappingServerExecutors} from '../../api/services/executor/mapping/execut
 export const Favorites: FC = () => {
     const {ref, inView} = useInView();
 
-    const {data: executors, isLoading} = useInfiniteQuery({
-        queryFn: ({pageParam}) =>
-            SERVICES.ExecutorService.getAllExecutors({page: pageParam}),
-        queryKey: ['get all favorite executors'],
-        initialPageParam: 1,
-        placeholderData: keepPreviousData,
-        getNextPageParam: (data) => {
-            let nextPage = data.data.page + 1;
-            if (nextPage > data.data.pages) nextPage = null;
-
-            return nextPage;
-        },
-        select: (data) =>
-            data.pages.flatMap((page) => {
-                return page.data.items.map((el) => mappingServerExecutors(el));
-            }),
-    });
+    const {data: executors, isLoading} = useFetchExecutors();
 
     if (isLoading || !executors) {
         return <Spinner />;

@@ -1,19 +1,15 @@
 import {Box} from '@mui/material';
-import {FC, useEffect} from 'react';
+import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {MyOrdersList} from '../../components/MyOrdersList/MyOrdersList';
-import {useQuery} from '@tanstack/react-query';
-import {SERVICES} from '../../api';
 import {Spinner} from '../../components/Spinner/Spinner';
+import {useFetchOrders} from '../../hooks/Orders/useFetchOrders';
 
 export const MyOrders: FC = () => {
-    const {data: ordersData, isLoading} = useQuery({
-        queryFn: () => SERVICES.OrderService.getUserOrders(),
-        queryKey: ['get all user orders'],
-    });
+    const {orders, isLoading, ref} = useFetchOrders();
 
-    if (isLoading || !ordersData || !ordersData.length) {
+    if (isLoading || !orders) {
         return <Spinner />;
     }
 
@@ -23,7 +19,7 @@ export const MyOrders: FC = () => {
                 <title>Мои заказы</title>
             </Helmet>
             <PageTitle title="Мои заказы" />
-            <MyOrdersList orders={ordersData} />
+            <MyOrdersList orders={orders} observedRef={ref} />
         </Box>
     );
 };
