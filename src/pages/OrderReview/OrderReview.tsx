@@ -12,7 +12,7 @@ import {useFetchOrderById} from '../../hooks/Orders/useFetchOrderById';
 
 export const OrderReview: FC = () => {
     const {order_id} = useParams();
-    const isConfirmed = !(data.status === 'Выполнен');
+    const isConfirmed = false;
 
     if (!order_id) return <Navigate to={'/'} replace />;
 
@@ -47,7 +47,6 @@ export const OrderReview: FC = () => {
                         order_id={order_id}
                         rating_score={review.rating}
                         review_text={review.text}
-                        disabled
                     />
                 </>
             )}

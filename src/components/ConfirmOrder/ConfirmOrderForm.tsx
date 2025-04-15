@@ -6,16 +6,13 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {ConfirmOrderFormContent} from './ConfirmOrderContent';
 import {SERVICES} from '../../api';
 import {toast} from 'react-toastify';
+import {mappingServerOrder} from '../../api/services/order/mapping/order';
 
 export const ConfirmOrderForm: FC = () => {
     const navigate = useNavigate();
     const {formData, executor, service} = useTypedSelector(
         (state) => state.newOrderForm
     );
-
-    console.log(formData);
-    console.log(service);
-    console.log(executor);
 
     const onSubmit = async () => {
         try {
@@ -32,10 +29,19 @@ export const ConfirmOrderForm: FC = () => {
                 serviceId: parseInt(service.id),
             });
 
-            console.log(res);
+            const order = mappingServerOrder(res.data);
 
-            // navigate(`/order/order_created/${10}`); //Здесь захардкожено значение, пока нет интеграции с сервером
+            console.log(order);
+
+            if (!res.success) {
+                toast.error('Ошибка при создании заказа');
+                return;
+            }
+
+            navigate(`/order/order_created/${res.data.id}`);
         } catch (error) {
+            console.log(error);
+
             toast.error('Ошибка при создании заказа');
         }
     };

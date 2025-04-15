@@ -13,10 +13,6 @@ export const OrdersSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        setOrders(state, action: PayloadAction<IOrder[]>) {
-            state.orders = action.payload;
-        },
-
         addReview(
             state,
             action: PayloadAction<{

@@ -1,12 +1,12 @@
 import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
-import {IOrderData} from '../../../pages/OrderReview/orderReview.interfaces';
 import {MainDataList} from '../MainDataList/MainDataList';
 import {ActionButton} from '../ActionButton/ActionButton';
 import {titleBefDataSx} from './styles';
+import {IOrder} from '../../../types/order';
 
 interface IProps {
-    data: IOrderData;
+    data: IOrder;
     isConfirmed: boolean;
     isReview: boolean;
 }
@@ -18,7 +18,7 @@ export const OrderReviewBody: FC<IProps> = ({data, isConfirmed, isReview}) => {
                 {/* Услуга и статус */}
                 <Stack spacing={1} mb={3}>
                     <Typography>
-                        <strong>Услуга:</strong> {data.service}
+                        <strong>Услуга:</strong> {data.service.name}
                     </Typography>
                     <Typography>
                         <strong>Статус:</strong>{' '}

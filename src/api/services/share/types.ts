@@ -80,7 +80,7 @@ export type ExecutorProfileResponse = {
  * Заказ
  */
 export type OrderResponse = {
-    address: AddressResponse[];
+    address: AddressResponse;
     addressId: number;
     comment: string | null;
     customerId: number;
@@ -97,4 +97,5 @@ export type OrderResponse = {
     service: ServiceResponse | null;
     serviceId: number;
     orderStaus: OrderStatus;
+    workDate: string;
 };

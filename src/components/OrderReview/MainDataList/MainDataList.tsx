@@ -1,11 +1,11 @@
 import {Box} from '@mui/material';
 import {DataItem} from '../DataItem/DataItem';
 import {FC} from 'react';
-import { dataFields } from './dataFields';
-import { IOrderFullInfo } from '../../../types/order';
+import {dataFields} from './dataFields';
+import {IOrder} from '../../../types/order';
 
 interface IProps {
-    data: IOrderFullInfo;
+    data: IOrder;
 }
 
 export const MainDataList: FC<IProps> = ({data}) => {
@@ -17,7 +17,7 @@ export const MainDataList: FC<IProps> = ({data}) => {
                     <DataItem
                         key={label}
                         label={label}
-                        value={data[key]}
+                        value={'test'}
                         hasUnderline={hasUnderline}
                     />
                 );

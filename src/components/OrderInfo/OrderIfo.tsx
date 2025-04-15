@@ -1,10 +1,10 @@
 import {Box, Typography} from '@mui/material';
 import {FC} from 'react';
-import { IOrderShortInfo } from '../../types/order';
-import { dataFields } from './dataFields';
+import {IOrder} from '../../types/order';
+import {dataFields} from './dataFields';
 
 interface IProps {
-    order_data: IOrderShortInfo;
+    order_data: IOrder;
 }
 
 /**

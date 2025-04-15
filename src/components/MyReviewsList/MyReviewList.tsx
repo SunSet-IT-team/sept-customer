@@ -1,10 +1,10 @@
 import {FC} from 'react';
 import {Stack} from '@mui/material';
 import {ReviewItem} from './ReviewItem/ReviewItem';
-import {IOrderWithReviewData} from '../../types/order';
+import {IOrder} from '../../types/order';
 
 interface IProps {
-    orders: IOrderWithReviewData[];
+    orders: IOrder[];
 }
 
 /**
@@ -12,17 +12,10 @@ interface IProps {
  * Экран - мои отзывы
  */
 export const MyReviewsList: FC<IProps> = ({orders}) => {
-
     return (
         <Stack spacing={'45px'} mt={'35px'} px={'20px'}>
-            {orders.map(({executor, isFavourite, orderWithReview}) => {
-                return (
-                    <ReviewItem
-                        order={orderWithReview}
-                        executor={executor}
-                        isFavourite={isFavourite}
-                    />
-                );
+            {orders.map((order) => {
+                return <ReviewItem order={order} />;
             })}
         </Stack>
     );

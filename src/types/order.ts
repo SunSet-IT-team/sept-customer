@@ -1,59 +1,25 @@
 import {IExecutor} from './executor';
 import {IOrderReview} from './review';
+import {IService} from './service';
 
 /**
- * Экран - просмотр заказа
- */
-export interface IOrderFullInfo {
-    number: string;
-    service: string;
-    status: OrderStatus;
-    date: string;
-    payment: OrderPaymentType;
-    address: string;
-    comment: string;
-    phone: string;
-    performer: string;
-    volume: string;
-    type: string;
-}
-
-/**
- * Экран - мои заказы
+ * Заказ
  */
 export interface IOrder {
+    address: string;
+    executor?: IExecutor;
+    comment?: string;
+    payment: OrderPaymentType;
     id: string;
     date: string;
     orderName: string;
     status: OrderStatus;
+    service?: IService;
     review?: IOrderReview;
-}
-
-/**
- * Экран - новый отзыв
- */
-export interface IOrderShortInfo {
-    date: string;
+    volume: string;
+    septicDepth: string;
+    distanceToSeptic: string;
     type: string;
-    status: OrderStatus;
-    executor: string;
-}
-
-/**
- * Экран - мои отзывы
- */
-export interface IOrderWithReview {
-    id: IOrder['id'];
-    name: IOrder['orderName'];
-    date: IOrder['date'];
-    address: string;
-    review: IOrderReview;
-}
-
-export interface IOrderWithReviewData {
-    orderWithReview: IOrderWithReview;
-    executor: IExecutor;
-    isFavourite: boolean;
 }
 
 /**
