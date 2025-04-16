@@ -6,7 +6,9 @@ export interface IExecutor {
     reviewsCount: number;
     phone: string;
     averageRating: number;
-    imgUrl: string;
+    profileImg: string;
+    licenseDoc: string;
+    registrationDoc: string;
     description: string;
     callsCount: number;
     experience: number;

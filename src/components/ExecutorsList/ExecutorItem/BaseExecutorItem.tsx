@@ -9,20 +9,21 @@ import {
     ratingContainerStyle,
     toggleFavouriteStyle,
 } from './styles';
+import {IExecutor} from '../../../types/executor';
+
 interface IProps {
-    executor: {
-        id: number;
-        title: string;
-        reviewsCount: number;
-        averageRating: number;
-        imgUrl: string;
-    };
-    handleFavouriteIconClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    executor: IExecutor;
+    handleFavouriteIconClick?: (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    ) => void;
     isFavourite: boolean;
     mainBtn: React.ReactNode;
     secondBtn: React.ReactNode;
 }
 
+/**
+ * Базовая карточка исполнителя
+ */
 export const BaseExecutorItem: FC<IProps> = ({
     executor,
     isFavourite,
@@ -30,15 +31,16 @@ export const BaseExecutorItem: FC<IProps> = ({
     mainBtn,
     secondBtn,
 }) => {
-    const {averageRating, imgUrl, reviewsCount, title} = executor;
+    const {averageRating, profileImg, reviewsCount, title} = executor;
 
     return (
         <Stack direction={'row'} gap={'10px'}>
             <Box sx={imageContainerStyle}>
-                <img
-                    src={imgUrl}
+                <Box
+                    component="img"
                     alt={`${title} картинка`}
-                    style={imageStyle}
+                    sx={imageStyle}
+                    src={profileImg}
                 />
                 <ToggleExecutorFavourite
                     sx={toggleFavouriteStyle}

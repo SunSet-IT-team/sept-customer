@@ -1,5 +1,6 @@
 import {IOrder, OrderPaymentType} from '../../../../types/order';
 import {mappingServerAddress} from '../../auth/mapping/address';
+import {mappingServerExecutors} from '../../executor/mapping/executor';
 import {mappingServerService} from '../../services/mapping/service';
 import {OrderResponse} from '../../share/types';
 
@@ -9,8 +10,8 @@ import {OrderResponse} from '../../share/types';
  */
 export const mappingServerOrder = (data: OrderResponse): IOrder => {
     return {
-        address: mappingServerAddress(data.address).address,
-        executor: data.executorId ? null : null,
+        address: data.address ? mappingServerAddress(data.address).address : '',
+        executor: data.executor ? mappingServerExecutors(data.executor) : null,
         comment: data.comment || '',
         payment: data.paymentMethod as OrderPaymentType,
         id: `${data.id}`,

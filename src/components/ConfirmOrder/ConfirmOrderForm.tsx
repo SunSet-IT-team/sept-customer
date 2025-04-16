@@ -22,11 +22,12 @@ export const ConfirmOrderForm: FC = () => {
                 septicConstructionType: formData.object,
                 paymentMethod: formData.payment_type,
                 workDate: formData.date,
-                address: 'Адрес',
                 distanceToSeptic: parseFloat(formData.entrance_distance),
                 septicDepth: parseFloat(formData.septic_height),
                 septicVolume: parseFloat(formData.volume),
                 serviceId: parseInt(service.id),
+                executorId: executor.id,
+                city: formData.city,
             });
 
             const order = mappingServerOrder(res.data);

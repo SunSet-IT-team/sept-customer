@@ -11,6 +11,7 @@ export const imageStyle = {
     borderRadius: '20px',
     width: '90px',
     height: '90px',
+    objectFit: 'cover',
 };
 
 export const toggleFavouriteStyle: SxProps<Theme> = {

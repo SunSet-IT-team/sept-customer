@@ -6,6 +6,7 @@ export interface ICreateOrderDTO {
     comment?: string;
     septicConstructionType: string;
     paymentMethod: string;
+    city: string;
     workDate: string;
     address?: string;
     distanceToSeptic: number;
@@ -13,6 +14,7 @@ export interface ICreateOrderDTO {
     septicVolume: number;
     addressId?: number;
     serviceId: number;
+    executorId: number;
     price?: number;
 }
 

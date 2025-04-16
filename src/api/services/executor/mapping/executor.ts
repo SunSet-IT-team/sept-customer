@@ -1,4 +1,5 @@
 import {IExecutor} from '../../../../types/executor';
+import {getImagePath} from '../../../../utils/share';
 import {ExecutorResponse} from '../../share/types';
 
 /**
@@ -7,7 +8,7 @@ import {ExecutorResponse} from '../../share/types';
  */
 export const mappingServerExecutors = (data: ExecutorResponse): IExecutor => {
     return {
-        id: data.profile.id,
+        id: data.id,
         title: data.profile.companyName,
         averageRating: data.profile.rating,
         description: data.profile.about,
@@ -16,6 +17,8 @@ export const mappingServerExecutors = (data: ExecutorResponse): IExecutor => {
         reviews: [],
         reviewsCount: 10,
         phone: data.profile.phone,
-        imgUrl: data.profile.profilePhoto,
+        profileImg: getImagePath(data.profile.profilePhoto.url),
+        licenseDoc: getImagePath(data.profile.licenseDoc.url),
+        registrationDoc: getImagePath(data.profile.registrationDoc.url),
     };
 };

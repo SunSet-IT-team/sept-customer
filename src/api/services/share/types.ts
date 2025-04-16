@@ -71,7 +71,9 @@ export type ExecutorProfileResponse = {
     id: number;
     phone: string;
     priority: number;
-    profilePhoto: null | string;
+    profilePhoto: null | FileResponse;
+    registrationDoc: null | FileResponse;
+    licenseDoc: null | FileResponse;
     rating: number;
     workFormat: ExecutorServiceType;
 };
@@ -81,11 +83,10 @@ export type ExecutorProfileResponse = {
  */
 export type OrderResponse = {
     address: AddressResponse;
-    addressId: number;
     comment: string | null;
     customerId: number;
     distanceToSeptic: number;
-    executorId: number | null;
+    executor: ExecutorResponse | null;
     id: number;
     objectType: string;
     paymentMethod: string;
@@ -95,8 +96,16 @@ export type OrderResponse = {
     septicDepth: number;
     septicVolume: number;
     service: ServiceResponse | null;
-    serviceId: number;
     orderStaus: OrderStatus;
     status: OrderStatus;
     workDate: string;
 };
+
+/**
+ * Файл, который приходит с сервера
+ */
+export interface FileResponse {
+    id: number;
+    type?: string;
+    url: string;
+}
