@@ -82,11 +82,13 @@ export type ExecutorProfileResponse = {
  * Заказ
  */
 export type OrderResponse = {
-    address: AddressResponse;
+    address?: AddressResponse;
+    city?: string;
     comment: string | null;
     customerId: number;
     distanceToSeptic: number;
     executor: ExecutorResponse | null;
+    customer: CustomerResponse | null;
     id: number;
     objectType: string;
     paymentMethod: string;

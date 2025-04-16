@@ -18,7 +18,6 @@ export const ForgotPasswordForm: FC = () => {
     const {setResetPasswordData} = useActions(resetPasswordSlice.actions);
 
     const onSubmit = (data: IForgotPasswordForm) => {
-        console.log(data);
         setResetPasswordData({
             userId: 1,
             ...data,

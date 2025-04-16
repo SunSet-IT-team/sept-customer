@@ -8,6 +8,7 @@ export const newOrderInputsData = [
     {label: 'Высота септика', name: 'septic_height', required: true},
     {label: 'Объем', name: 'volume', required: true},
     {label: 'Тип объекта', name: 'object_type', required: true},
+    {label: 'Адрес', name: 'address', required: true},
 ];
 
 export const paymentTypes = [
@@ -20,6 +21,7 @@ export const newOrderDefaultValues = {
     date: '',
     entrance_distance: '',
     object: '',
+    address: '',
     object_type: '',
     payment_type: '',
     septic_height: '',

@@ -20,7 +20,6 @@ export const Confirmation: FC = () => {
         }
 
         const data = await SERVICES.AuthService.resendCode(verifyData.email);
-        console.log(data);
         toast.success('Код выслан заново');
     };
 

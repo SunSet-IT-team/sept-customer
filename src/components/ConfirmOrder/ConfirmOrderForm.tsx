@@ -6,7 +6,6 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {ConfirmOrderFormContent} from './ConfirmOrderContent';
 import {SERVICES} from '../../api';
 import {toast} from 'react-toastify';
-import {mappingServerOrder} from '../../api/services/order/mapping/order';
 
 export const ConfirmOrderForm: FC = () => {
     const navigate = useNavigate();
@@ -17,6 +16,7 @@ export const ConfirmOrderForm: FC = () => {
     const onSubmit = async () => {
         try {
             const res = await SERVICES.OrderService.createOrder({
+                address: formData.address,
                 objectType: formData.object_type,
                 comment: formData.comment,
                 septicConstructionType: formData.object,
@@ -30,10 +30,6 @@ export const ConfirmOrderForm: FC = () => {
                 city: formData.city,
             });
 
-            const order = mappingServerOrder(res.data);
-
-            console.log(order);
-
             if (!res.success) {
                 toast.error('Ошибка при создании заказа');
                 return;
@@ -41,8 +37,6 @@ export const ConfirmOrderForm: FC = () => {
 
             navigate(`/order/order_created/${res.data.id}`);
         } catch (error) {
-            console.log(error);
-
             toast.error('Ошибка при создании заказа');
         }
     };

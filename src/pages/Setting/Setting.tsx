@@ -10,7 +10,6 @@ export const SettingsPage: React.FC = () => {
     const [saveDisabled, setSaveDisabled] = useState(true);
 
     const handleSave = () => {
-        console.log('Настройки сохранены');
         setSaveDisabled(true);
     };
 

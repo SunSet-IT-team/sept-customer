@@ -18,6 +18,7 @@ export const newOrderFormSchema = z.object({
     object_type: z
         .string()
         .min(1, {message: 'Поле обязательно для заполнения'}),
+    address: z.string().min(1, {message: 'Поле обязательно для заполнения'}),
 });
 
 export interface INewOrderForm extends z.infer<typeof newOrderFormSchema> {}

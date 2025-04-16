@@ -1,8 +1,4 @@
-import {
-    keepPreviousData,
-    useInfiniteQuery,
-    useQuery,
-} from '@tanstack/react-query';
+import {keepPreviousData, useInfiniteQuery} from '@tanstack/react-query';
 import {SERVICES} from '../../api';
 import {mappingServerOrder} from '../../api/services/order/mapping/order';
 import {useEffect} from 'react';
@@ -16,7 +12,8 @@ export const useFetchOrders = () => {
 
     const {
         data: orders,
-        isLoading,
+        isLoading: isFirstLoading,
+        isFetchingNextPage,
         fetchNextPage,
         hasNextPage,
         isSuccess,
@@ -34,15 +31,19 @@ export const useFetchOrders = () => {
         },
         select: (data) =>
             data.pages.flatMap((page) => {
-                return page.data.items.map((el) => mappingServerOrder(el));
+                return page.data.items
+                    .filter((el) => el.executor?.profile)
+                    .map((el) => mappingServerOrder(el));
             }),
     });
+
+    const isLoading = isFirstLoading || isFetchingNextPage;
 
     useEffect(() => {
         if (inView && hasNextPage && !isLoading) {
             fetchNextPage();
         }
-    }, [inView, isSuccess, hasNextPage, fetchNextPage]);
+    }, [inView, isSuccess, hasNextPage, fetchNextPage, isLoading]);
 
     return {orders, isLoading, ref};
 };

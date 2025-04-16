@@ -15,3 +15,7 @@ export interface IGetAllExecutorsResponse extends IServerAns {
         pages: number;
     };
 }
+
+export interface IGetExecutor extends IServerAns {
+    data: ExecutorResponse;
+}

@@ -37,8 +37,6 @@ export const SignUpForm: FC = () => {
             );
             if (success) navigate('/confirmation');
         } catch (error) {
-            console.log(error);
-
             toast.error(`Ошибка регистрации!`);
         }
     };

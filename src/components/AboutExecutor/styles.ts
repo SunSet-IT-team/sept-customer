@@ -6,7 +6,9 @@ export const executorImageContainerStyle: SxProps<Theme> = {
 
 export const executorImageStyle = {
     width: 143,
+    maxWidth: 143,
     height: 143,
+    minHeight: 143,
     backgroundColor: '#7D7D7D',
     borderRadius: '20px',
 };

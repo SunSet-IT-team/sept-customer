@@ -9,7 +9,7 @@ import {useFetchOrders} from '../../hooks/Orders/useFetchOrders';
 export const MyOrders: FC = () => {
     const {orders, isLoading, ref} = useFetchOrders();
 
-    if (isLoading || !orders) {
+    if (!orders) {
         return <Spinner />;
     }
 
@@ -20,6 +20,7 @@ export const MyOrders: FC = () => {
             </Helmet>
             <PageTitle title="Мои заказы" />
             <MyOrdersList orders={orders} observedRef={ref} />
+            {isLoading && <Spinner />}
         </Box>
     );
 };

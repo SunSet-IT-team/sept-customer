@@ -21,6 +21,7 @@ import {
     ratingStackStyle,
     reviewsBoxStyle,
 } from './styles';
+import {mappingServerExecutors} from '../../api/services/executor/mapping/executor';
 
 export const AboutExecutor: FC = () => {
     const {executor_id} = useParams();
@@ -30,8 +31,15 @@ export const AboutExecutor: FC = () => {
             SERVICES.ExecutorService.getExecutorById(
                 executor_id ? Number(executor_id) : 0
             ),
-        queryKey: ['get executor by id'],
+        queryKey: ['get executor by id', executor_id],
         enabled: !!executor_id,
+        select: (data) => {
+            if (!data.success) {
+                throw new Error('Ошибка получения исполнителя');
+            }
+
+            return mappingServerExecutors(data.data);
+        },
     });
 
     const {executors: favouriteExecutors} = useTypedSelector(
@@ -41,15 +49,6 @@ export const AboutExecutor: FC = () => {
     if (isLoading || !executor || !executor_id) {
         return <Spinner />;
     }
-    const {
-        averageRating,
-        callsCount,
-        description,
-        experience,
-        reviews,
-        title,
-        reviewsCount,
-    } = executor;
 
     const isFavourite = favouriteExecutors.some(
         (favourite_executor) => favourite_executor.id === executor.id
@@ -57,10 +56,14 @@ export const AboutExecutor: FC = () => {
 
     return (
         <Box p={'30px'}>
-            <PageTitle title="" />
+            <PageTitle title={`Исполнитель ${executor.title}`} />
             <Stack justifyContent={'center'} alignItems={'center'}>
                 <Box sx={executorImageContainerStyle}>
-                    <img src="" alt="" style={executorImageStyle} />
+                    <img
+                        src={executor.profileImg}
+                        alt={`Фото ${executor.title}`}
+                        style={executorImageStyle}
+                    />
                     <ToggleExecutorFavourite
                         executor={executor}
                         isFavourite={isFavourite}
@@ -70,19 +73,19 @@ export const AboutExecutor: FC = () => {
                 <Box sx={ratingBoxStyle}>
                     <Stack sx={ratingStackStyle}>
                         <StarIcon color="secondary" fontSize="small" />
-                        <Typography>{averageRating}</Typography>
-                        <Typography>{reviewsCount} оценок</Typography>
+                        <Typography>{executor.averageRating}</Typography>
+                        <Typography>{executor.reviewsCount} оценок</Typography>
                     </Stack>
                 </Box>
             </Stack>
             <Typography variant="h1" sx={companyNameStyle}>
-                {title}
+                {executor.title}
             </Typography>
 
             <Stack sx={infoBoxStyle}>
                 <Box sx={infoBoxItemStyle} borderRight={'1px solid black'}>
                     <Typography variant="body2" fontWeight={500}>
-                        {experience}
+                        {executor.experience}
                     </Typography>
                     <Typography variant="body2" fontWeight={500}>
                         лет стажа
@@ -90,7 +93,7 @@ export const AboutExecutor: FC = () => {
                 </Box>
                 <Box sx={infoBoxItemStyle} borderRight={'1px solid black'}>
                     <Typography variant="body2" fontWeight={500}>
-                        {callsCount}
+                        {executor.callsCount}
                     </Typography>
                     <Typography variant="body2" fontWeight={500}>
                         вызов
@@ -98,7 +101,7 @@ export const AboutExecutor: FC = () => {
                 </Box>
                 <Box sx={infoBoxItemStyle}>
                     <Typography variant="body2" fontWeight={500}>
-                        {reviewsCount}
+                        {executor.reviewsCount}
                     </Typography>
                     <Typography variant="body2" fontWeight={500}>
                         отзыва
@@ -110,23 +113,29 @@ export const AboutExecutor: FC = () => {
                 <Typography variant="h6" fontWeight={'500'}>
                     Данные о компании
                 </Typography>
-                <Typography mt={'20px'}>{description}</Typography>
+                <Typography mt={'20px'}>{executor.description}</Typography>
             </Box>
             <Box sx={reviewsBoxStyle}>
                 <Typography variant="h6" fontWeight={'500'}>
                     Отзывы
                 </Typography>
-                <Stack gap={'20px'} mt={'20px'}>
-                    {reviews.map((review) => (
-                        <Review
-                            isMyReview={false}
-                            rating={review.rating}
-                            text={review.text}
-                            username={review.username}
-                            key={review.id + review.username}
-                        />
-                    ))}
-                </Stack>
+                {executor.reviews && executor.reviews.length > 0 ? (
+                    <Stack gap={'20px'} mt={'20px'}>
+                        {executor.reviews.map((review) => (
+                            <Review
+                                isMyReview={false}
+                                rating={review.rating}
+                                text={review.text}
+                                username={review.username}
+                                key={review.id + review.username}
+                            />
+                        ))}
+                    </Stack>
+                ) : (
+                    <Typography variant="h6" fontWeight={'400'}>
+                        У этого исполнителя пока нет отзывов
+                    </Typography>
+                )}
             </Box>
         </Box>
     );

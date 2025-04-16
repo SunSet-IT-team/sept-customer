@@ -17,8 +17,6 @@ const SupportChat = () => {
 
     const {additionalInfo, ...chat} = chatData;
 
-    console.log(chat);
-
     return (
         <Box sx={{height: '100dvh'}}>
             <ChatForm {...chat} additionalInfo={question} />

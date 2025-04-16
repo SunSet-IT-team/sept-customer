@@ -1,7 +1,11 @@
 import {API_ROUTES} from '../..';
 import {IExecutor} from '../../../types/executor';
 import axiosInstance from '../../instance';
-import {IGetAllExecutorsDTO, IGetAllExecutorsResponse} from './dto/getAll.dto';
+import {
+    IGetAllExecutorsDTO,
+    IGetAllExecutorsResponse,
+    IGetExecutor,
+} from './dto/getAll.dto';
 
 /**
  * API по работе с исполнителями
@@ -24,13 +28,11 @@ export const ExecutorService = {
         return response.data;
     },
 
-    async getExecutorById(executor_id: number): Promise<IExecutor> {
-        const response = await axiosInstance<IExecutor>({
+    async getExecutorById(executor_id: number) {
+        const response = await axiosInstance<IGetExecutor>({
             url: API_ROUTES.GET_EXECUTOR_BY_ID(executor_id),
             method: 'GET',
         });
-
-        console.log(response);
 
         return response.data;
     },
