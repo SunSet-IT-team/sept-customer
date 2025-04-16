@@ -105,7 +105,7 @@ function App() {
                         element={<ConfirmOrder />}
                     />
                 </Route>
-                <Route path="order">
+                <Route path="/order">
                     <Route path=":order_id" element={<Order />} />
                     <Route
                         path="order_created/:order_id"
@@ -117,7 +117,7 @@ function App() {
                         element={<NewOrderReview />}
                     />
                 </Route>
-                <Route path="executor">
+                <Route path="/executor">
                     <Route path=":executor_id" element={<AboutExecutor />} />
                 </Route>
             </Route>
