@@ -33,7 +33,7 @@ export const OrderService = {
      */
     async getUserOrders(data: IGetOrdersDTO) {
         const page = data.page || 1;
-        const limit = data.limit || 1;
+        const limit = data.limit || 10;
         const url = `${API_ROUTES.ORDER_MY()}?page=${page}&limit=${limit}`;
 
         const response = await axiosInstance<IGetOrdersResponse>({
