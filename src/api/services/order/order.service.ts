@@ -1,6 +1,7 @@
 import {API_ROUTES} from '../..';
 import {ordersWithReviewData} from '../../../pages/MyReviews/data';
 import axiosInstance from '../../instance';
+import {IAddReviewDTO, IAddReviewResponse} from './dto/addReview.dto';
 import {ICreateOrderDTO, ICreateOrderResponse} from './dto/createOrder.dto';
 import {IGetOrderResponse} from './dto/getOrder.dto';
 import {IGetOrdersDTO, IGetOrdersResponse} from './dto/getOrders.dto';
@@ -17,15 +18,6 @@ export const OrderService = {
         });
 
         return response.data;
-    },
-
-    async getUserOrdersWithReview() {
-        await new Promise<void>((resolve) => {
-            setTimeout(() => {
-                resolve();
-            }, 1000);
-        });
-        return ordersWithReviewData;
     },
 
     /**
@@ -50,6 +42,43 @@ export const OrderService = {
         const response = await axiosInstance<IGetOrderResponse>({
             url: API_ROUTES.ORDER_BY_ID(id),
             method: 'GET',
+        });
+
+        return response.data;
+    },
+
+    /**
+     * Добавить отзыв
+     */
+    async addReview(id: number | string, params: IAddReviewDTO) {
+        const response = await axiosInstance<IAddReviewResponse>({
+            url: API_ROUTES.ADD_REVIEW(id),
+            method: 'POST',
+            data: params,
+        });
+
+        return response.data;
+    },
+
+    /**
+     * Удалить отзыв
+     */
+    async deleteReview(id: number | string) {
+        const response = await axiosInstance<IAddReviewResponse>({
+            url: API_ROUTES.DELETE_REVIEW(id),
+            method: 'POST',
+        });
+
+        return response.data;
+    },
+
+    /**
+     * Изменить отзыв
+     */
+    async changeReview(id: number | string) {
+        const response = await axiosInstance<IAddReviewResponse>({
+            url: API_ROUTES.CHANGE_REVIEW(id),
+            method: 'PATCH',
         });
 
         return response.data;

@@ -94,10 +94,6 @@ function AppRoute() {
                 <Route path="/support/chat" element={<SupportChat />} />
                 <Route path="/service">
                     <Route
-                        path=":service_id/new_order"
-                        element={<NewOrder />}
-                    />
-                    <Route
                         path=":service_id/new_order/choose_executor"
                         element={<ChooseExecutor />}
                     />
@@ -105,18 +101,25 @@ function AppRoute() {
                         path=":service_id/new_order/confirm_order"
                         element={<ConfirmOrder />}
                     />
+                    <Route
+                        path=":service_id/new_order"
+                        element={<NewOrder />}
+                    />
                 </Route>
                 <Route path="/order">
-                    <Route path=":order_id" element={<Order />} />
                     <Route
-                        path="order_created/:order_id"
-                        element={<OrderCreated />}
-                    />
-                    <Route path=":order_id/chat" element={<OrderChat />} />
-                    <Route
-                        path=":order_id/add-review"
+                        path="add-review/:orderId"
                         element={<NewOrderReview />}
                     />
+
+                    <Route path="chat/:orderId" element={<OrderChat />} />
+
+                    <Route
+                        path="order_created/:orderId"
+                        element={<OrderCreated />}
+                    />
+
+                    <Route path=":orderId" element={<Order />} />
                 </Route>
                 <Route path="/executor">
                     <Route path=":executor_id" element={<AboutExecutor />} />

@@ -13,37 +13,32 @@ import {deleteButtonSx, editButtonSx} from './styles';
 import {useMediaQuery} from 'usehooks-ts';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
-import {OrdersSlice} from '../../../app/store/orders/orders.slice';
 import {IOrder} from '../../../types/order';
 
 interface IProps {
-    order_id: IOrder['id'];
+    orderId: IOrder['id'];
     rating_score: number;
     review_text: string;
 }
 
 export const OrderReviewShort: FC<IProps> = ({
-    order_id,
+    orderId,
     rating_score,
     review_text,
 }) => {
     const isMobileSmall = useMediaQuery('(max-width:480px)');
     const navigate = useNavigate();
-    const {deleteReview} = useActions(OrdersSlice.actions);
 
     const editAction = useCallback(
         function () {
-            navigate(`/orders/${order_id}/add-review`);
+            navigate(`/orders/add-review/${orderId}`);
         },
         [navigate]
     );
 
-    const deleteAction = useCallback(
-        function () {
-            deleteReview({order_id});
-        },
-        [deleteReview]
-    );
+    const deleteAction = useCallback(function () {
+        // deleteReview({orderId});
+    }, []);
 
     return (
         <Box>

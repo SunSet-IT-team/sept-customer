@@ -4,18 +4,19 @@ import {useNavigate} from 'react-router-dom';
 import {actionButtonSx} from './styles';
 
 interface IProps {
-    isConfirmed: boolean;
+    isChatButton: boolean;
+    orderId: string | number;
 }
 
-export const ActionButton: FC<IProps> = ({isConfirmed}) => {
+export const ActionButton: FC<IProps> = ({isChatButton, orderId}) => {
     const navigate = useNavigate();
 
     const onClick = useCallback(
         function () {
-            if (isConfirmed) return navigate('../chat', {relative: 'path'});
-            else return navigate('../add-review', {relative: 'path'});
+            if (isChatButton) return navigate(`/order/chat/${orderId}`);
+            else return navigate(`/order/add-review/${orderId}`);
         },
-        [isConfirmed]
+        [isChatButton]
     );
 
     return (
@@ -26,7 +27,7 @@ export const ActionButton: FC<IProps> = ({isConfirmed}) => {
                 sx={actionButtonSx}
                 onClick={onClick}
             >
-                {isConfirmed ? 'Открыть чат' : 'Оставить отзыв'}
+                {isChatButton ? 'Открыть чат' : 'Оставить отзыв'}
             </Button>
         </Box>
     );

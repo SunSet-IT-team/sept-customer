@@ -8,7 +8,7 @@ import {mappingServerOrder} from '../../api/services/order/mapping/order';
 export const useFetchOrderById = (id: any) => {
     return useQuery({
         queryFn: () => SERVICES.OrderService.getOrderById(id),
-        queryKey: ['get order by id', id],
+        queryKey: ['order', id],
         select(data) {
             return mappingServerOrder(data.data);
         },

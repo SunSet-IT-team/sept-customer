@@ -10,11 +10,11 @@ import {myRewiewTextSx} from './styles';
 import {useFetchOrderById} from '../../hooks/Orders/useFetchOrderById';
 
 export const Order: FC = () => {
-    const {order_id} = useParams();
+    const {orderId} = useParams();
 
-    if (!order_id) return <Navigate to={'/'} replace />;
+    if (!orderId) return <Navigate to={'/'} replace />;
 
-    const {data: order, isLoading, isError} = useFetchOrderById(order_id);
+    const {data: order, isLoading, isError} = useFetchOrderById(orderId);
 
     if (isLoading) {
         return <Spinner />;
@@ -25,9 +25,9 @@ export const Order: FC = () => {
     return (
         <Box py={'26px'} px={'35px'}>
             <Helmet>
-                <title>Заказ {order_id}</title>
+                <title>Заказ {orderId}</title>
             </Helmet>
-            <PageTitle title={`Заявка №${order_id}`} />
+            <PageTitle title={`Заявка №${orderId}`} />
 
             <OrderBody order={order} />
 
@@ -36,8 +36,9 @@ export const Order: FC = () => {
                     <Typography variant="h5" sx={myRewiewTextSx}>
                         Мой отзыв
                     </Typography>
+
                     <OrderReviewShort
-                        order_id={order_id}
+                        orderId={orderId}
                         rating_score={order.review.rating}
                         review_text={order.review.text}
                     />

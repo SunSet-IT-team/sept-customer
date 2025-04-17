@@ -13,7 +13,7 @@ import {
 } from './styles';
 
 export const OrderCreated: FC = () => {
-    const {order_id} = useParams();
+    const {orderId} = useParams();
     const {setExecutor, setFormData, setService} = useActions(
         newOrderSlice.actions
     );
@@ -35,7 +35,7 @@ export const OrderCreated: FC = () => {
                         ЭКО Контроль
                     </Typography>
                     <Typography variant="body1" sx={textStyle}>
-                        Ваш вызов №{order_id} создан. Вы можете связаться с
+                        Ваш вызов №{orderId} создан. Вы можете связаться с
                         исполнителем для уточнения деталей.
                     </Typography>
                     <Stack sx={buttonStackStyle}>
@@ -43,7 +43,7 @@ export const OrderCreated: FC = () => {
                             variant="contained"
                             sx={buttonStyle}
                             component={Link}
-                            to={`/order/${order_id}/chat`}
+                            to={`/order/chat/${orderId}`}
                             color="secondary"
                         >
                             Открыть чат

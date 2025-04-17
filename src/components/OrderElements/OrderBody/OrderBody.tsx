@@ -1,10 +1,10 @@
 import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {MainDataList} from '../MainDataList/MainDataList';
-import {ActionButton} from '../ActionButton/ActionButton';
 import {titleBefDataSx} from './styles';
-import {IOrder, OrderStatus} from '../../../types/order';
+import {IOrder} from '../../../types/order';
 import {formatOrderStatus} from '../../../utils/formaters';
+import OrderButtons from '../OrderButtons/OrderButtons';
 
 interface IProps {
     order: IOrder;
@@ -34,15 +34,7 @@ export const OrderBody: FC<IProps> = ({order}) => {
 
             <MainDataList order={order} />
 
-            {!order.review &&
-                (order.status == OrderStatus.IN_PROGRESS ||
-                    order.status == OrderStatus.CONFIRMED) && (
-                    <>
-                        <ActionButton
-                            isConfirmed={order.status === OrderStatus.CONFIRMED}
-                        />
-                    </>
-                )}
+            <OrderButtons order={order} />
         </>
     );
 };

@@ -13,31 +13,35 @@ import {submitButtonSx, textFieldSx} from './styles';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {INewReveiwForm, newReveiwFormShema} from './shema';
 import {newReviewDefaultValues} from './data';
-import {useTypedSelector} from '../../../hooks/useTypedSelector';
-import {useActions} from '../../../hooks/useActions';
-import {OrdersSlice} from '../../../app/store/orders/orders.slice';
+import {useFetchOrderById} from '../../../hooks/Orders/useFetchOrderById';
+import {Spinner} from '../../Spinner/Spinner';
+import {useReviewMutations} from '../../../hooks/Review/useReview';
 
 export const OrderReviewForm: FC = () => {
-    const {order_id} = useParams();
-    if (!order_id) return <Navigate to={'/'} replace />;
+    const {orderId} = useParams();
 
-    const formData = useTypedSelector(
-        (state) =>
-            state.orders.orders.find((order) => order.id === order_id)?.review
-    );
-    const {addReview} = useActions(OrdersSlice.actions);
+    if (!orderId) return <Navigate to={'/'} replace />;
+
+    const {data: order, isLoading, isError} = useFetchOrderById(orderId);
+    const mutation = useReviewMutations(orderId);
+
+    if (isLoading) {
+        return <Spinner />;
+    }
+
+    if (isError || !order) return <Navigate to={'/'} replace />;
 
     const navigate = useNavigate();
+
     const submitReview = useCallback(
-        function (reviewData: INewReveiwForm) {
-            // Тут будет логика, связанная с отправкой данных отзыва
-            addReview({order_id, formData: reviewData});
-            return navigate('../review', {relative: 'path'});
+        (reviewData: Required<INewReveiwForm>) => {
+            mutation.addReview(reviewData);
+            return navigate(`/order/${orderId}`);
         },
-        [navigate]
+        [navigate, orderId]
     );
 
-    const defaultValues = formData || newReviewDefaultValues;
+    const defaultValues = order.review || newReviewDefaultValues;
 
     return (
         <FormContainer

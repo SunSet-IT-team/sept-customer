@@ -60,7 +60,7 @@ export const ReviewItem: FC<IProps> = ({order}) => {
                 </Box>
             </Stack>
             <OrderReviewShort
-                order_id={order.id}
+                orderId={order.id}
                 review_text={order.review.text}
                 rating_score={order.review.rating}
             />
