@@ -20,3 +20,7 @@ export const ORDER_BY_ID = (orderId: number | string) => `order/${orderId}`;
 export const ADD_REVIEW = (orderId: number | string) => `review/${orderId}`;
 export const DELETE_REVIEW = (review: number | string) => `review/${review}`;
 export const CHANGE_REVIEW = (review: number | string) => `review/${review}`;
+
+export const CHAT_ORDER = (orderId: number | string) =>
+    `/chat/order/${orderId}`;
+export const CHAT_SUPPORT = () => `/chat/support`;
