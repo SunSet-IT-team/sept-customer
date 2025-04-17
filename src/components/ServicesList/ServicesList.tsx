@@ -5,7 +5,7 @@ import {ServiceItem} from './ServiceItem/ServiceItem';
 import {noFindStyles} from './styles';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../hooks/useActions';
-import {newOrderSlice} from '../../store/newOrder/newOrder.slice';
+import {newOrderSlice} from '../../app/store/newOrder/newOrder.slice';
 
 interface IProps {
     servicesList: IService[];

@@ -10,9 +10,9 @@ import {SignInFormContent} from './SignInFormContent/SignInFormContent';
 import {buttonStyles, linkStyles} from './styles';
 import {SERVICES} from '../../api';
 import {toast} from 'react-toastify';
-import {useAppDispatch} from '../../store/store';
-import {auth} from '../../store/user/auth';
-import {setUser} from '../../store/user/slice';
+import {useAppDispatch} from '../../app/store/store';
+import {auth} from '../../app/store/user/auth';
+import {setUser} from '../../app/store/user/slice';
 import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
 export const SignInForm: FC = () => {
     const dispatch = useAppDispatch();

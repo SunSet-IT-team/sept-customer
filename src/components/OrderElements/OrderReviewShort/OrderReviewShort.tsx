@@ -13,7 +13,7 @@ import {deleteButtonSx, editButtonSx} from './styles';
 import {useMediaQuery} from 'usehooks-ts';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
-import {OrdersSlice} from '../../../store/orders/orders.slice';
+import {OrdersSlice} from '../../../app/store/orders/orders.slice';
 import {IOrder} from '../../../types/order';
 
 interface IProps {

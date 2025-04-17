@@ -1,4 +1,4 @@
-import {IExecutor} from '../../types/executor';
+import {IExecutor} from '../../../types/executor';
 
 export interface IInitialStateFavourites {
     executors: IExecutor[];

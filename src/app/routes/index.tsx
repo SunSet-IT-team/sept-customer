@@ -1,34 +1,34 @@
-import {Navigate, Route, Routes, Outlet} from 'react-router-dom';
-import './App.css';
-import {AboutExecutor} from './components/AboutExecutor/AboutExecutor';
-import {LayoutWithNavbar} from './components/LayoutWithNavbar/LayoutWithNavbar';
-import {OrderCreated} from './components/OrderCreated/OrderCreated';
-import {Auth} from './pages/Auth/Auth';
-import {ChooseExecutor} from './pages/ChooseExecutor/ChooseExecutor';
-import {Confirmation} from './pages/Confirmation/Confirmation';
-import {ConfirmOrder} from './pages/ConfirmOrder/ConfirmOrder';
-import {ForgotPassword} from './pages/ForgotPassword/ForgotPassword';
-import {Home} from './pages/Home/Home';
-import {NewOrder} from './pages/NewOrder/NewOrder';
-import {OrderChat} from './pages/OrderChat/OrderChat';
-import {SignIn} from './pages/SignIn/SignIn';
-import {SignUp} from './pages/SignUp/SignUp';
-import {MyOrders} from './pages/MyOrders/MyOrders';
-import {Order} from './pages/Order/Order';
-import {NewOrderReview} from './pages/NewOrderReview/NewOrderReview';
-import {MyReviews} from './pages/MyReviews/MyReviews';
-import ProfilePage from './pages/Profile/Profile';
-import {Favorites} from './pages/Favorites/Favorites';
-import {SettingsPage} from './pages/Setting/Setting';
-import Support from './pages/Support/Support';
-import SupportChat from './pages/Support/SupportChat';
-import {useTypedSelector} from './hooks/useTypedSelector';
 import {useEffect} from 'react';
-import {useAppDispatch} from './store/store';
-import LoadPage from './pages/LoadPage';
-import {fetchUserData} from './store/user/thunk';
+import {Routes, Route, Outlet, Navigate} from 'react-router-dom';
+import {AboutExecutor} from '../../components/AboutExecutor/AboutExecutor';
+import {LayoutWithNavbar} from '../../components/LayoutWithNavbar/LayoutWithNavbar';
+import {OrderCreated} from '../../components/OrderCreated/OrderCreated';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {Auth} from '../../pages/Auth/Auth';
+import {ChooseExecutor} from '../../pages/ChooseExecutor/ChooseExecutor';
+import {Confirmation} from '../../pages/Confirmation/Confirmation';
+import {ConfirmOrder} from '../../pages/ConfirmOrder/ConfirmOrder';
+import {Favorites} from '../../pages/Favorites/Favorites';
+import {ForgotPassword} from '../../pages/ForgotPassword/ForgotPassword';
+import LoadPage from '../../pages/LoadPage';
+import {MyOrders} from '../../pages/MyOrders/MyOrders';
+import {MyReviews} from '../../pages/MyReviews/MyReviews';
+import {NewOrder} from '../../pages/NewOrder/NewOrder';
+import {NewOrderReview} from '../../pages/NewOrderReview/NewOrderReview';
+import {Order} from '../../pages/Order/Order';
+import {OrderChat} from '../../pages/OrderChat/OrderChat';
+import ProfilePage from '../../pages/Profile/Profile';
+import {SettingsPage} from '../../pages/Setting/Setting';
+import {SignIn} from '../../pages/SignIn/SignIn';
+import {SignUp} from '../../pages/SignUp/SignUp';
+import SupportChat from '../../pages/Support/SupportChat';
+import Support from '../../pages/Support/Support';
+import {Home} from '../../pages/Home/Home';
 
-function App() {
+import {useAppDispatch} from '../store/store';
+import {fetchUserData} from '../store/user/thunk';
+
+function AppRoute() {
     const {user, isInited, isLoading} = useTypedSelector((state) => state.user);
     const token = localStorage.getItem('token');
 
@@ -42,9 +42,10 @@ function App() {
         };
     }, [isInited]);
 
-    const isAuthenticated = user && isInited && !isLoading;
+    const isAuthenticated = !!user && token;
+    const isReady = isInited && !isLoading;
 
-    if (!isInited && token)
+    if (!isReady)
         return (
             <Routes>
                 <Route index element={<LoadPage />} />
@@ -128,4 +129,4 @@ function App() {
     );
 }
 
-export default App;
+export default AppRoute;

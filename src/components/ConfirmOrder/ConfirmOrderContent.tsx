@@ -7,7 +7,7 @@ import {
 } from 'react-hook-form-mui';
 import {INewOrderForm} from '../OrderForm/schema';
 import {newOrderInputsData, paymentTypes} from './data';
-import {IOrder} from './type';
+import {IOrder} from '../../types/order';
 
 export const ConfirmOrderFormContent: FC = () => {
     const {errors} = useFormState<IOrder>();

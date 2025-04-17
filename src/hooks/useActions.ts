@@ -1,6 +1,6 @@
 import {Action, bindActionCreators} from '@reduxjs/toolkit';
 import {useMemo} from 'react';
-import {useAppDispatch} from '../store/store';
+import {useAppDispatch} from '../app/store/store';
 
 type ActionCreatorsMapObject<T extends Action = Action> = {
     [key: string]: (...args: any[]) => T;

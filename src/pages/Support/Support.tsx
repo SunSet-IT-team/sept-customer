@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import ChatHeader from '../../components/ChatForm/ui/ChatHeader';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {getSupportChat} from '../../store/user/selectors';
+import {getSupportChat} from '../../app/store/user/selectors';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 

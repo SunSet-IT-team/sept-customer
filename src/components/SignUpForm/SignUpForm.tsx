@@ -11,8 +11,8 @@ import {SERVICES} from '../../api';
 import {IRegisterDTO} from '../../api/services/auth/dto/register.dto';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import {useAppDispatch} from '../../store/store';
-import {setVerigyData} from '../../store/user/slice';
+import {useAppDispatch} from '../../app/store/store';
+import {setVerigyData} from '../../app/store/user/slice';
 
 export const SignUpForm: FC = () => {
     const navigate = useNavigate();

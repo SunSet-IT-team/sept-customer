@@ -1,6 +1,6 @@
 import {useSearchParams} from 'react-router-dom';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {getSupportChat} from '../../store/user/selectors';
+import {getSupportChat} from '../../app/store/user/selectors';
 import {ChatForm} from '../../components/ChatForm/ui/Chat';
 import {Box} from '@mui/material';
 

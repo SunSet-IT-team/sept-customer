@@ -6,9 +6,9 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';
 import {useNavigate} from 'react-router-dom';
-import {auth} from '../../store/user/auth';
-import {setUser} from '../../store/user/slice';
-import {useAppDispatch} from '../../store/store';
+import {auth} from '../../app/store/user/auth';
+import {setUser} from '../../app/store/user/slice';
+import {useAppDispatch} from '../../app/store/store';
 import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
 
 /**

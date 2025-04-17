@@ -3,9 +3,9 @@ import {logout} from './auth';
 import storage from 'redux-persist/lib/storage';
 import {fetchUserData} from './thunk';
 import {persistReducer} from 'redux-persist';
-import {Chat, Message} from '../../types/chat';
-import {Executor, ExecutorServiceType} from '../../types/executor';
-import {Customer, VerifyData} from '../../types/user';
+import {Chat, Message} from '../../../types/chat';
+import {Executor, ExecutorServiceType} from '../../../types/executor';
+import {Customer, VerifyData} from '../../../types/user';
 
 /**
  * Слайс для хранения данных текущего пользователя

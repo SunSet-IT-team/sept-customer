@@ -13,9 +13,9 @@ import ChatHeader from './ChatHeader';
 import {useStyles} from './styles';
 import {useNavigate} from 'react-router-dom';
 import {Chat, Message} from '../../../types/chat';
-import {receivedMessage} from '../../../store/user/slice';
-import {getCurrentUser} from '../../../store/user/selectors';
-import {useAppDispatch} from '../../../store/store';
+import {receivedMessage} from '../../../app/store/user/slice';
+import {getCurrentUser} from '../../../app/store/user/selectors';
+import {useAppDispatch} from '../../../app/store/store';
 import {useTypedSelector} from '../../../hooks/useTypedSelector';
 
 type ChatFormProps = Chat;

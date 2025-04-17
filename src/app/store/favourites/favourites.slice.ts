@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import {IExecutor} from '../../types/executor';
+import {IExecutor} from '../../../types/executor';
 import {IInitialStateFavourites} from './state.interface';
 const initialState: IInitialStateFavourites = {
     executors: [],

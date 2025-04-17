@@ -15,13 +15,16 @@ import {INewReveiwForm, newReveiwFormShema} from './shema';
 import {newReviewDefaultValues} from './data';
 import {useTypedSelector} from '../../../hooks/useTypedSelector';
 import {useActions} from '../../../hooks/useActions';
-import { OrdersSlice } from '../../../store/orders/orders.slice';
+import {OrdersSlice} from '../../../app/store/orders/orders.slice';
 
 export const OrderReviewForm: FC = () => {
-    const {order_id} = useParams()
-    if (!order_id) return <Navigate to={"/"} replace/>
-    
-    const formData = useTypedSelector((state) => state.orders.orders.find(order => order.id === order_id)?.review);
+    const {order_id} = useParams();
+    if (!order_id) return <Navigate to={'/'} replace />;
+
+    const formData = useTypedSelector(
+        (state) =>
+            state.orders.orders.find((order) => order.id === order_id)?.review
+    );
     const {addReview} = useActions(OrdersSlice.actions);
 
     const navigate = useNavigate();

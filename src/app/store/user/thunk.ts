@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {Customer} from '../../types/user';
-import {SERVICES} from '../../api';
-import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
+import {Customer} from '../../../types/user';
+import {SERVICES} from '../../../api';
+import {mappingServerCustomer} from '../../../api/services/auth/mapping/customer';
 
 /**
  * Запрашиваем данные об админе

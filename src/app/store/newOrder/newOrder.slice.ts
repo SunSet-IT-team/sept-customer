@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import {INewOrderForm} from '../../components/OrderForm/schema';
-import {IExecutor} from '../../types/executor';
-import {IService} from '../../types/service';
+import {INewOrderForm} from '../../../components/OrderForm/schema';
+import {IExecutor} from '../../../types/executor';
+import {IService} from '../../../types/service';
 import {IInitialStateNewOrder} from './state.interface';
 
 const initialState: IInitialStateNewOrder = {
