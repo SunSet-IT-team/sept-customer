@@ -1,32 +1,31 @@
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
-import {Stack, Typography} from '@mui/material';
+import {Stack, SxProps, Theme, Typography} from '@mui/material';
 import {FC} from 'react';
+import {useStyles} from './styles';
 import {useHandleBack} from '../../hooks/useHandleBack';
 
 interface IProps {
     title: string;
+    sx?: SxProps<Theme>;
 }
 
-export const PageTitle: FC<IProps> = ({title}) => {
+/**
+ * Фича - стрелка  назад с названием странцы
+ */
+export const PageTitle: FC<IProps> = ({title, sx}) => {
     const {handleBack} = useHandleBack();
 
+    const styles = useStyles();
+
+    const mainSx = {...styles.container, ...sx} as SxProps<Theme>;
+
     return (
-        <Stack
-            direction={'row'}
-            justifyContent={'center'}
-            width={'100%'}
-            alignItems={'center'}
-        >
+        <Stack sx={mainSx}>
             <ArrowBackIosNewRoundedIcon
-                sx={{
-                    position: 'absolute',
-                    left: '33px',
-                    cursor: 'pointer',
-                    padding: '2px',
-                }}
+                sx={styles.arrow}
                 onClick={handleBack}
             />
-            <Typography variant="h6" sx={{fontWeight: 500}}>
+            <Typography variant="h6" sx={styles.title}>
                 {title}
             </Typography>
         </Stack>

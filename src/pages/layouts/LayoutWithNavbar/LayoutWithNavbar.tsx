@@ -1,7 +1,7 @@
 import {Box, Paper} from '@mui/material';
 import {FC} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
-import {Navbar} from '../Navbar/Navbar';
+import {Navbar} from '../../../components/Navbar/Navbar';
 import {useLayoutStyles} from './styles';
 
 export const LayoutWithNavbar: FC = () => {

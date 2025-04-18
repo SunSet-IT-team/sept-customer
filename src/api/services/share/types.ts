@@ -56,6 +56,8 @@ export type ExecutorResponse = {
     name: string;
     role: 'EXECUTOR';
     profile: ExecutorProfileResponse;
+    ordersCount: number;
+    reviewsCount: number;
 };
 
 /**

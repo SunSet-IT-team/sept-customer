@@ -41,7 +41,7 @@ export const ExecutorsList: FC<IProps> = ({
     );
 
     return (
-        <Stack gap="40px">
+        <Stack gap="40px" sx={{height: '100%'}}>
             {executors.map((executor, index) => {
                 const isFavourite = favouriteExecutors.some(
                     (favourite_executor) =>

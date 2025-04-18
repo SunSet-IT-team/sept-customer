@@ -10,6 +10,7 @@ import {
     toggleFavouriteStyle,
 } from './styles';
 import {IExecutor} from '../../../types/executor';
+import {getReviewsWord} from '../../../utils/formaters';
 
 interface IProps {
     executor: IExecutor;
@@ -54,7 +55,7 @@ export const BaseExecutorItem: FC<IProps> = ({
                     <Stack>
                         <Typography fontSize={'14px'}>{title}</Typography>
                         <Typography fontSize={'14px'}>
-                            {reviewsCount} отзывов
+                            {reviewsCount} {getReviewsWord(reviewsCount)}
                         </Typography>
                     </Stack>
                     <Box>

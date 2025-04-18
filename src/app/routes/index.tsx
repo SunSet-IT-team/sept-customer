@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {Routes, Route, Outlet, Navigate} from 'react-router-dom';
 import {AboutExecutor} from '../../components/AboutExecutor/AboutExecutor';
-import {LayoutWithNavbar} from '../../components/LayoutWithNavbar/LayoutWithNavbar';
+import {LayoutWithNavbar} from '../../pages/layouts/LayoutWithNavbar/LayoutWithNavbar';
 import {OrderCreated} from '../../components/OrderCreated/OrderCreated';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {Auth} from '../../pages/Auth/Auth';

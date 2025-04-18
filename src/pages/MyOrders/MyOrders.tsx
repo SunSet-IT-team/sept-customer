@@ -1,10 +1,9 @@
-import {Box} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
-import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {MyOrdersList} from '../../components/MyOrdersList/MyOrdersList';
 import {Spinner} from '../../components/Spinner/Spinner';
 import {useFetchOrders} from '../../hooks/Orders/useFetchOrders';
+import {BackLayout} from '../layouts/BackLayout';
 
 export const MyOrders: FC = () => {
     const {orders, isLoading, ref} = useFetchOrders();
@@ -14,13 +13,14 @@ export const MyOrders: FC = () => {
     }
 
     return (
-        <Box py={'26px'}>
+        <>
             <Helmet>
                 <title>Мои заказы</title>
             </Helmet>
-            <PageTitle title="Мои заказы" />
-            <MyOrdersList orders={orders} observedRef={ref} />
-            {isLoading && <Spinner />}
-        </Box>
+            <BackLayout title="Мои заказы">
+                <MyOrdersList orders={orders} observedRef={ref} />
+                {isLoading && <Spinner />}
+            </BackLayout>
+        </>
     );
 };
