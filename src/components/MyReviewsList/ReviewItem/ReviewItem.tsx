@@ -4,7 +4,6 @@ import {OrderReviewShort} from '../../OrderElements/OrderReviewShort/OrderReview
 import {IOrder} from '../../../types/order';
 import {imageStyle, useStyles} from './styles';
 import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
-import {IExecutor} from '../../../types/executor';
 
 interface IProps {
     order: IOrder;
@@ -28,7 +27,7 @@ export const ReviewItem: FC<IProps> = ({order}) => {
                 {/* Левая часть — аватар */}
                 <Box sx={styles.imageContainerStyle}>
                     <img
-                        src={order.executor.imgUrl}
+                        src={order.executor.profileImg}
                         alt={``}
                         style={imageStyle}
                     />
@@ -59,11 +58,7 @@ export const ReviewItem: FC<IProps> = ({order}) => {
                     </Typography>
                 </Box>
             </Stack>
-            <OrderReviewShort
-                orderId={order.id}
-                review_text={order.review.text}
-                rating_score={order.review.rating}
-            />
+            <OrderReviewShort orderId={order.id} review={order.review} />
         </Box>
     );
 };

@@ -37,11 +37,7 @@ export const Order: FC = () => {
                         Мой отзыв
                     </Typography>
 
-                    <OrderReviewShort
-                        orderId={orderId}
-                        rating_score={order.review.rating}
-                        review_text={order.review.text}
-                    />
+                    <OrderReviewShort orderId={orderId} review={order.review} />
                 </>
             )}
         </Box>

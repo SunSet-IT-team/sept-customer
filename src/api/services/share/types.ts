@@ -82,13 +82,13 @@ export type ExecutorProfileResponse = {
  * Заказ
  */
 export type OrderResponse = {
-    address?: AddressResponse;
+    address: string;
     city?: string;
     comment: string | null;
-    customerId: number;
     distanceToSeptic: number;
     executor: ExecutorResponse | null;
     customer: CustomerResponse | null;
+    customerReview: ReviewResponce;
     id: number;
     objectType: string;
     paymentMethod: string;
@@ -110,4 +110,14 @@ export interface FileResponse {
     id: number;
     type?: string;
     url: string;
+}
+
+/**
+ * Отзыв приходящий с сервера
+ */
+export interface ReviewResponce {
+    rating: number;
+    text: string;
+    id: number;
+    author: CustomerResponse;
 }

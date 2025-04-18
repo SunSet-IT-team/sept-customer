@@ -33,13 +33,17 @@ export const OrderReviewForm: FC = () => {
 
     const navigate = useNavigate();
 
-    const submitReview = useCallback(
-        (reviewData: Required<INewReveiwForm>) => {
+    const submitReview = (reviewData: Required<INewReveiwForm>) => {
+        if (order.review) {
+            mutation.changeReview({
+                reviewId: order.review.id,
+                params: reviewData,
+            });
+        } else {
             mutation.addReview(reviewData);
-            return navigate(`/order/${orderId}`);
-        },
-        [navigate, orderId]
-    );
+        }
+        return navigate(`/order/${orderId}`);
+    };
 
     const defaultValues = order.review || newReviewDefaultValues;
 

@@ -16,7 +16,7 @@ export interface IExecutor {
 }
 
 export interface IReview {
-    id: number;
+    id: number | string;
     username: string;
     rating: number;
     text: string;

@@ -2,6 +2,7 @@ import {API_ROUTES} from '../..';
 import {ordersWithReviewData} from '../../../pages/MyReviews/data';
 import axiosInstance from '../../instance';
 import {IAddReviewDTO, IAddReviewResponse} from './dto/addReview.dto';
+import {IChangeReviewDTO} from './dto/changeReview.dto';
 import {ICreateOrderDTO, ICreateOrderResponse} from './dto/createOrder.dto';
 import {IGetOrderResponse} from './dto/getOrder.dto';
 import {IGetOrdersDTO, IGetOrdersResponse} from './dto/getOrders.dto';
@@ -66,7 +67,7 @@ export const OrderService = {
     async deleteReview(id: number | string) {
         const response = await axiosInstance<IAddReviewResponse>({
             url: API_ROUTES.DELETE_REVIEW(id),
-            method: 'POST',
+            method: 'DELETE',
         });
 
         return response.data;
@@ -75,10 +76,11 @@ export const OrderService = {
     /**
      * Изменить отзыв
      */
-    async changeReview(id: number | string) {
+    async changeReview(id: number | string, params: IChangeReviewDTO) {
         const response = await axiosInstance<IAddReviewResponse>({
             url: API_ROUTES.CHANGE_REVIEW(id),
             method: 'PATCH',
+            params,
         });
 
         return response.data;

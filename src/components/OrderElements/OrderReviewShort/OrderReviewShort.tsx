@@ -14,30 +14,28 @@ import {useMediaQuery} from 'usehooks-ts';
 import {useNavigate} from 'react-router-dom';
 import {useActions} from '../../../hooks/useActions';
 import {IOrder} from '../../../types/order';
+import {IReview} from '../../../types/executor';
+import {useReviewMutations} from '../../../hooks/Review/useReview';
 
 interface IProps {
     orderId: IOrder['id'];
-    rating_score: number;
-    review_text: string;
+    review: IReview;
 }
 
-export const OrderReviewShort: FC<IProps> = ({
-    orderId,
-    rating_score,
-    review_text,
-}) => {
+export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
     const isMobileSmall = useMediaQuery('(max-width:480px)');
     const navigate = useNavigate();
+    const mutation = useReviewMutations(orderId);
 
     const editAction = useCallback(
         function () {
-            navigate(`/orders/add-review/${orderId}`);
+            navigate(`/order/add-review/${orderId}`);
         },
         [navigate]
     );
 
     const deleteAction = useCallback(function () {
-        // deleteReview({orderId});
+        mutation.deleteReview(review.id);
     }, []);
 
     return (
@@ -51,7 +49,7 @@ export const OrderReviewShort: FC<IProps> = ({
                 mb={1}
             >
                 <Typography fontWeight={600}>Мой отзыв</Typography>
-                <Rating readOnly value={rating_score} />
+                <Rating readOnly value={review.rating} />
             </Stack>
 
             {/* Линия под заголовком */}
@@ -62,7 +60,7 @@ export const OrderReviewShort: FC<IProps> = ({
                 multiline
                 rows={4}
                 variant="standard"
-                defaultValue={review_text}
+                defaultValue={review.text}
                 sx={textFieldSx}
                 slotProps={{input: {disableUnderline: true, readOnly: true}}}
             />

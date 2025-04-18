@@ -1,5 +1,4 @@
-import {IExecutor} from './executor';
-import {IOrderReview} from './review';
+import {IExecutor, IReview} from './executor';
 import {IService} from './service';
 
 /**
@@ -15,7 +14,7 @@ export interface IOrder {
     orderName: string;
     status: OrderStatus;
     service?: IService;
-    review?: IOrderReview;
+    review?: IReview;
     volume: string;
     septicDepth: string;
     distanceToSeptic: string;

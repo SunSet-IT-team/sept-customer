@@ -1,6 +1,4 @@
 import {IOrder, OrderPaymentType} from '../../../../types/order';
-import {IService} from '../../../../types/service';
-import {mappingServerAddress} from '../../auth/mapping/address';
 import {mappingServerExecutors} from '../../executor/mapping/executor';
 import {mappingServerService} from '../../services/mapping/service';
 import {OrderResponse} from '../../share/types';
@@ -11,7 +9,7 @@ import {OrderResponse} from '../../share/types';
  */
 export const mappingServerOrder = (data: OrderResponse): IOrder => {
     return {
-        address: data.address ? mappingServerAddress(data.address).address : '',
+        address: data.address ? data.address : '',
         executor: data.executor ? mappingServerExecutors(data.executor) : null,
         comment: data.comment || '',
         payment: data.paymentMethod as OrderPaymentType,
@@ -19,14 +17,15 @@ export const mappingServerOrder = (data: OrderResponse): IOrder => {
         date: new Date(data.workDate).toLocaleDateString('ru'),
         orderName: 'Название заказа',
         status: data.status || data.orderStaus,
-        service: data.service
-            ? mappingServerService(data.service)
-            : ({
-                  id: 1,
-                  name: 'Заглушка услуги',
-                  priority: 100,
-              } as unknown as IService),
-        review: null,
+        service: mappingServerService(data.service),
+        review: data.customerReview
+            ? {
+                  id: data.customerReview.id,
+                  rating: data.customerReview.rating,
+                  text: data.customerReview.text,
+                  username: data.customerReview.author.name,
+              }
+            : null,
         volume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,
         distanceToSeptic: `${data.distanceToSeptic}`,
