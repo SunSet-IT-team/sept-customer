@@ -8,14 +8,16 @@ import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 import {useProfileStyles} from './styles';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {getCurrentUser} from '../../app/store/user/selectors';
 
+/**
+ * Страница профиля
+ */
 const ProfilePage: React.FC = () => {
     const styles = useProfileStyles();
 
-    const profileData = {
-        name: 'Иван Иванов',
-        avatarUrl: undefined,
-    };
+    const user = useTypedSelector(getCurrentUser);
 
     const menuItems = [
         {
@@ -49,11 +51,12 @@ const ProfilePage: React.FC = () => {
         <Box sx={styles.root}>
             {/* Верхний блок с аватаром */}
             <Box sx={styles.header}>
-                <Avatar src={profileData.avatarUrl} sx={styles.avatar}>
-                    {!profileData.avatarUrl && profileData.name[0]}
-                </Avatar>
+                <Avatar
+                    src={user.profile.profileImage}
+                    sx={styles.avatar}
+                ></Avatar>
                 <Typography variant="h5" component="h1">
-                    {profileData.name}
+                    {user.name}
                 </Typography>
             </Box>
 
