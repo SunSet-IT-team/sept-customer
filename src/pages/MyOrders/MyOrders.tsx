@@ -4,6 +4,7 @@ import {MyOrdersList} from '../../components/MyOrdersList/MyOrdersList';
 import {Spinner} from '../../components/Spinner/Spinner';
 import {useFetchOrders} from '../../hooks/Orders/useFetchOrders';
 import {BackLayout} from '../layouts/BackLayout';
+import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 
 export const MyOrders: FC = () => {
     const {orders, isLoading, ref} = useFetchOrders();
@@ -18,8 +19,10 @@ export const MyOrders: FC = () => {
                 <title>Мои заказы</title>
             </Helmet>
             <BackLayout title="Мои заказы">
-                <MyOrdersList orders={orders} observedRef={ref} />
-                {isLoading && <Spinner />}
+                <LayoutWithNavbar>
+                    <MyOrdersList orders={orders} observedRef={ref} />
+                    {isLoading && <Spinner />}
+                </LayoutWithNavbar>
             </BackLayout>
         </>
     );

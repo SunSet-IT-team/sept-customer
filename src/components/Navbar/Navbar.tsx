@@ -18,6 +18,8 @@ export const Navbar: FC = () => {
         const index = menuItems.findIndex(
             (item) => item.href === location.pathname
         );
+
+        if (location.pathname == '/my-reviews') setActiveMenuItem(2);
         if (index !== -1) setActiveMenuItem(index);
     }, [location.pathname]);
 

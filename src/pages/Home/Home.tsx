@@ -8,6 +8,7 @@ import {Spinner} from '../../components/Spinner/Spinner';
 import {mappingServerService} from '../../api/services/services/mapping/service';
 import {useStyles} from './styles';
 import {InputSearch} from '../../components/ui/Inputs/InputSearch';
+import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
     const styles = useStyles();
@@ -32,14 +33,16 @@ export const Home: FC = () => {
 
     return (
         <Box sx={styles.container}>
-            <InputSearch onChange={setSearch} value={search} />
+            <LayoutWithNavbar>
+                <InputSearch onChange={setSearch} value={search} />
 
-            <Typography variant="h5" sx={styles.title}>
-                Наши услуги
-            </Typography>
-            {filteredServices && (
-                <ServicesList servicesList={filteredServices} />
-            )}
+                <Typography variant="h5" sx={styles.title}>
+                    Наши услуги
+                </Typography>
+                {filteredServices && (
+                    <ServicesList servicesList={filteredServices} />
+                )}
+            </LayoutWithNavbar>
         </Box>
     );
 };

@@ -82,12 +82,10 @@ function AppRoute() {
                     )
                 }
             >
-                <Route element={<LayoutWithNavbar />}>
-                    <Route index element={<Home />} />
-                    <Route path="/my-orders" element={<MyOrders />} />
-                    <Route path="/my-reviews" element={<MyReviews />} />
-                    <Route path="/profile" element={<ProfilePage />} />
-                </Route>
+                <Route index element={<Home />} />
+                <Route path="/my-orders" element={<MyOrders />} />
+                <Route path="/my-reviews" element={<MyReviews />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/support" element={<Support />} />

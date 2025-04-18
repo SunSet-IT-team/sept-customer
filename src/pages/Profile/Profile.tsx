@@ -10,6 +10,7 @@ import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 import {useProfileStyles} from './styles';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getCurrentUser} from '../../app/store/user/selectors';
+import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 
 /**
  * Страница профиля
@@ -49,34 +50,36 @@ const ProfilePage: React.FC = () => {
 
     return (
         <Box sx={styles.root}>
-            {/* Верхний блок с аватаром */}
-            <Box sx={styles.header}>
-                <Avatar
-                    src={user.profile.profileImage}
-                    sx={styles.avatar}
-                ></Avatar>
-                <Typography variant="h5" component="h1">
-                    {user.name}
-                </Typography>
-            </Box>
+            <LayoutWithNavbar>
+                {/* Верхний блок с аватаром */}
+                <Box sx={styles.header}>
+                    <Avatar
+                        src={user.profile.profileImage}
+                        sx={styles.avatar}
+                    ></Avatar>
+                    <Typography variant="h5" component="h1">
+                        {user.name}
+                    </Typography>
+                </Box>
 
-            {/* Меню */}
-            <Container maxWidth="sm" sx={styles.menuContainer}>
-                {menuItems.map((item, index) => (
-                    <Button
-                        key={index}
-                        fullWidth
-                        startIcon={item.icon}
-                        sx={styles.menuButton}
-                        component={RouterLink}
-                        to={item.path}
-                    >
-                        <Typography variant="body1" sx={styles.menuText}>
-                            {item.text}
-                        </Typography>
-                    </Button>
-                ))}
-            </Container>
+                {/* Меню */}
+                <Container maxWidth="sm" sx={styles.menuContainer}>
+                    {menuItems.map((item, index) => (
+                        <Button
+                            key={index}
+                            fullWidth
+                            startIcon={item.icon}
+                            sx={styles.menuButton}
+                            component={RouterLink}
+                            to={item.path}
+                        >
+                            <Typography variant="body1" sx={styles.menuText}>
+                                {item.text}
+                            </Typography>
+                        </Button>
+                    ))}
+                </Container>
+            </LayoutWithNavbar>
         </Box>
     );
 };

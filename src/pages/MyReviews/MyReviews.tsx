@@ -6,6 +6,7 @@ import {useFetchReviews} from '../../hooks/Review/useFetchReviews';
 import {BackLayout} from '../layouts/BackLayout';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getCurrentUser} from '../../app/store/user/selectors';
+import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 
 export const MyReviews: FC = () => {
     const user = useTypedSelector(getCurrentUser);
@@ -24,8 +25,10 @@ export const MyReviews: FC = () => {
                 <title>Мои отзывы</title>
             </Helmet>
             <BackLayout title="Мои отзывы">
-                <MyReviewsList reviews={reviews} observedRef={ref} />
-                {isLoading && <Spinner />}
+                <LayoutWithNavbar>
+                    <MyReviewsList reviews={reviews} observedRef={ref} />
+                    {isLoading && <Spinner />}
+                </LayoutWithNavbar>
             </BackLayout>
         </>
     );

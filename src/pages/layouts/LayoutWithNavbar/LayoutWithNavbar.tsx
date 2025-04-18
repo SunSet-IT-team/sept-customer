@@ -1,10 +1,14 @@
 import {Box, Paper} from '@mui/material';
-import {FC} from 'react';
-import {Outlet, useLocation} from 'react-router-dom';
+import {FC, ReactNode} from 'react';
+import {useLocation} from 'react-router-dom';
 import {Navbar} from '../../../components/Navbar/Navbar';
 import {useLayoutStyles} from './styles';
 
-export const LayoutWithNavbar: FC = () => {
+interface IProps {
+    children: ReactNode;
+}
+
+export const LayoutWithNavbar: FC<IProps> = ({children}) => {
     /**
      * КОСТЫЛЬ
      */
@@ -13,7 +17,7 @@ export const LayoutWithNavbar: FC = () => {
     const styles = useLayoutStyles();
     return (
         <Box sx={location.pathname.includes('profile') ? {} : styles.layout}>
-            <Outlet />
+            {children}
             <Paper sx={styles.navigation} elevation={0}>
                 <Navbar />
             </Paper>
