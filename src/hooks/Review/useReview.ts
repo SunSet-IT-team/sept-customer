@@ -12,6 +12,9 @@ export const useReviewMutations = (orderId: string | number) => {
         queryClient.invalidateQueries({
             queryKey: ['order', orderId],
         });
+        queryClient.invalidateQueries({
+            queryKey: ['reviews'],
+        });
         toast.success(message);
     };
 

@@ -120,4 +120,10 @@ export interface ReviewResponce {
     text: string;
     id: number;
     author: CustomerResponse;
+    target: ExecutorResponse;
+    createdAt: string;
+    order: {
+        id: number;
+        title: string;
+    };
 }

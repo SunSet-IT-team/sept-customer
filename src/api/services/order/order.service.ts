@@ -6,6 +6,7 @@ import {IChangeReviewDTO} from './dto/changeReview.dto';
 import {ICreateOrderDTO, ICreateOrderResponse} from './dto/createOrder.dto';
 import {IGetOrderResponse} from './dto/getOrder.dto';
 import {IGetOrdersDTO, IGetOrdersResponse} from './dto/getOrders.dto';
+import {IGetReviewsDTO, IGetReviewsResponse} from './dto/getReviews.dto';
 
 export const OrderService = {
     /**
@@ -80,7 +81,23 @@ export const OrderService = {
         const response = await axiosInstance<IAddReviewResponse>({
             url: API_ROUTES.CHANGE_REVIEW(id),
             method: 'PATCH',
-            params,
+            data: params,
+        });
+
+        return response.data;
+    },
+
+    /**
+     * Получить отзывы
+     */
+    async getReviews(params: IGetReviewsDTO) {
+        const page = params.page || 1;
+        const limit = params.limit || 10;
+        const url = `${API_ROUTES.REVIEWS()}?page=${page}&limit=${limit}`;
+
+        const response = await axiosInstance<IGetReviewsResponse>({
+            url,
+            method: 'GET',
         });
 
         return response.data;

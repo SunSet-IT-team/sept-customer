@@ -1,7 +1,6 @@
 import {useSearchParams} from 'react-router-dom';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getSupportChat} from '../../app/store/user/selectors';
-import {ChatForm} from '../../components/ChatForm/ui/Chat';
 import {Box} from '@mui/material';
 
 /**
@@ -17,11 +16,7 @@ const SupportChat = () => {
 
     const {additionalInfo, ...chat} = chatData;
 
-    return (
-        <Box sx={{height: '100dvh'}}>
-            <ChatForm {...chat} additionalInfo={question} />
-        </Box>
-    );
+    return <Box sx={{height: '100dvh'}}></Box>;
 };
 
 export default SupportChat;

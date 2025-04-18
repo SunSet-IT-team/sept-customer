@@ -2,6 +2,7 @@ import {IOrder, OrderPaymentType} from '../../../../types/order';
 import {mappingServerExecutors} from '../../executor/mapping/executor';
 import {mappingServerService} from '../../services/mapping/service';
 import {OrderResponse} from '../../share/types';
+import {mappingServerReview} from './review';
 
 /**
  * Фунция состыкования данных с севера под наши данные
@@ -19,12 +20,7 @@ export const mappingServerOrder = (data: OrderResponse): IOrder => {
         status: data.status || data.orderStaus,
         service: mappingServerService(data.service),
         review: data.customerReview
-            ? {
-                  id: data.customerReview.id,
-                  rating: data.customerReview.rating,
-                  text: data.customerReview.text,
-                  username: data.customerReview.author.name,
-              }
+            ? mappingServerReview(data.customerReview)
             : null,
         volume: `${data.septicVolume}`,
         septicDepth: `${data.septicDepth}`,

@@ -18,7 +18,7 @@ import {IReview} from '../../../types/executor';
 import {useReviewMutations} from '../../../hooks/Review/useReview';
 
 interface IProps {
-    orderId: IOrder['id'];
+    orderId: IOrder['id'] | number;
     review: IReview;
 }
 
@@ -37,6 +37,8 @@ export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
     const deleteAction = useCallback(function () {
         mutation.deleteReview(review.id);
     }, []);
+
+    console.log(review);
 
     return (
         <Box>
@@ -60,7 +62,7 @@ export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
                 multiline
                 rows={4}
                 variant="standard"
-                defaultValue={review.text}
+                value={review.text}
                 sx={textFieldSx}
                 slotProps={{input: {disableUnderline: true, readOnly: true}}}
             />

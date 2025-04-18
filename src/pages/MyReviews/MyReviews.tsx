@@ -4,13 +4,16 @@ import {Helmet} from 'react-helmet-async';
 import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {MyReviewsList} from '../../components/MyReviewsList/MyReviewList';
 import {Spinner} from '../../components/Spinner/Spinner';
+import {useFetchReviews} from '../../hooks/Review/useFetchReviews';
 
 export const MyReviews: FC = () => {
-    // const { data: ordersData, isLoading } = useFetchOrdersWithReview();
+    const {reviews, isLoading, ref} = useFetchReviews();
 
-    // if (isLoading || !ordersData || !ordersData.length) {
-    //     return <Spinner />;
-    // }
+    if (!reviews) {
+        return <Spinner />;
+    }
+
+    console.log(reviews);
 
     return (
         <Box py={'26px'}>
@@ -18,7 +21,8 @@ export const MyReviews: FC = () => {
                 <title>Мои отзывы</title>
             </Helmet>
             <PageTitle title="Мои отзывы" />
-            <MyReviewsList orders={[]} />
+            <MyReviewsList reviews={reviews} />
+            {isLoading && <Spinner />}
         </Box>
     );
 };

@@ -71,9 +71,12 @@ importers:
       redux-persist:
         specifier: ^6.0.0
         version: 6.0.0(react@19.0.0)(redux@5.0.1)
+      socket.io-client:
+        specifier: ^4.8.1
+        version: 4.8.1
       sunset-chat:
         specifier: github:SunSet-IT-team/sunset-chat
-        version: https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/2edd71099b8d3b0d1db12e8b2c87df84cc16885a(@mui/icons-material@6.4.8(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.69.0(react@19.0.0))(axios@1.8.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/03fc232bca6c12ed3436466fb35d30ee903efdb3(@mui/icons-material@6.4.8(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.69.0(react@19.0.0))(axios@1.8.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       usehooks-ts:
         specifier: ^3.1.1
         version: 3.1.1(react@19.0.0)
@@ -1591,8 +1594,8 @@ packages:
   stylis@4.2.0:
     resolution: {integrity: sha512-Orov6g6BB1sDfYgzWfTHDOxamtX1bE/zo104Dh9e6fqJ3PooipYyfJ0pUmrZO2wAvO8YbEyeFrkV91XTsGMSrw==}
 
-  sunset-chat@https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/2edd71099b8d3b0d1db12e8b2c87df84cc16885a:
-    resolution: {tarball: https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/2edd71099b8d3b0d1db12e8b2c87df84cc16885a}
+  sunset-chat@https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/03fc232bca6c12ed3436466fb35d30ee903efdb3:
+    resolution: {tarball: https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/03fc232bca6c12ed3436466fb35d30ee903efdb3}
     version: 1.0.0
     peerDependencies:
       '@mui/icons-material': ^7.0.2
@@ -3167,7 +3170,7 @@ snapshots:
 
   stylis@4.2.0: {}
 
-  sunset-chat@https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/2edd71099b8d3b0d1db12e8b2c87df84cc16885a(@mui/icons-material@6.4.8(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.69.0(react@19.0.0))(axios@1.8.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  sunset-chat@https://codeload.github.com/SunSet-IT-team/sunset-chat/tar.gz/03fc232bca6c12ed3436466fb35d30ee903efdb3(@mui/icons-material@6.4.8(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@tanstack/react-query@5.69.0(react@19.0.0))(axios@1.8.4)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@mui/icons-material': 6.4.8(@mui/material@6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@types/react@19.0.12)(react@19.0.0)
       '@mui/material': 6.4.8(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react@19.0.0))(@types/react@19.0.12)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)

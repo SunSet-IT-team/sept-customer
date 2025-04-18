@@ -18,7 +18,12 @@ export const OrderCard: FC<IOrderCardProps> = ({order}) => {
     return (
         <Paper sx={styles.OrderCardSx} elevation={0}>
             <Stack direction="row" spacing={2}>
-                <Box flex={'1 1 auto'}>
+                <Box
+                    flex={'1 1 auto'}
+                    component={Link}
+                    to={`/order/${order.id}`}
+                    sx={styles.text}
+                >
                     <Typography variant="h6" sx={styles.title}>
                         Заявка №{order.id}
                     </Typography>

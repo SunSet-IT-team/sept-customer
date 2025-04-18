@@ -1,4 +1,5 @@
 import {WithPriority, WithId, WithName, WithEmail, WithPhone} from './share';
+import {Customer} from './user';
 
 export interface IExecutor {
     id: number;
@@ -20,6 +21,13 @@ export interface IReview {
     username: string;
     rating: number;
     text: string;
+    author?: Customer;
+    target?: IExecutor;
+    data: string;
+    order?: {
+        id: number | string;
+        title: string;
+    };
 }
 
 /**

@@ -1,39 +1,54 @@
-import {Box, Stack, Typography} from '@mui/material';
+import {Box} from '@mui/material';
 import {FC} from 'react';
-import {Chat} from '../../components/Chat/Chat';
 import {useFetchChatOrder} from '../../hooks/Chat/useFetchOrderChat';
-import {useParams} from 'react-router-dom';
-import {ChatForm} from 'sunset-chat';
+import {Navigate, useParams} from 'react-router-dom';
+import LoadPage from '../LoadPage';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {getCurrentUser} from '../../app/store/user/selectors';
+import {useHandleBack} from '../../hooks/useHandleBack';
+import {getImagePath} from '../../utils/share';
+import {Chat, ChatForm} from 'sunset-chat';
 import {Helmet} from 'react-helmet';
 
 export const OrderChat: FC = () => {
     const {orderId} = useParams();
 
-    const {data} = useFetchChatOrder(orderId || 0);
+    const user = useTypedSelector(getCurrentUser);
 
-    console.log(data);
+    const {data, isPending} = useFetchChatOrder(orderId || 0);
+
+    const {handleBack} = useHandleBack();
+
+    if (!orderId) return <Navigate to="/" />;
+
+    if (isPending) return <LoadPage />;
+
+    const notCurrentUser = data.data.participants.find(
+        (el) => `${el.userId}` !== user.id
+    );
+
+    const chatData: Chat = {
+        id: data.data.id,
+        messages: [],
+        additionalInfo: data.data.theme,
+        currentUserId: user.id,
+        chatUser: {
+            id: notCurrentUser.userId,
+            name: notCurrentUser.user.profile.companyName,
+            imagePath: getImagePath(
+                notCurrentUser.user.profile.profilePhoto.url
+            ),
+        },
+    };
 
     return (
-        <Box py={'26px'} px={'35px'}>
+        <Box sx={{maxHeight: '100dvh'}}>
             <Helmet>
                 <title>Заказ {orderId}</title>
             </Helmet>
-            {/* <ChatForm /> */}
+            <Box sx={{height: '100dvh'}}>
+                <ChatForm chat={chatData} handleCloseChat={handleBack} />
+            </Box>
         </Box>
-
-        // <Chat
-        //     interlocutor={{
-        //         name: 'ООО Септики',
-        //         imgUrl: '',
-        //     }}
-        //     componentAboveChat={
-        //         <Stack justifyContent={'center'} alignItems={'center'}>
-        //             <Typography fontSize={'14px'}>Заявка №4506</Typography>
-        //             <Typography fontSize={'14px'}>
-        //                 Услуга: сборка септика
-        //             </Typography>
-        //         </Stack>
-        //     }
-        // />
     );
 };

@@ -6,7 +6,6 @@ import {
     Typography,
     useTheme,
 } from '@mui/material';
-import ChatHeader from '../../components/ChatForm/ui/ChatHeader';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getSupportChat} from '../../app/store/user/selectors';
 import {useState} from 'react';
@@ -42,9 +41,6 @@ const Support = () => {
     };
     return (
         <Box sx={{height: '100dvh'}}>
-            {chat?.interlocutor && (
-                <ChatHeader interlocutor={chat.interlocutor} />
-            )}
             <Box sx={{p: 4}}>
                 {/* Категории вопросов */}
 

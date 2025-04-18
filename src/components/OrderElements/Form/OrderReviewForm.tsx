@@ -6,9 +6,9 @@ import {
     Divider,
     TextField,
 } from '@mui/material';
-import {FC, useCallback} from 'react';
-import {Controller, FormContainer} from 'react-hook-form-mui';
-import {Navigate, useNavigate, useParams} from 'react-router-dom';
+import {FC, useEffect} from 'react';
+import {Controller, FormContainer, useForm} from 'react-hook-form-mui';
+import {Navigate, useParams} from 'react-router-dom';
 import {submitButtonSx, textFieldSx} from './styles';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {INewReveiwForm, newReveiwFormShema} from './shema';
@@ -16,22 +16,34 @@ import {newReviewDefaultValues} from './data';
 import {useFetchOrderById} from '../../../hooks/Orders/useFetchOrderById';
 import {Spinner} from '../../Spinner/Spinner';
 import {useReviewMutations} from '../../../hooks/Review/useReview';
+import {useHandleBack} from '../../../hooks/useHandleBack';
 
 export const OrderReviewForm: FC = () => {
     const {orderId} = useParams();
 
-    if (!orderId) return <Navigate to={'/'} replace />;
-
     const {data: order, isLoading, isError} = useFetchOrderById(orderId);
     const mutation = useReviewMutations(orderId);
+    const {handleBack} = useHandleBack();
+
+    // Используем useForm вместо FormContainer для большего контроля
+    const formContext = useForm<INewReveiwForm>({
+        defaultValues: newReviewDefaultValues, // Устанавливаем дефолтные значения сразу
+        resolver: zodResolver(newReveiwFormShema),
+    });
+
+    useEffect(() => {
+        if (order) {
+            formContext.reset(order.review || newReviewDefaultValues);
+        }
+    }, [order, formContext]);
+
+    if (!orderId) return <Navigate to={'/'} replace />;
 
     if (isLoading) {
         return <Spinner />;
     }
 
     if (isError || !order) return <Navigate to={'/'} replace />;
-
-    const navigate = useNavigate();
 
     const submitReview = (reviewData: Required<INewReveiwForm>) => {
         if (order.review) {
@@ -42,16 +54,12 @@ export const OrderReviewForm: FC = () => {
         } else {
             mutation.addReview(reviewData);
         }
-        return navigate(`/order/${orderId}`);
+        handleBack();
     };
-
-    const defaultValues = order.review || newReviewDefaultValues;
-
     return (
         <FormContainer
+            formContext={formContext}
             onSuccess={submitReview}
-            resolver={zodResolver(newReveiwFormShema)}
-            defaultValues={defaultValues}
             mode="onSubmit"
         >
             {/* Заголовок и рейтинг */}

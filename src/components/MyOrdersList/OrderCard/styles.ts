@@ -30,6 +30,10 @@ export const useStyles = (): StylesDictionary => {
             height: '44px',
             textTransform: 'none',
         },
+        text: {
+            textDecoration: 'none',
+            color: theme.palette.text.primary,
+        },
         statusButtonSx: {
             borderRadius: '10px',
             minWidth: '80px',

@@ -4,16 +4,17 @@ import {OrderReviewShort} from '../../OrderElements/OrderReviewShort/OrderReview
 import {IOrder} from '../../../types/order';
 import {imageStyle, useStyles} from './styles';
 import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
+import {IReview} from '../../../types/executor';
 
 interface IProps {
-    order: IOrder;
+    review: IReview;
 }
 
 /**
  * Карточка отзыва пользователя небольшой с информацией о заказе
  * Экран - мои отзывы
  */
-export const ReviewItem: FC<IProps> = ({order}) => {
+export const ReviewItem: FC<IProps> = ({review}) => {
     const [isFavourite, setFavourite] = useState<boolean>(true);
     const styles = useStyles();
 
@@ -27,13 +28,13 @@ export const ReviewItem: FC<IProps> = ({order}) => {
                 {/* Левая часть — аватар */}
                 <Box sx={styles.imageContainerStyle}>
                     <img
-                        src={order.executor.profileImg}
+                        src={review.target.profileImg}
                         alt={``}
                         style={imageStyle}
                     />
                     <ToggleExecutorFavourite
                         sx={styles.toggleFavouriteStyle}
-                        executor={order.executor}
+                        executor={review.target}
                         isFavourite={isFavourite}
                         onClick={toggleFavourite}
                     />
@@ -42,23 +43,23 @@ export const ReviewItem: FC<IProps> = ({order}) => {
                 {/* Правая часть — текст */}
                 <Box>
                     <Typography fontWeight={600}>
-                        {order.executor.title}
+                        {review.author.name}
                     </Typography>
                     <Typography>
                         <Box component="span" fontWeight={600}>
                             Дата:
                         </Box>
-                        {` ${order.date}`}
+                        {` ${review.data}`}
                     </Typography>
-                    <Typography>
+                    {/* <Typography>
                         <Box component="span" fontWeight={600}>
                             Адрес:
                         </Box>
                         {` ${order.address}`}
-                    </Typography>
+                    </Typography> */}
                 </Box>
             </Stack>
-            <OrderReviewShort orderId={order.id} review={order.review} />
+            <OrderReviewShort orderId={review.order.id} review={review} />
         </Box>
     );
 };
