@@ -38,8 +38,6 @@ export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
         mutation.deleteReview(review.id);
     }, []);
 
-    console.log(review);
-
     return (
         <Box>
             {/* Заголовок и рейтинг */}

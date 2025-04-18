@@ -8,8 +8,8 @@ export const RESET_PASSWORD = () => 'reset-password';
 
 export const GET_ALL_SERVICES = () => '/service';
 export const GET_ALL_EXECUTORS = () => '/executor';
-export const GET_EXECUTOR_BY_ID = (executor_id: number) =>
-    `executor/${executor_id}`;
+export const GET_EXECUTOR_BY_ID = (executorId: number) =>
+    `executor/${executorId}`;
 
 export const GET_ME = () => '/customer/me';
 

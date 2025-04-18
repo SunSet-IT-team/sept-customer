@@ -1,7 +1,6 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {useDispatch} from 'react-redux';
 import {persistStore} from 'redux-persist';
-import {favouritesReducer} from './favourites/favourites.slice';
 import {newOrderReducer} from './newOrder/newOrder.slice';
 import {resetPasswordSlice} from './resetPassword/resetPassword.slice';
 import {userReducer} from './user/slice';
@@ -9,7 +8,6 @@ import {userReducer} from './user/slice';
 const rootReducer = combineReducers({
     resetPassword: resetPasswordSlice.reducer,
     newOrderForm: newOrderReducer,
-    favourites: favouritesReducer,
     user: userReducer,
 });
 

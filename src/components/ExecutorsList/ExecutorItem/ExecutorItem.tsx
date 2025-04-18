@@ -5,7 +5,6 @@ import {useActions} from '../../../hooks/useActions';
 import {newOrderSlice} from '../../../app/store/newOrder/newOrder.slice';
 import {aboutButtonStyle, chooseButtonStyle} from './styles';
 import {BaseExecutorItem} from './BaseExecutorItem';
-import {favouritesSlice} from '../../../app/store/favourites/favourites.slice';
 import {IExecutor} from '../../../types/executor';
 
 interface IProps {
@@ -31,21 +30,9 @@ export const ExecutorItem: FC<IProps> = ({executor, isFavourite}) => {
         navigate(`/executor/${executor.id}`);
     };
 
-    const {addExecutor, removeExecutor} = useActions(favouritesSlice.actions);
-
-    const toggleFavourite = () => {
-        if (isFavourite) {
-            removeExecutor(executor);
-        } else {
-            addExecutor(executor);
-        }
-    };
-
     return (
         <BaseExecutorItem
             executor={executor}
-            isFavourite={isFavourite}
-            handleFavouriteIconClick={toggleFavourite}
             mainBtn={
                 <Button
                     color="secondary"

@@ -28,9 +28,9 @@ export const ExecutorService = {
         return response.data;
     },
 
-    async getExecutorById(executor_id: number) {
+    async getExecutorById(executorId: number) {
         const response = await axiosInstance<IGetExecutor>({
-            url: API_ROUTES.GET_EXECUTOR_BY_ID(executor_id),
+            url: API_ROUTES.GET_EXECUTOR_BY_ID(executorId),
             method: 'GET',
         });
 

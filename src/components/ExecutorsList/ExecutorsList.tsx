@@ -36,17 +36,10 @@ export const ExecutorsList: FC<IProps> = ({
     executors,
     observedRef,
 }) => {
-    const {executors: favouriteExecutors} = useTypedSelector(
-        (state) => state.favourites
-    );
-
     return (
         <Stack gap="40px" sx={{height: '100%'}}>
             {executors.map((executor, index) => {
-                const isFavourite = favouriteExecutors.some(
-                    (favourite_executor) =>
-                        favourite_executor.id === executor.id
-                );
+                const isFavourite = false;
 
                 return (
                     <Box key={executor.title + executor.id}>

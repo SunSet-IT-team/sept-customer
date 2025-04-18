@@ -14,10 +14,7 @@ import {getReviewsWord} from '../../../utils/formaters';
 
 interface IProps {
     executor: IExecutor;
-    handleFavouriteIconClick?: (
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>
-    ) => void;
-    isFavourite: boolean;
+
     mainBtn: React.ReactNode;
     secondBtn: React.ReactNode;
 }
@@ -27,8 +24,6 @@ interface IProps {
  */
 export const BaseExecutorItem: FC<IProps> = ({
     executor,
-    isFavourite,
-    handleFavouriteIconClick,
     mainBtn,
     secondBtn,
 }) => {
@@ -43,12 +38,11 @@ export const BaseExecutorItem: FC<IProps> = ({
                     sx={imageStyle}
                     src={profileImg}
                 />
-                <ToggleExecutorFavourite
+                {/* <ToggleExecutorFavourite
                     sx={toggleFavouriteStyle}
-                    executor={executor}
                     isFavourite={isFavourite}
                     onClick={handleFavouriteIconClick}
-                />
+                /> */}
             </Box>
             <Stack sx={infoContainerStyle}>
                 <Stack direction={'row'} justifyContent={'space-between'}>

@@ -7,7 +7,13 @@ import {mappingServerReview} from '../../api/services/order/mapping/review';
 /**
  * Получение всех отзывов пользователя
  */
-export const useFetchReviews = () => {
+export const useFetchReviews = ({
+    senderId,
+    targetId,
+}: {
+    senderId?: number;
+    targetId?: number;
+}) => {
     const {ref, inView} = useInView();
 
     const {
@@ -19,7 +25,11 @@ export const useFetchReviews = () => {
         isSuccess,
     } = useInfiniteQuery({
         queryFn: ({pageParam}) =>
-            SERVICES.OrderService.getReviews({page: pageParam}),
+            SERVICES.OrderService.getReviews({
+                page: pageParam,
+                senderId,
+                targetId,
+            }),
         queryKey: ['reviews'],
         initialPageParam: 1,
         placeholderData: keepPreviousData,

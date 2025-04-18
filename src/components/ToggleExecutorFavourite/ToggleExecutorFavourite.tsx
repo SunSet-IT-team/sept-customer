@@ -2,15 +2,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {Box, SxProps, Theme} from '@mui/material';
 import {FC} from 'react';
-import {IExecutor} from '../../types/executor';
 
 interface IProps {
-    executor: IExecutor;
     isFavourite: boolean;
     sx?: SxProps<Theme>;
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
+/**
+ * Кнопка переключения активности избранного
+ */
 export const ToggleExecutorFavourite: FC<IProps> = ({
     isFavourite,
     sx,

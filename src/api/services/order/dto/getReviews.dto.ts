@@ -4,6 +4,8 @@ import {ReviewResponce} from '../../share/types';
 export interface IGetReviewsDTO {
     page?: number;
     limit?: number;
+    senderId?: number;
+    targetId?: number;
 }
 
 export interface IGetReviewsResponse extends IServerAns {

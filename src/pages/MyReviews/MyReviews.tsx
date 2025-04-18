@@ -4,9 +4,15 @@ import {MyReviewsList} from '../../components/MyReviewsList/MyReviewList';
 import {Spinner} from '../../components/Spinner/Spinner';
 import {useFetchReviews} from '../../hooks/Review/useFetchReviews';
 import {BackLayout} from '../layouts/BackLayout';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
+import {getCurrentUser} from '../../app/store/user/selectors';
 
 export const MyReviews: FC = () => {
-    const {reviews, isLoading, ref} = useFetchReviews();
+    const user = useTypedSelector(getCurrentUser);
+
+    const {reviews, isLoading, ref} = useFetchReviews({
+        senderId: Number(user.id),
+    });
 
     if (!reviews) {
         return <Spinner />;
@@ -18,7 +24,7 @@ export const MyReviews: FC = () => {
                 <title>Мои отзывы</title>
             </Helmet>
             <BackLayout title="Мои отзывы">
-                <MyReviewsList reviews={reviews} />
+                <MyReviewsList reviews={reviews} observedRef={ref} />
                 {isLoading && <Spinner />}
             </BackLayout>
         </>

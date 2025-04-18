@@ -122,7 +122,7 @@ function AppRoute() {
                     <Route path=":orderId" element={<Order />} />
                 </Route>
                 <Route path="/executor">
-                    <Route path=":executor_id" element={<AboutExecutor />} />
+                    <Route path=":executorId" element={<AboutExecutor />} />
                 </Route>
             </Route>
 

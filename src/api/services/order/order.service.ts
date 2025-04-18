@@ -93,7 +93,15 @@ export const OrderService = {
     async getReviews(params: IGetReviewsDTO) {
         const page = params.page || 1;
         const limit = params.limit || 10;
-        const url = `${API_ROUTES.REVIEWS()}?page=${page}&limit=${limit}`;
+        let url = `${API_ROUTES.REVIEWS()}?page=${page}&limit=${limit}`;
+
+        if (params.senderId) {
+            url += `&senderId=${params.senderId}`;
+        }
+
+        if (params.targetId) {
+            url += `&targetId=${params.targetId}`;
+        }
 
         const response = await axiosInstance<IGetReviewsResponse>({
             url,

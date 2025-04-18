@@ -32,12 +32,12 @@ export const ReviewItem: FC<IProps> = ({review}) => {
                         alt={``}
                         style={imageStyle}
                     />
-                    <ToggleExecutorFavourite
+                    {/* <ToggleExecutorFavourite
                         sx={styles.toggleFavouriteStyle}
                         executor={review.target}
                         isFavourite={isFavourite}
                         onClick={toggleFavourite}
-                    />
+                    /> */}
                 </Box>
 
                 {/* Правая часть — текст */}
