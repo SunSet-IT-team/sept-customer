@@ -1,4 +1,8 @@
+import {useAppDispatch} from '../../app/store/store';
+import {getFavoriteIds} from '../../app/store/user/selectors';
+import {toggleFavorite} from '../../app/store/user/thunk';
 import {ToggleExecutorFavourite} from '../../components/ToggleExecutorFavourite/ToggleExecutorFavourite';
+import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {useStyles} from './styles';
 import {Avatar, Box} from '@mui/material';
 
@@ -13,7 +17,17 @@ interface IProps {
  * Аватар с кнопкой "добавить в избранное"
  */
 const ExecutorAvatar = (avatar: IProps) => {
+    const favorites = useTypedSelector(getFavoriteIds);
+    const dispatch = useAppDispatch();
     const styles = useStyles();
+
+    const isFavourite = !!favorites.find(
+        (el) => el === Number(avatar.execuotorId)
+    );
+
+    const handleClick = () => {
+        dispatch(toggleFavorite(Number(avatar.execuotorId)));
+    };
 
     return (
         <Box sx={styles.box}>
@@ -28,8 +42,9 @@ const ExecutorAvatar = (avatar: IProps) => {
                 }}
             />
             <ToggleExecutorFavourite
-                isFavourite={false}
+                isFavourite={isFavourite}
                 sx={styles.favouriteIconStyle}
+                onClick={handleClick}
             />
         </Box>
     );

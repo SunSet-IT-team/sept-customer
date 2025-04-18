@@ -1,5 +1,5 @@
 import {useTheme} from '@mui/material/styles';
-import {StylesDictionary} from '../../../shared/types/share';
+import {StylesDictionary} from '../../../types/share';
 
 export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
@@ -24,7 +24,6 @@ export const useStyles = (): StylesDictionary => {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
         },
     };
 };

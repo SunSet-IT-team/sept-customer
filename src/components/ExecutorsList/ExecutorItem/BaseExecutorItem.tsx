@@ -1,16 +1,14 @@
 import StarIcon from '@mui/icons-material/Star';
 import {Box, Stack, Typography} from '@mui/material';
 import {FC} from 'react';
-import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
 import {
     imageContainerStyle,
-    imageStyle,
     infoContainerStyle,
     ratingContainerStyle,
-    toggleFavouriteStyle,
 } from './styles';
 import {IExecutor} from '../../../types/executor';
 import {getReviewsWord} from '../../../utils/formaters';
+import ExecutorAvatar from '../../../feature/ExecutorAvatar';
 
 interface IProps {
     executor: IExecutor;
@@ -32,17 +30,12 @@ export const BaseExecutorItem: FC<IProps> = ({
     return (
         <Stack direction={'row'} gap={'10px'}>
             <Box sx={imageContainerStyle}>
-                <Box
-                    component="img"
-                    alt={`${title} картинка`}
-                    sx={imageStyle}
-                    src={profileImg}
+                <ExecutorAvatar
+                    imagePath={profileImg}
+                    size={90}
+                    execuotorId={executor.id}
+                    alt={title}
                 />
-                {/* <ToggleExecutorFavourite
-                    sx={toggleFavouriteStyle}
-                    isFavourite={isFavourite}
-                    onClick={handleFavouriteIconClick}
-                /> */}
             </Box>
             <Stack sx={infoContainerStyle}>
                 <Stack direction={'row'} justifyContent={'space-between'}>

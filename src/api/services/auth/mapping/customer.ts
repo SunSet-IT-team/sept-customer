@@ -19,6 +19,7 @@ export const mappingServerCustomer = (data: CustomerResponse): Customer => {
             ),
             orderQty: data.profile.ordersCount,
             profileImage: data.profile.profilePhoto || '',
+            favoriteIds: data.profile.favoriteIds,
         },
     };
 };

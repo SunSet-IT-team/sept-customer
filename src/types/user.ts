@@ -21,6 +21,7 @@ export type Profile = {
     profileImage: string;
     orderQty: number;
     addresses: Address[];
+    favoriteIds: number[];
 };
 
 /**

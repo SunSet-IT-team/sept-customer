@@ -6,14 +6,14 @@ import {
     ExecutorsList,
 } from '../../components/ExecutorsList/ExecutorsList';
 import {Spinner} from '../../components/Spinner/Spinner';
-import {useFetchExecutors} from '../../hooks/Executors/useFetchExecutors';
 import {BackLayout} from '../layouts/BackLayout';
+import {useFetchFavoriteExecutors} from '../../hooks/Executors/useFetchFavoriteExecutors';
 
 /**
  * КОСТЫЛЬ - ПЕРЕДЕЛАТЬ
  */
 export const Favorites: FC = () => {
-    const {executors, isLoading, ref} = useFetchExecutors();
+    const {executors, isLoading, ref} = useFetchFavoriteExecutors();
 
     if (isLoading || !executors) {
         return <Spinner />;

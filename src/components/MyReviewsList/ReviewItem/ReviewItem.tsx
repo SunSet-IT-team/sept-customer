@@ -1,10 +1,9 @@
 import {FC, useState} from 'react';
 import {Box, Stack, Typography} from '@mui/material';
 import {OrderReviewShort} from '../../OrderElements/OrderReviewShort/OrderReviewShort';
-import {IOrder} from '../../../types/order';
-import {imageStyle, useStyles} from './styles';
-import {ToggleExecutorFavourite} from '../../ToggleExecutorFavourite/ToggleExecutorFavourite';
+import {useStyles} from './styles';
 import {IReview} from '../../../types/executor';
+import ExecutorAvatar from '../../../feature/ExecutorAvatar';
 
 interface IProps {
     review: IReview;
@@ -15,35 +14,23 @@ interface IProps {
  * Экран - мои отзывы
  */
 export const ReviewItem: FC<IProps> = ({review}) => {
-    const [isFavourite, setFavourite] = useState<boolean>(true);
     const styles = useStyles();
-
-    const toggleFavourite = () => {
-        setFavourite((isFavourite) => !isFavourite);
-    };
 
     return (
         <Box>
             <Stack direction="row" spacing={2} alignItems="flex-start">
                 {/* Левая часть — аватар */}
-                <Box sx={styles.imageContainerStyle}>
-                    <img
-                        src={review.target.profileImg}
-                        alt={``}
-                        style={imageStyle}
-                    />
-                    {/* <ToggleExecutorFavourite
-                        sx={styles.toggleFavouriteStyle}
-                        executor={review.target}
-                        isFavourite={isFavourite}
-                        onClick={toggleFavourite}
-                    /> */}
-                </Box>
+                <ExecutorAvatar
+                    execuotorId={review.target.id}
+                    size={90}
+                    imagePath={review.target.profileImg}
+                    alt={review.target.title}
+                />
 
                 {/* Правая часть — текст */}
                 <Box>
                     <Typography fontWeight={600}>
-                        {review.author.name}
+                        {review.target.title}
                     </Typography>
                     <Typography>
                         <Box component="span" fontWeight={600}>

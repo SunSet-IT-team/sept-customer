@@ -41,3 +41,46 @@ export const getReviewsWord = (count: number): string => {
 
     return 'отзывов';
 };
+
+/**
+ * Просклонять слово "вызов"
+ */
+export const getReviewsWordCall = (count: number): string => {
+    const lastDigit = count % 10;
+    const lastTwoDigits = count % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+        return 'вызовов';
+    }
+
+    if (lastDigit === 1) {
+        return 'вызов';
+    }
+
+    if (lastDigit >= 2 && lastDigit <= 4) {
+        return 'вызова';
+    }
+
+    return 'вызовов';
+};
+/**
+ * Просклонять слово "оценок"
+ */
+export const getReviewsWordRate = (count: number): string => {
+    const lastDigit = count % 10;
+    const lastTwoDigits = count % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) {
+        return 'оценок';
+    }
+
+    if (lastDigit === 1) {
+        return 'оценка';
+    }
+
+    if (lastDigit >= 2 && lastDigit <= 4) {
+        return 'оценки';
+    }
+
+    return 'оценок';
+};

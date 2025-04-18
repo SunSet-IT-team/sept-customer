@@ -10,6 +10,11 @@ import ExecutorAvatar from '../../feature/ExecutorAvatar';
 import {useStyles} from './styles';
 import {useFetchExecutorById} from '../../hooks/Executors/useFetchExecutorById';
 import ExecutorReviewList from '../ExecutorReviewList';
+import {
+    getReviewsWord,
+    getReviewsWordCall,
+    getReviewsWordRate,
+} from '../../utils/formaters';
 
 export const AboutExecutor: FC = () => {
     const {executorId} = useParams();
@@ -43,7 +48,8 @@ export const AboutExecutor: FC = () => {
                                     {executor.averageRating}
                                 </Typography>
                                 <Typography>
-                                    {executor.reviewsCount} оценок
+                                    {executor.reviewsCount}{' '}
+                                    {getReviewsWordRate(executor.reviewsCount)}
                                 </Typography>
                             </Stack>
                         </Box>
@@ -69,13 +75,17 @@ export const AboutExecutor: FC = () => {
                             <Typography variant="body2">
                                 {executor.callsCount}
                             </Typography>
-                            <Typography variant="body2">вызов</Typography>
+                            <Typography variant="body2">
+                                {getReviewsWordCall(executor.callsCount)}
+                            </Typography>
                         </Box>
                         <Box sx={styles.infoBoxItemStyle}>
                             <Typography variant="body2">
                                 {executor.reviewsCount}
                             </Typography>
-                            <Typography variant="body2">отзыва</Typography>
+                            <Typography variant="body2">
+                                {getReviewsWord(executor.reviewsCount)}
+                            </Typography>
                         </Box>
                     </Stack>
 

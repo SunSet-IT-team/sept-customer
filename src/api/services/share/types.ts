@@ -27,6 +27,7 @@ export type ProfileResponse = {
     ordersCount: number;
     phone: string;
     priority: number;
+    favoriteIds: number[];
     profilePhoto: string | null;
 };
 

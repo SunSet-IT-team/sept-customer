@@ -5,7 +5,7 @@ export const useProfileStyles = () => {
 
     const styles: Record<string, SxProps> = {
         root: {
-            minHeight: '80dvh',
+            minHeight: '100dvh',
         },
         header: {
             width: '100%',
