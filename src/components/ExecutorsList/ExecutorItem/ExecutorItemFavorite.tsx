@@ -1,9 +1,12 @@
 import {Button} from '@mui/material';
-import {FC, useState} from 'react';
+import {FC} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {aboutButtonStyle, chooseButtonStyle} from './styles';
 import {BaseExecutorItem} from './BaseExecutorItem';
 import {IExecutor} from '../../../types/executor';
+import {useAppDispatch} from '../../../app/store/store';
+import {toggleFavorite} from '../../../app/store/user/thunk';
+import {useQueryClient} from '@tanstack/react-query';
 
 interface IProps {
     executor: IExecutor;
@@ -14,18 +17,16 @@ interface IProps {
  * Экран - Личный профиль - Избранное
  */
 export const ExecutorItemFavourite: FC<IProps> = ({executor}) => {
-    const [isFavourite, setFavourite] = useState<boolean>(true);
-
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
 
-    // Если нужна возможность кликать на данном экране по иконке сердечка
-    const toggleFavourite = () => {
-        setFavourite(true);
-        // setFavourite(isFavourite => !isFavourite)
-    };
+    const dispatch = useAppDispatch();
 
-    const handleDelete = () => {
-        setFavourite(false);
+    const handleClick = () => {
+        dispatch(toggleFavorite(Number(executor.id)));
+        queryClient.invalidateQueries({
+            queryKey: ['executor favorite'],
+        });
     };
 
     const handleAbout = () => {
@@ -35,13 +36,11 @@ export const ExecutorItemFavourite: FC<IProps> = ({executor}) => {
     return (
         <BaseExecutorItem
             executor={executor}
-            isFavourite={isFavourite}
-            handleFavouriteIconClick={toggleFavourite}
             mainBtn={
                 <Button
                     color="secondary"
                     sx={chooseButtonStyle}
-                    onClick={handleDelete}
+                    onClick={handleClick}
                 >
                     Удалить
                 </Button>

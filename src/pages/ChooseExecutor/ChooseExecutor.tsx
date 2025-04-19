@@ -23,6 +23,11 @@ export const ChooseExecutor: FC = () => {
         }
     }, [formData, navigate]);
 
+    console.log('isLoading');
+
+    console.log(isLoading);
+    console.log(executors);
+
     if (isLoading || !executors) {
         return <Spinner />;
     }

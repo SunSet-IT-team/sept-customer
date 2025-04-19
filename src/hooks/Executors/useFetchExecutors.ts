@@ -19,7 +19,7 @@ export const useFetchExecutors = () => {
     } = useInfiniteQuery({
         queryFn: ({pageParam}) =>
             SERVICES.ExecutorService.getAllExecutors({page: pageParam}),
-        queryKey: ['get all favorite executors'],
+        queryKey: ['executors'],
         initialPageParam: 1,
         placeholderData: keepPreviousData,
         getNextPageParam: (data) => {
@@ -28,10 +28,11 @@ export const useFetchExecutors = () => {
 
             return nextPage;
         },
-        select: (data) =>
-            data.pages.flatMap((page) => {
+        select: (data) => {
+            return data.pages.flatMap((page) => {
                 return page.data.items.map((el) => mappingServerExecutors(el));
-            }),
+            });
+        },
     });
 
     useEffect(() => {

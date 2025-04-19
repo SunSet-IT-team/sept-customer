@@ -1,3 +1,4 @@
+import {useQueryClient} from '@tanstack/react-query';
 import {useAppDispatch} from '../../app/store/store';
 import {getFavoriteIds} from '../../app/store/user/selectors';
 import {toggleFavorite} from '../../app/store/user/thunk';
@@ -20,6 +21,7 @@ const ExecutorAvatar = (avatar: IProps) => {
     const favorites = useTypedSelector(getFavoriteIds);
     const dispatch = useAppDispatch();
     const styles = useStyles();
+    const queryClient = useQueryClient();
 
     const isFavourite = !!favorites.find(
         (el) => el === Number(avatar.execuotorId)
@@ -27,6 +29,9 @@ const ExecutorAvatar = (avatar: IProps) => {
 
     const handleClick = () => {
         dispatch(toggleFavorite(Number(avatar.execuotorId)));
+        queryClient.invalidateQueries({
+            queryKey: ['executor favorite'],
+        });
     };
 
     return (

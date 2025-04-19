@@ -58,7 +58,7 @@ export type ExecutorResponse = {
     role: 'EXECUTOR';
     profile: ExecutorProfileResponse;
     ordersCount: number;
-    reviewsCount: number;
+    reviewCount: number;
 };
 
 /**
@@ -74,9 +74,9 @@ export type ExecutorProfileResponse = {
     id: number;
     phone: string;
     priority: number;
-    profilePhoto: null | FileResponse;
-    registrationDoc: null | FileResponse;
-    licenseDoc: null | FileResponse;
+    profilePhotos: null | FileResponse[];
+    registrationDocs: null | FileResponse[];
+    licenseDocs: null | FileResponse[];
     rating: number;
     workFormat: ExecutorServiceType;
 };
