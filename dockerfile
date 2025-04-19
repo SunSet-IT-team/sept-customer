@@ -1,5 +1,9 @@
 # Этап сборки
 FROM guergeiro/pnpm:22-10 as build
+
+# Устанавливаем git и другие необходимые зависимости
+RUN apk add --no-cache git
+
 WORKDIR /app
 COPY package*.json ./
 RUN pnpm install
