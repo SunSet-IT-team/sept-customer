@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 import {Review} from '../Review/Review';
 import {Spinner} from '../Spinner/Spinner';
 import {BackLayout} from '../../pages/layouts/BackLayout';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import ExecutorAvatar from '../../feature/ExecutorAvatar';
 import {useStyles} from './styles';
 import {useFetchExecutorById} from '../../hooks/Executors/useFetchExecutorById';

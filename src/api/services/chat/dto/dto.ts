@@ -21,5 +21,20 @@ export interface IGetOrderChat extends IServerAns {
 }
 
 export interface IGetAdminChat extends IServerAns {
-    data: any;
+    data: {
+        theme: string;
+        orderId: string;
+        id: number;
+        participants: {
+            chatId: number;
+            id: number;
+            userId: number;
+            user: {
+                profile: {
+                    companyName: string;
+                    profilePhoto: FileResponse;
+                };
+            };
+        }[];
+    };
 }

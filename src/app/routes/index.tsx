@@ -89,7 +89,7 @@ function AppRoute() {
                 <Route path="/favorites" element={<Favorites />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/support" element={<Support />} />
-                <Route path="/support/chat" element={<SupportChat />} />
+                <Route path="/support/:chatId" element={<SupportChat />} />
                 <Route path="/service">
                     <Route
                         path=":service_id/new_order/choose_executor"

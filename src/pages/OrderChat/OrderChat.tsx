@@ -8,7 +8,7 @@ import {getCurrentUser} from '../../app/store/user/selectors';
 import {useHandleBack} from '../../hooks/useHandleBack';
 import {getImagePath} from '../../utils/share';
 import {Chat, ChatForm} from 'sunset-chat';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 
 export const OrderChat: FC = () => {
     const {orderId} = useParams();

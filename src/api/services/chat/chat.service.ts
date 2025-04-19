@@ -23,10 +23,13 @@ export const ChatService = {
     /**
      * Получить чат с поддержкой
      */
-    async getAdminChat() {
+    async getAdminChat(theme?: string) {
         const response = await axiosInstance<IGetAdminChat>({
             url: API_ROUTES.CHAT_SUPPORT(),
             method: 'POST',
+            data: {
+                theme,
+            },
         });
 
         return response.data;

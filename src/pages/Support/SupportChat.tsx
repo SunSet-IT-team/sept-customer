@@ -1,22 +1,68 @@
-import {useSearchParams} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {getSupportChat} from '../../app/store/user/selectors';
+import {getCurrentUser, getSupportChat} from '../../app/store/user/selectors';
 import {Box} from '@mui/material';
+import {useEffect, useState} from 'react';
+import {Helmet} from 'react-helmet-async';
+import {ChatUser, ChatForm} from 'sunset-chat';
+import {SERVICES} from '../../api';
+import LoadPage from '../LoadPage';
 
 /**
  * Страница чата поддержки
  */
 const SupportChat = () => {
-    const [searchParams] = useSearchParams();
-    const question = searchParams.get('question');
+    const [chatData, setChatData] = useState<{
+        id: number;
+        additionalInfo?: string;
+    } | null>(null);
+    const user = useTypedSelector(getCurrentUser);
 
-    const chatData = useTypedSelector(getSupportChat);
+    const navigate = useNavigate();
 
-    if (!chatData) return <>Какая-то ошибка</>;
+    useEffect(() => {
+        const f = async () => {
+            try {
+                const data = await SERVICES.ChatService.getAdminChat();
+                if (data.success)
+                    setChatData({
+                        id: data.data.id,
+                        additionalInfo: data.data.theme,
+                    });
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        f();
+    }, []);
 
-    const {additionalInfo, ...chat} = chatData;
+    if (!chatData) return <LoadPage />;
 
-    return <Box sx={{height: '100dvh'}}></Box>;
+    const supportChatUser: ChatUser = {
+        id: 0,
+        name: 'Поддержка',
+    };
+
+    const chat = {
+        id: chatData.id,
+        messages: [],
+        chatUser: supportChatUser,
+        additionalInfo: chatData.additionalInfo,
+        currentUserId: user.id,
+    };
+
+    const handleBack = () => navigate('/');
+
+    return (
+        <Box sx={{maxHeight: '100dvh'}}>
+            <Helmet>
+                <title>Обращение к поддержке</title>
+            </Helmet>
+            <Box sx={{height: '100dvh'}}>
+                <ChatForm chat={chat} handleCloseChat={handleBack} />
+            </Box>
+        </Box>
+    );
 };
 
 export default SupportChat;
