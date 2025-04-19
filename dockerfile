@@ -1,9 +1,8 @@
 # Этап сборки
-FROM guergeiro/pnpm:22-10 as build
+FROM node:20 AS build
 
-# Устанавливаем git и другие необходимые зависимости
-RUN apk add --no-cache git
-
+RUN apt-get update && apt-get install -y git
+RUN corepack enable && corepack prepare pnpm@latest --activate
 WORKDIR /app
 COPY package*.json ./
 RUN pnpm install
