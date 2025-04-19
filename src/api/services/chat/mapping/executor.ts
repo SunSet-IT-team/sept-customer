@@ -17,8 +17,14 @@ export const mappingServerExecutors = (data: ExecutorResponse): IExecutor => {
         reviews: [],
         reviewsCount: 10,
         phone: data.profile.phone,
-        profileImg: getImagePath(data.profile.profilePhoto.url),
-        licenseDoc: getImagePath(data.profile.licenseDoc.url),
-        registrationDoc: getImagePath(data.profile.registrationDoc.url),
+        profileImg: data.profile.profilePhotos
+            ? getImagePath(data.profile.profilePhotos[0].url)
+            : '',
+        licenseDoc: data.profile.licenseDocs
+            ? getImagePath(data.profile.licenseDocs[0].url)
+            : '',
+        registrationDoc: data.profile.registrationDocs
+            ? getImagePath(data.profile.registrationDocs[0].url)
+            : '',
     };
 };

@@ -1,5 +1,4 @@
 import {API_ROUTES} from '../..';
-import {ordersWithReviewData} from '../../../pages/MyReviews/data';
 import axiosInstance from '../../instance';
 import {IAddReviewDTO, IAddReviewResponse} from './dto/addReview.dto';
 import {IChangeReviewDTO} from './dto/changeReview.dto';
