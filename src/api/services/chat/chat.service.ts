@@ -21,15 +21,27 @@ export const ChatService = {
     },
 
     /**
-     * Получить чат с поддержкой
+     * Создать чат с поддержкой
      */
-    async getAdminChat(theme?: string) {
+    async createAdminChat(theme: string) {
         const response = await axiosInstance<IGetAdminChat>({
             url: API_ROUTES.CHAT_SUPPORT(),
             method: 'POST',
             data: {
                 theme,
             },
+        });
+
+        return response.data;
+    },
+
+    /**
+     * Получить чат с поддержкой
+     */
+    async getAdminChat() {
+        const response = await axiosInstance<IGetAdminChat>({
+            url: API_ROUTES.CHAT_SUPPORT(),
+            method: 'GET',
         });
 
         return response.data;

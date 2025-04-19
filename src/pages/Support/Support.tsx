@@ -49,7 +49,7 @@ const Support = () => {
 
         setIsLoading(true);
 
-        const data = await SERVICES.ChatService.getAdminChat(param);
+        const data = await SERVICES.ChatService.createAdminChat(param);
         if (data.success) navigate(`/support/${data.data.id}`);
 
         setIsLoading(false);
@@ -60,7 +60,7 @@ const Support = () => {
 
         setIsLoading(true);
 
-        const data = await SERVICES.ChatService.getAdminChat(customQuestion);
+        const data = await SERVICES.ChatService.createAdminChat(customQuestion);
         if (data.success) navigate(`/support/${data.data.id}`);
 
         setIsLoading(false);
