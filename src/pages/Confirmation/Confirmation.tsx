@@ -6,6 +6,7 @@ import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';
+import {BackLayout} from '../layouts/BackLayout';
 
 export const Confirmation: FC = () => {
     const verifyData = useTypedSelector((state) => state.user.verigyData);
@@ -28,15 +29,7 @@ export const Confirmation: FC = () => {
             <Helmet>
                 <title>Код подтверждения</title>
             </Helmet>
-            <Box
-                position={'relative'}
-                py={'26px'}
-                px={'33px'}
-                minHeight={'100dvh'}
-                display={'flex'}
-                flexDirection={'column'}
-            >
-                <PageTitle title="Код подтверждения" />
+            <BackLayout title="Назад">
                 <Stack direction={'column'} gap={'25px'} my={'auto'}>
                     <Typography variant="body1" textAlign={'center'}>
                         Введите код подтверждения
@@ -59,7 +52,7 @@ export const Confirmation: FC = () => {
                         </Typography>
                     </Stack>
                 </Stack>
-            </Box>
+            </BackLayout>
         </>
     );
 };

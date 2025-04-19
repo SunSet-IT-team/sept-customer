@@ -44,7 +44,6 @@ export const OrderCreated: FC = () => {
                             sx={buttonStyle}
                             component={Link}
                             to={`/order/chat/${orderId}`}
-                            color="secondary"
                         >
                             Открыть чат
                         </Button>
@@ -53,7 +52,6 @@ export const OrderCreated: FC = () => {
                             sx={buttonStyle}
                             component={Link}
                             to="/"
-                            color="secondary"
                         >
                             На главную
                         </Button>
