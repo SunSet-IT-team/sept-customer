@@ -1,4 +1,5 @@
 import {Customer} from '../../../../types/user';
+import {getImagePath} from '../../../../utils/share';
 import {CustomerResponse} from '../../share/types';
 import {mappingServerAddress} from './address';
 
@@ -18,7 +19,9 @@ export const mappingServerCustomer = (data: CustomerResponse): Customer => {
                 mappingServerAddress(el)
             ),
             orderQty: data.profile.ordersCount,
-            profileImage: data.profile.profilePhoto || '',
+            profileImage: data.profile.profilePhotos
+                ? getImagePath(data.profile.profilePhotos[0].url)
+                : '',
             favoriteIds: data.profile.favoriteIds,
         },
     };

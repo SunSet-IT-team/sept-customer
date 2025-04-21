@@ -28,7 +28,7 @@ export type ProfileResponse = {
     phone: string;
     priority: number;
     favoriteIds: number[];
-    profilePhoto: string | null;
+    profilePhotos: null | FileResponse[];
 };
 
 /**
