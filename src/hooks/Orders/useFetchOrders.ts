@@ -22,6 +22,8 @@ export const useFetchOrders = () => {
             SERVICES.OrderService.getUserOrders({page: pageParam}),
         queryKey: ['get all user orders'],
         initialPageParam: 1,
+        staleTime: 0, // всегда считается "протухшим"
+        refetchOnWindowFocus: true,
         placeholderData: keepPreviousData,
         getNextPageParam: (data) => {
             let nextPage = data.data.page + 1;
