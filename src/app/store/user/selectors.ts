@@ -25,3 +25,8 @@ export const getFavoriteIds = (state: TypeRootState) =>
  * Получить чат с поддержкой
  */
 export const getSupportChat = (state: TypeRootState) => state.user.chat;
+
+/**
+ * Получить дату для сброса пароля
+ */
+export const getUserResetData = (state: TypeRootState) => state.user.resetData;

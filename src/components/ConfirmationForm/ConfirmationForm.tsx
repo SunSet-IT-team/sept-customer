@@ -5,17 +5,18 @@ import {IConfirmationForm} from './form.type';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';
-import {useNavigate} from 'react-router-dom';
 import {auth} from '../../app/store/user/auth';
 import {setUser} from '../../app/store/user/slice';
 import {useAppDispatch} from '../../app/store/store';
 import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
+import {getUserResetData} from '../../app/store/user/selectors';
 
 /**
  * Шаблон формы подтверждения кода
  */
 export const ConfirmationForm: FC = () => {
-    const {email} = useTypedSelector((state) => state.user.verigyData);
+    const confirmData = useTypedSelector((state) => state.user.verigyData);
+    const resetData = useTypedSelector(getUserResetData);
     const dispatch = useAppDispatch();
 
     const {
@@ -26,42 +27,93 @@ export const ConfirmationForm: FC = () => {
         clearErrors,
     } = useForm<IConfirmationForm>({
         defaultValues: {
-            verification_code: '',
+            verificationCode: '',
         },
     });
 
-    const code = watch('verification_code');
+    const code = watch('verificationCode');
 
-    const handleChageCode = async () => {
-        clearErrors('verification_code');
-
-        if (code.length !== 6) return;
-
-        if (!email) {
-            toast.error('Не указан email для сброса пароля');
+    const handleConfirm = async () => {
+        if (!confirmData.email) {
+            toast.error('Не указан email');
             return;
         }
 
         try {
-            const res = await SERVICES.AuthService.verifyEmail({
-                email,
+            const data = await SERVICES.AuthService.verifyEmail({
+                email: confirmData.email,
                 code,
             });
 
-            if (!res.success) {
-                const m = res.error || 'Ошибка сервера';
+            if (!data.success) {
+                const m = data.error || 'Ошибка сервера';
                 toast.error(m);
-                setError('verification_code', {message: 'Неверный код'});
+                setError('verificationCode', {message: 'Неверный код'});
             }
 
-            auth(res.data.token);
-            dispatch(setUser(mappingServerCustomer(res.data.user)));
+            auth(data.data.token);
+            dispatch(setUser(mappingServerCustomer(data.data.user)));
+            toast.success(data.data.message);
         } catch (error) {
             const message =
                 error?.response?.data?.message || 'Ошибка авторизации';
 
             toast.error(message);
-            setError('verification_code', {message});
+            setError('verificationCode', {message});
+        }
+    };
+
+    const handleReset = async () => {
+        if (!resetData.email) {
+            toast.error('Не указан email');
+            return;
+        }
+
+        try {
+            const data = await SERVICES.AuthService.resetPassword({
+                email: resetData.email,
+                newPassword: resetData.password,
+                code,
+            });
+
+            if (!data.success) {
+                const m = data.error || 'Ошибка сервера';
+                toast.error(m);
+                setError('verificationCode', {message: 'Неверный код'});
+            }
+            toast.success(data.data.message);
+
+            const loginData = await SERVICES.AuthService.login({
+                email: resetData.email,
+                password: resetData.password,
+            });
+
+            if (!loginData.success) {
+                toast.error(loginData.error);
+                return;
+            }
+
+            auth(loginData.data.token);
+
+            dispatch(setUser(mappingServerCustomer(loginData.data.user)));
+        } catch (error) {
+            const message =
+                error?.response?.data?.message || 'Ошибка авторизации';
+
+            toast.error(message);
+            setError('verificationCode', {message});
+        }
+    };
+
+    const handleChageCode = async () => {
+        clearErrors('verificationCode');
+
+        if (code.length !== 6) return;
+
+        if (confirmData?.email) {
+            handleConfirm();
+        } else {
+            handleReset();
         }
     };
 
@@ -72,13 +124,13 @@ export const ConfirmationForm: FC = () => {
     return (
         <form>
             <Controller
-                name="verification_code"
+                name="verificationCode"
                 control={control}
                 rules={{validate: (value) => value.length === 6}}
                 render={({field}) => (
                     <OtpField
                         field={field}
-                        errorMessage={errors.verification_code?.message}
+                        errorMessage={errors.verificationCode?.message}
                     />
                 )}
             />

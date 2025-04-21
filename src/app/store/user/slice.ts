@@ -2,9 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {logout} from './auth';
 import storage from 'redux-persist/lib/storage';
 import {fetchUserData, toggleFavorite} from './thunk';
-import {persistReducer} from 'redux-persist';
-import {Chat, Message} from '../../../types/chat';
-import {Executor, ExecutorServiceType} from '../../../types/executor';
+import {Chat} from '../../../types/chat';
 import {Customer, VerifyData} from '../../../types/user';
 import {toggleArrayItem} from '../../../utils/share';
 
@@ -18,6 +16,10 @@ interface UserSlice {
     isLoading: boolean;
     chat: Chat | null;
     verigyData?: VerifyData;
+    resetData: {
+        password?: string;
+        email?: string;
+    };
 }
 
 const initialState: UserSlice = {
@@ -26,6 +28,8 @@ const initialState: UserSlice = {
 
     isLoading: true,
     chat: null,
+
+    resetData: {},
 };
 
 const userSlice = createSlice({
@@ -51,6 +55,19 @@ const userSlice = createSlice({
          */
         setVerigyData(state, action: PayloadAction<VerifyData | undefined>) {
             state.verigyData = action.payload;
+        },
+
+        /**
+         * Установить данные для сброса пароля
+         */
+        setResetData(
+            state,
+            action: PayloadAction<{
+                password?: string;
+                email?: string;
+            }>
+        ) {
+            state.resetData = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -89,7 +106,8 @@ const userSlice = createSlice({
     },
 });
 
-export const {setUser, clearUser, setVerigyData} = userSlice.actions;
+export const {setUser, clearUser, setVerigyData, setResetData} =
+    userSlice.actions;
 
 // Насколько я понял, то использование данного конфига, само по себе обеспечивает
 // кэширование данных слайса в LocalStorage, поэтому cachedUser не нужен

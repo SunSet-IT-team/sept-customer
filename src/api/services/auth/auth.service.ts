@@ -3,7 +3,12 @@ import axiosInstance from '../../instance';
 import {IGetMeResponse} from './dto/getMe.dto';
 import {ILoginDTO, ILoginResponse} from './dto/login.dto';
 import {IRegisterDTO, IRegisterResponse} from './dto/register.dto';
-import {IResetPasswordDTO} from './dto/reset-password.dto';
+import {
+    IResetPasswordDTO,
+    IResetPasswordResponse,
+    ISendResetCodeDTO,
+    ISendResetCodeResponse,
+} from './dto/reset-password.dto';
 import {IVerifyDTO, IVerifyResponse} from './dto/verify.dto';
 
 export const AuthService = {
@@ -32,11 +37,11 @@ export const AuthService = {
     },
 
     /**
-     * Сброс пароля если забыл
+     * Отправка кода для сброса пароля
      */
-    async resetPassword(data: IResetPasswordDTO) {
-        const response = await axiosInstance({
-            url: API_ROUTES.RESET_PASSWORD(),
+    async sendResetPasswordCode(data: ISendResetCodeDTO) {
+        const response = await axiosInstance<ISendResetCodeResponse>({
+            url: API_ROUTES.SEND_RESET_CODE(),
             method: 'POST',
             data,
         });
@@ -44,15 +49,13 @@ export const AuthService = {
     },
 
     /**
-     * Ввод цифр подтверждения для сброса пароля
+     * Отправка кода для сброса пароля
      */
-    async confirmResetPassword(code: number) {
-        const response = await axiosInstance({
-            url: API_ROUTES.CONFIRMATION_RESET_PASSWORD(),
+    async resetPassword(data: IResetPasswordDTO) {
+        const response = await axiosInstance<IResetPasswordResponse>({
+            url: API_ROUTES.RESET_PASSWORD(),
             method: 'POST',
-            data: {
-                code,
-            },
+            data,
         });
         return response.data;
     },

@@ -7,9 +7,11 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';
 import {BackLayout} from '../layouts/BackLayout';
+import {getUserResetData} from '../../app/store/user/selectors';
 
 export const Confirmation: FC = () => {
     const verifyData = useTypedSelector((state) => state.user.verigyData);
+    const data = useTypedSelector(getUserResetData);
 
     /**
      * Обновить код
@@ -35,22 +37,24 @@ export const Confirmation: FC = () => {
                         Введите код подтверждения
                     </Typography>
                     <ConfirmationForm />
-                    <Stack
-                        direction={'row'}
-                        gap={'5px'}
-                        justifyContent={'center'}
-                    >
-                        <Typography variant="body2" textAlign={'center'}>
-                            Не пришёл код?
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            textAlign={'center'}
-                            onClick={handleResendCode}
+                    {!data.email && (
+                        <Stack
+                            direction={'row'}
+                            gap={'5px'}
+                            justifyContent={'center'}
                         >
-                            Отправить ещё раз
-                        </Typography>
-                    </Stack>
+                            <Typography variant="body2" textAlign={'center'}>
+                                Не пришёл код?
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                textAlign={'center'}
+                                onClick={handleResendCode}
+                            >
+                                Отправить ещё раз
+                            </Typography>
+                        </Stack>
+                    )}
                 </Stack>
             </BackLayout>
         </>

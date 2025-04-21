@@ -1,4 +1,4 @@
-export const forgotPasswordInputsData = [
+export const resetInputsData = [
     {
         label: 'E-mail',
         name: 'email',
@@ -7,15 +7,15 @@ export const forgotPasswordInputsData = [
     },
 
     {
-        label: 'Новый пароль',
-        name: 'new_password',
+        label: 'Пароль',
+        name: 'password',
         required: true,
         errorText: 'Поле обязательно для заполнения',
         type: 'password',
     },
 ];
 
-export const forgotPasswordDefaultValues = {
+export const resetDefaultsValues = {
     email: '',
-    new_password: '',
+    password: '',
 };

@@ -3,8 +3,8 @@ export const LOGIN = () => '/auth/login/customer';
 export const VERIFY = () => '/auth/verify';
 export const VERIFY_RESEND = () => '/auth/verify/resend';
 
-export const CONFIRMATION_RESET_PASSWORD = () => '/confirmation';
-export const RESET_PASSWORD = () => '/reset-password';
+export const SEND_RESET_CODE = () => '/auth/password/forgot';
+export const RESET_PASSWORD = () => '/auth/password/reset';
 
 export const GET_ALL_SERVICES = () => '/service';
 export const GET_ALL_EXECUTORS = () => '/executor';

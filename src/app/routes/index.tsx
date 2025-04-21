@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import {Routes, Route, Outlet, Navigate} from 'react-router-dom';
 import {AboutExecutor} from '../../components/AboutExecutor/AboutExecutor';
-import {LayoutWithNavbar} from '../../pages/layouts/LayoutWithNavbar/LayoutWithNavbar';
 import {OrderCreated} from '../../components/OrderCreated/OrderCreated';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {Auth} from '../../pages/Auth/Auth';
@@ -9,7 +8,6 @@ import {ChooseExecutor} from '../../pages/ChooseExecutor/ChooseExecutor';
 import {Confirmation} from '../../pages/Confirmation/Confirmation';
 import {ConfirmOrder} from '../../pages/ConfirmOrder/ConfirmOrder';
 import {Favorites} from '../../pages/Favorites/Favorites';
-import {ForgotPassword} from '../../pages/ForgotPassword/ForgotPassword';
 import LoadPage from '../../pages/LoadPage';
 import {MyOrders} from '../../pages/MyOrders/MyOrders';
 import {MyReviews} from '../../pages/MyReviews/MyReviews';
@@ -27,6 +25,7 @@ import {Home} from '../../pages/Home/Home';
 
 import {useAppDispatch} from '../store/store';
 import {fetchUserData} from '../store/user/thunk';
+import {ResetPage} from '../../pages/ResetPage';
 
 function AppRoute() {
     const {user, isInited, isLoading} = useTypedSelector((state) => state.user);
@@ -67,7 +66,7 @@ function AppRoute() {
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset" element={<ResetPage />} />
                 <Route path="/confirmation" element={<Confirmation />} />
             </Route>
 

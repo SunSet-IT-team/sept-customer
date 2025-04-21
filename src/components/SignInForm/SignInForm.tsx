@@ -43,7 +43,7 @@ export const SignInForm: FC = () => {
         >
             <SignInFormContent />
             <Link
-                to="/forgot-password"
+                to="/reset"
                 variant="body1"
                 color="secondary"
                 component={ReactRouterDomLink}
