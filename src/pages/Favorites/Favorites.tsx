@@ -1,4 +1,4 @@
-import {Box} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {
@@ -25,12 +25,18 @@ export const Favorites: FC = () => {
                 <title>Избранное</title>
             </Helmet>
             <BackLayout title="Избранное">
+                {executors && executors.length === 0 && !isLoading && (
+                    <Typography variant="h6" sx={{textAlign: 'center', my: 2}}>
+                        Вы пока ничего не добавили в Избранное
+                    </Typography>
+                )}
                 <Box>
                     <ExecutorsList
                         itemType={ExecutorItemType.FAVORITE}
                         executors={executors}
                         observedRef={ref}
                     />
+                    {isLoading && <Spinner />}
                 </Box>
             </BackLayout>
         </>

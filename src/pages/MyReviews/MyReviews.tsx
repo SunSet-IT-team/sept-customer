@@ -7,6 +7,7 @@ import {BackLayout} from '../layouts/BackLayout';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getCurrentUser} from '../../app/store/user/selectors';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
+import {Typography} from '@mui/material';
 
 export const MyReviews: FC = () => {
     const user = useTypedSelector(getCurrentUser);
@@ -26,6 +27,14 @@ export const MyReviews: FC = () => {
             </Helmet>
             <BackLayout title="Мои отзывы">
                 <LayoutWithNavbar>
+                    {reviews && reviews.length === 0 && !isLoading && (
+                        <Typography
+                            variant="h6"
+                            sx={{textAlign: 'center', my: 2}}
+                        >
+                            Вы покане написали ни одного отзыва
+                        </Typography>
+                    )}
                     <MyReviewsList reviews={reviews} observedRef={ref} />
                     {isLoading && <Spinner />}
                 </LayoutWithNavbar>

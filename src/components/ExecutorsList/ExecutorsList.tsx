@@ -1,6 +1,5 @@
 import {Box, Stack} from '@mui/material';
 import {FC, RefCallback} from 'react';
-import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {IExecutor} from '../../types/executor';
 import {ExecutorItem} from './ExecutorItem/ExecutorItem';
 import {ExecutorItemFavourite} from './ExecutorItem/ExecutorItemFavorite';
@@ -38,16 +37,11 @@ export const ExecutorsList: FC<IProps> = ({
 }) => {
     return (
         <Stack gap="40px" sx={{height: '100%'}}>
-            {executors.map((executor, index) => {
-                const isFavourite = false;
-
+            {executors.map((executor) => {
                 return (
                     <Box key={executor.title + executor.id}>
                         {itemType === ExecutorItemType.DEFAULT ? (
-                            <ExecutorItem
-                                executor={executor}
-                                isFavourite={isFavourite}
-                            />
+                            <ExecutorItem executor={executor} />
                         ) : (
                             <ExecutorItemFavourite executor={executor} />
                         )}

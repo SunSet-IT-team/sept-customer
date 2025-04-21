@@ -27,7 +27,9 @@ export type ProfileResponse = {
     ordersCount: number;
     phone: string;
     priority: number;
-    favoriteIds: number[];
+    favoriteIds: {
+        id: number;
+    }[];
     profilePhotos: null | FileResponse[];
 };
 

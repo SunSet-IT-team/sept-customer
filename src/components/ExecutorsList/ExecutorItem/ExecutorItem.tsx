@@ -9,14 +9,13 @@ import {IExecutor} from '../../../types/executor';
 
 interface IProps {
     executor: IExecutor;
-    isFavourite: boolean;
 }
 
 /**
  * Обычная карточка исполнителя.
  * Экран - Выбор исполнителя.
  */
-export const ExecutorItem: FC<IProps> = ({executor, isFavourite}) => {
+export const ExecutorItem: FC<IProps> = ({executor}) => {
     const {service_id} = useParams();
     const {setExecutor} = useActions(newOrderSlice.actions);
     const navigate = useNavigate();

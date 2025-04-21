@@ -22,7 +22,7 @@ export const mappingServerCustomer = (data: CustomerResponse): Customer => {
             profileImage: data.profile.profilePhotos[0]
                 ? getImagePath(data.profile.profilePhotos[0].url)
                 : '',
-            favoriteIds: data.profile.favoriteIds,
+            favoriteIds: data.profile.favoriteIds.map((el) => el.id),
         },
     };
 };
