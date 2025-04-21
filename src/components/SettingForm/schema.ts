@@ -1,6 +1,11 @@
 import {z} from 'zod';
 import {cleanPhoneNumber, onlyDigitsRegex, phoneRegex} from '../../utils/regex';
 
+const addressSchema = z.object({
+    id: z.number().optional(),
+    value: z.string().min(1, 'Адрес обязателен'),
+});
+
 export const settingFormSchema = z.object({
     name: z.string().min(1, 'Обязательное поле'),
     phone: z
@@ -23,6 +28,8 @@ export const settingFormSchema = z.object({
     profileImage: z.instanceof(File, {
         message: 'Необходимо загрузить изображение',
     }),
+
+    addresses: z.array(addressSchema).min(1, 'Добавьте хотя бы один адрес'),
 });
 
 export type SettingFormData = z.infer<typeof settingFormSchema>;

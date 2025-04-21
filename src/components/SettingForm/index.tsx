@@ -19,6 +19,7 @@ import {SERVICES} from '../../api';
 import {setUser} from '../../app/store/user/slice';
 import {mappingServerCustomer} from '../../api/services/auth/mapping/customer';
 import {UploadFileWithLabel} from '../ui/UploadFile/UploadFileWithLabel/UploadFileWithLabel';
+import {AddressListElement} from './SettingFormAddresses';
 
 /**
  * Форма Настроек
@@ -40,6 +41,32 @@ export const SettingForm = () => {
     const dispatch = useAppDispatch();
 
     const onSubmit = async (formData: Required<SettingFormData>) => {
+        const originalIds = formData.addresses
+            .filter((a) => a.id)
+            .map((a) => a.id as number);
+
+        const updateAddresses = formData.addresses
+            .filter((a) => a.id && a.value)
+            .map((el) => ({
+                value: el.value,
+                id: el.id,
+            }));
+        const newAddresses = formData.addresses
+            .filter((a) => !a.id)
+            .filter((el) => el.value)
+            .map((el) => ({
+                value: el.value,
+            }));
+
+        const deleteAddressIds: number[] = [];
+
+        // Пробегаемся по нашим адресам и ищем какиех нет
+        user.profile.addresses.map((a) => {
+            // Если нет, значит удалили
+            if (!originalIds.includes(Number(a.id)))
+                deleteAddressIds.push(Number(a.id));
+        });
+
         // Делаем заготовку под
         const changeMeData: IChangeMeDTO = {};
 
@@ -53,6 +80,18 @@ export const SettingForm = () => {
 
         if (formData.email !== user.email) {
             changeMeData.email = formData.email;
+        }
+
+        if (updateAddresses.length) {
+            changeMeData.updateAddresses = updateAddresses;
+        }
+
+        if (newAddresses.length) {
+            changeMeData.newAddresses = newAddresses;
+        }
+
+        if (deleteAddressIds.length) {
+            changeMeData.deleteAddressIds = deleteAddressIds;
         }
 
         // Проверка на изменение аватара
@@ -98,10 +137,14 @@ export const SettingForm = () => {
             onSuccess={onSubmit}
             formContext={formContext}
             mode="onChange"
-            onError={(e) => console.log(e)}
         >
             <Stack gap={2} sx={styles.mainList}>
                 <SettingFormContent
+                    editName={editName}
+                    onClickEdit={(name: string) => setEditName(name)}
+                />
+
+                <AddressListElement
                     editName={editName}
                     onClickEdit={(name: string) => setEditName(name)}
                 />

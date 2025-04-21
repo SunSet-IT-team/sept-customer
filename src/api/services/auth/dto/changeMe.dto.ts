@@ -13,7 +13,6 @@ export interface IChangeMeDTO {
         value: string;
     }[];
     newAddresses?: {
-        id: number;
         value: string;
     }[];
     deleteAddressIds?: number[];

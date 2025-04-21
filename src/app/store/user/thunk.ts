@@ -43,8 +43,6 @@ export const toggleFavorite = createAsyncThunk<number, number>(
             // Значит ошибка
             if (res.error) return null;
 
-            console.log(res);
-
             toast.success(res.data.message);
 
             return executorId;

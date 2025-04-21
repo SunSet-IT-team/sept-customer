@@ -22,6 +22,14 @@ const useSettingFormInitData = (
                 formMethods.setValue('phone', customer.phone);
                 formMethods.setValue('email', customer.email);
 
+                formMethods.setValue(
+                    'addresses',
+                    customer.profile.addresses.map((a) => ({
+                        id: Number(a.id),
+                        value: a.address,
+                    }))
+                );
+
                 // Загружаем и устанавливаем изображение
                 const file = await urlToFile(customer.profile.profileImage);
 

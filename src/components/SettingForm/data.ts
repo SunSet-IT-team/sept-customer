@@ -36,4 +36,5 @@ export const settingFormDefaultValues: SettingFormData = {
     email: '',
     newPassword: '',
     profileImage: undefined as unknown as File, // заглушка
+    addresses: [{value: ''}],
 };
