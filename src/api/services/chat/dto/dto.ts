@@ -13,7 +13,7 @@ export interface IGetOrderChat extends IServerAns {
             user: {
                 profile: {
                     companyName: string;
-                    profilePhoto: FileResponse;
+                    profilePhotos: FileResponse[];
                 };
             };
         }[];
@@ -32,7 +32,7 @@ export interface IGetAdminChat extends IServerAns {
             user: {
                 profile: {
                     companyName: string;
-                    profilePhoto: FileResponse;
+                    profilePhotos: FileResponse[];
                 };
             };
         }[];

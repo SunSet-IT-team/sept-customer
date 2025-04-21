@@ -35,9 +35,9 @@ export const OrderChat: FC = () => {
         chatUser: {
             id: notCurrentUser.userId,
             name: notCurrentUser.user.profile.companyName,
-            imagePath: getImagePath(
-                notCurrentUser.user.profile.profilePhoto.url
-            ),
+            imagePath: notCurrentUser.user.profile?.profilePhotos[0]
+                ? getImagePath(notCurrentUser.user.profile.profilePhotos[0].url)
+                : '',
         },
     };
 
