@@ -1,5 +1,6 @@
 import {API_ROUTES} from '../..';
 import axiosInstance from '../../instance';
+import {IChangeMeDTO, IChangeMeResponse} from './dto/changeMe.dto';
 import {IGetMeResponse} from './dto/getMe.dto';
 import {ILoginDTO, ILoginResponse} from './dto/login.dto';
 import {IRegisterDTO, IRegisterResponse} from './dto/register.dto';
@@ -92,6 +93,20 @@ export const AuthService = {
     async getUserInfo() {
         const response = await axiosInstance.get<IGetMeResponse>(
             API_ROUTES.GET_ME()
+        );
+        return response.data;
+    },
+
+    /**
+     * Обновить информацию о профиле
+     */
+    async changeMe(param: IChangeMeDTO) {
+        const response = await axiosInstance.patch<IChangeMeResponse>(
+            API_ROUTES.CHANGE_ME(),
+            param,
+            {
+                headers: {'Content-Type': 'multipart/form-data'},
+            }
         );
         return response.data;
     },

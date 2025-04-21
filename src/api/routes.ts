@@ -16,6 +16,7 @@ export const TOGGLE_FAVORITE = (executorId: number) =>
 export const FAVORITE = () => `/favorite`;
 
 export const GET_ME = () => '/customer/me';
+export const CHANGE_ME = () => '/customer/me';
 
 export const ORDER = () => '/order';
 export const ORDER_MY = () => '/order/my';
