@@ -1,4 +1,4 @@
-import {StylesDictionary} from '../../../shared/types/share';
+import {StylesDictionary} from '../../../types/share';
 
 export const useStyles = (): StylesDictionary => {
     return {
