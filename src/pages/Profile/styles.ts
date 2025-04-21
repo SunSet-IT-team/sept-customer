@@ -16,6 +16,8 @@ export const useProfileStyles = () => {
             alignItems: 'center',
             justifyContent: 'center',
             color: 'white',
+            borderBottomLeftRadius: '10px',
+            borderBottomRightRadius: '10px',
         },
         avatar: {
             width: 100,

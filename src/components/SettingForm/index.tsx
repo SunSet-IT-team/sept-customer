@@ -86,17 +86,17 @@ export const SettingForm = () => {
             changeMeData.password = formData.newPassword;
         }
 
-        // if (updateAddresses.length) {
-        //     changeMeData.updateAddresses = updateAddresses;
-        // }
+        if (updateAddresses.length) {
+            changeMeData.updateAddresses = updateAddresses;
+        }
 
-        // if (newAddresses.length) {
-        //     changeMeData.newAddresses = newAddresses;
-        // }
+        if (newAddresses.length) {
+            changeMeData.newAddresses = newAddresses;
+        }
 
-        // if (deleteAddressIds.length) {
-        //     changeMeData.deleteAddressIds = deleteAddressIds;
-        // }
+        if (deleteAddressIds.length) {
+            changeMeData.deleteAddressIds = deleteAddressIds;
+        }
 
         // Проверка на изменение аватара
         // Преобразуем оригинальный URL в файл для сравнения

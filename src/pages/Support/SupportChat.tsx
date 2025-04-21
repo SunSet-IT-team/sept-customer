@@ -1,6 +1,6 @@
-import {useNavigate, useSearchParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
-import {getCurrentUser, getSupportChat} from '../../app/store/user/selectors';
+import {getCurrentUser} from '../../app/store/user/selectors';
 import {Box} from '@mui/material';
 import {useEffect, useState} from 'react';
 import {Helmet} from 'react-helmet-async';
