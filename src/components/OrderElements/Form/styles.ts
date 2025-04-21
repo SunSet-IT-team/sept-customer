@@ -12,7 +12,7 @@ export const submitButtonSx: SxProps<Theme> = {
     borderRadius: '12px',
     height: 50,
     fontSize: '16px',
-    backgroundColor: 'secondary.main',
+    backgroundColor: 'primary.main',
     color: 'white',
 };
 

@@ -14,12 +14,20 @@ export const SignIn: FC = () => {
             </Helmet>
             <BackLayout title="Вход">
                 <Box sx={styles.container}>
-                    <Box
-                        component="img"
-                        sx={styles.logo}
-                        alt="Your logo"
-                        src="/logo.png"
-                    />
+                    <Box sx={styles.logoContainer}>
+                        <Box
+                            component="img"
+                            sx={styles.logo}
+                            alt="ЭКОКОНТРОЛЬ logo"
+                            src="/logo.png"
+                        />
+                        <Box
+                            component="img"
+                            sx={styles.logoText}
+                            alt="ЭКОКОНТРОЛЬ"
+                            src="/logo_text.png"
+                        />
+                    </Box>
                     <SignInForm />
                 </Box>
             </BackLayout>

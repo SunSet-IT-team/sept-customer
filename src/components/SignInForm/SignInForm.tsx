@@ -55,7 +55,7 @@ export const SignInForm: FC = () => {
             </Link>
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={buttonStyles}
                 type="submit"
             >

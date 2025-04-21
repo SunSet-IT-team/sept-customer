@@ -1,21 +1,45 @@
 import {createTheme, ThemeOptions} from '@mui/material';
 
+declare module '@mui/material/styles' {
+    interface TypeText {
+        black: string;
+        white: string;
+        gray: string;
+    }
+
+    interface TypeBackground {
+        blue: string;
+        gray: string;
+        gradient: string;
+    }
+}
+
 export const theme: ThemeOptions = createTheme({
     palette: {
         mode: 'light',
         primary: {
-            main: '#D9D9D9',
+            main: '#3975CF',
+            dark: '#1565c0',
+            light: '#D9D9D9',
+        },
+        text: {
+            black: '#000000',
+            white: '#FFFFFF',
+            gray: '#4D4D4D',
         },
         secondary: {
-            main: '#D9D9D9',
+            main: '#3FBC14', // Фиолетовый
         },
         background: {
-            default: '#4D4D4D',
-            paper: '#FFFFFF',
+            gradient: 'linear-gradient(to right, #3975CF, #3FBC14)',
+            default: '#f5f5f5', // Светло-серый фон
+            paper: '#ffffff', // Белый для карточек
+            gray: '#F3F3F3',
+            blue: '#3975CF33',
         },
     },
     typography: {
-        fontFamily: 'Inter, Arial, sans-serif',
+        fontFamily: 'Jost, Arial, sans-serif',
         h1: {
             fontSize: '48px',
         },
@@ -36,11 +60,22 @@ export const theme: ThemeOptions = createTheme({
                     textTransform: 'none',
                 },
             },
+            styleOverrides: {
+                // Стили для primary кнопки в состоянии загрузки
+                containedPrimary: {
+                    '&.Mui-disabled': {
+                        background: '#3975CF33',
+                        opacity: 0.7,
+                        color: 'transparent',
+                    },
+                },
+            },
         },
+
         MuiBottomNavigation: {
             styleOverrides: {
                 root: {
-                    backgroundColor: '#4D4D4D',
+                    background: 'linear-gradient(to right, #3975CF, #3FBC14)',
                     borderRadius: '40px',
                     minHeight: '71px',
                     position: 'relative',
@@ -59,6 +94,18 @@ export const theme: ThemeOptions = createTheme({
                     },
                     '&.Mui-selected .MuiBottomNavigationAction-label': {
                         fontSize: '13px',
+                        color: 'white',
+                    },
+                },
+            },
+        },
+
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#3975CF33',
+                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#3975CF33',
                     },
                 },
             },

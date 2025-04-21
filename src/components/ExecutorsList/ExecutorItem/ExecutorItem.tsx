@@ -34,7 +34,7 @@ export const ExecutorItem: FC<IProps> = ({executor}) => {
             executor={executor}
             mainBtn={
                 <Button
-                    color="secondary"
+                    color="primary"
                     sx={chooseButtonStyle}
                     onClick={handleChoose}
                 >

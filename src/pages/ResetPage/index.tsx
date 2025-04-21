@@ -30,8 +30,14 @@ export const ResetPage: FC = () => {
                         <Box
                             component="img"
                             sx={styles.logo}
-                            alt="Your logo"
+                            alt="ЭКОКОНТРОЛЬ logo"
                             src="/logo.png"
+                        />
+                        <Box
+                            component="img"
+                            sx={styles.logoText}
+                            alt="ЭКОКОНТРОЛЬ"
+                            src="/logo_text.png"
                         />
                     </Box>
                     <ResetForm />

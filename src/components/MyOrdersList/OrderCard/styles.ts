@@ -54,7 +54,7 @@ export const useStyles = (): StylesDictionary => {
             px: 1,
             py: 0.5,
             height: '44px',
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.main,
             color: 'white',
             '&.Mui-disabled': {
                 backgroundColor: 'white',

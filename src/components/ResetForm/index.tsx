@@ -61,7 +61,7 @@ export const ResetForm: FC = () => {
             <ResetFormContent />
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={buttonStyles}
                 type="submit"
                 loading={isLoading}

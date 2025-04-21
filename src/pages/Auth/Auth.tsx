@@ -14,12 +14,20 @@ export const Auth: FC = () => {
             </Helmet>
             <BackLayout>
                 <Stack gap={'20px'} sx={styles.container}>
-                    <Box
-                        component="img"
-                        sx={styles.logo}
-                        alt="Your logo"
-                        src="/logo.png"
-                    />
+                    <Box sx={styles.logoContainer}>
+                        <Box
+                            component="img"
+                            sx={styles.logo}
+                            alt="ЭКОКОНТРОЛЬ logo"
+                            src="/logo.png"
+                        />
+                        <Box
+                            component="img"
+                            sx={styles.logoText}
+                            alt="ЭКОКОНТРОЛЬ"
+                            src="/logo_text.png"
+                        />
+                    </Box>
                     <Button
                         variant="contained"
                         sx={{py: '17px', mt: '52px'}}

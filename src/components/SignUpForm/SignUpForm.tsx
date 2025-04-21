@@ -50,7 +50,7 @@ export const SignUpForm: FC = () => {
             <SignUpFormContent />
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={signUpButtonStyles}
                 type="submit"
             >

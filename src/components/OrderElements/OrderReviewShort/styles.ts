@@ -11,9 +11,9 @@ export const buttonSx: SxProps<Theme> = {
     borderRadius: '5px',
     height: 50,
     fontSize: '16px',
-    backgroundColor: 'secondary.main',
+    backgroundColor: 'primary.main',
     color: 'white',
-    flex: "0 1 50%"
+    flex: '0 1 50%',
 };
 
 export const editButtonSx: SxProps<Theme> = {

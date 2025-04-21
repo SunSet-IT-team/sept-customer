@@ -34,7 +34,7 @@ export const NewOrderForm: FC = () => {
 
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={submitButtonStyles}
                 type="submit"
             >

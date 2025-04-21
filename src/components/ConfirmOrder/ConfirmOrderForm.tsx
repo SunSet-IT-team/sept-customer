@@ -55,7 +55,7 @@ export const ConfirmOrderForm: FC = () => {
 
             <Button
                 variant="contained"
-                color="secondary"
+                color="primary"
                 sx={{width: '100%', py: '12px', mt: '43px'}}
                 type="submit"
             >

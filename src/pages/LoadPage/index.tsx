@@ -45,7 +45,7 @@ const LoadPage: React.FC = () => {
             {/* Текст с анимацией */}
             <Typography
                 variant="h6"
-                color="text.secondary"
+                color="text.primary"
                 sx={{
                     animation: `${pulse} 2s ease-in-out infinite`,
                     animationDelay: '0.3s',
