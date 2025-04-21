@@ -19,7 +19,7 @@ export const mappingServerCustomer = (data: CustomerResponse): Customer => {
                 mappingServerAddress(el)
             ),
             orderQty: data.profile.ordersCount,
-            profileImage: data.profile.profilePhotos
+            profileImage: data.profile.profilePhotos[0]
                 ? getImagePath(data.profile.profilePhotos[0].url)
                 : '',
             favoriteIds: data.profile.favoriteIds,

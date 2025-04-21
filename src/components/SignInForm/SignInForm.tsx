@@ -30,6 +30,8 @@ export const SignInForm: FC = () => {
         } catch (error) {
             const message = error?.response?.data?.message;
 
+            console.log(error);
+
             toast.error(message || 'Ошибка авторизации');
         }
     };
