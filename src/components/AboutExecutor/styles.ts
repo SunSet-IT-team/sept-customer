@@ -37,11 +37,11 @@ export const useStyles = (): StylesDictionary => {
             justifyContent: 'space-between',
             px: '16px',
             py: '8px',
-            border: '1px solid black',
             borderRadius: '20px',
-            backgroundColor: 'primary.main',
+            backgroundColor: 'background.blue',
 
             '& p': {
+                fontSize: '14px',
                 fontWeight: 500,
             },
         },

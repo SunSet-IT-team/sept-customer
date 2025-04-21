@@ -28,7 +28,7 @@ export const theme: ThemeOptions = createTheme({
             gray: '#4D4D4D',
         },
         secondary: {
-            main: '#3FBC14', // Фиолетовый
+            main: '#3FBC14',
         },
         background: {
             gradient: 'linear-gradient(to right, #3975CF, #3FBC14)',

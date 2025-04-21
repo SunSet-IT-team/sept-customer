@@ -1,6 +1,9 @@
+import {useTheme} from '@mui/material/styles';
 import {StylesDictionary} from '../../types/share';
 
 export const useStyles = (): StylesDictionary => {
+    const theme = useTheme();
+
     return {
         wrapper: {
             display: 'inline',
@@ -19,14 +22,14 @@ export const useStyles = (): StylesDictionary => {
         imgActive: {
             borderRadius: '50%',
             padding: '4px',
-            background: '#4D4D4D',
+            background: theme.palette.background.gradient,
             width: 52,
             height: 52,
         },
         imgHome: {
             borderRadius: '50%',
             padding: '4px',
-            border: '2px solid #4D4D4D',
+            border: '2px solid #3F3B3B',
             width: 52,
             height: 52,
         },

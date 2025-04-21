@@ -43,7 +43,10 @@ export const AboutExecutor: FC = () => {
                         />
                         <Box sx={styles.ratingBoxStyle}>
                             <Stack sx={styles.ratingStackStyle}>
-                                <StarIcon color="secondary" fontSize="small" />
+                                <StarIcon
+                                    sx={{color: '#FFC700'}}
+                                    fontSize="small"
+                                />
                                 <Typography>
                                     {executor.averageRating}
                                 </Typography>

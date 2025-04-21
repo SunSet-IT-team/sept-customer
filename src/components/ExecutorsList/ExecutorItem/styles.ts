@@ -40,7 +40,7 @@ export const ratingContainerStyle: SxProps<Theme> = {
 };
 
 export const chooseButtonStyle: SxProps<Theme> = {
-    backgroundColor: 'secondary.main',
+    backgroundColor: 'primary.main',
     color: 'white',
     fontSize: '14px',
     textTransform: 'none',
@@ -48,8 +48,8 @@ export const chooseButtonStyle: SxProps<Theme> = {
 };
 
 export const aboutButtonStyle: SxProps<Theme> = {
-    backgroundColor: 'primary.main',
-    color: 'black',
+    backgroundColor: 'secondary.main',
+    color: 'white',
     fontSize: '14px',
     textTransform: 'none',
     width: '50%',

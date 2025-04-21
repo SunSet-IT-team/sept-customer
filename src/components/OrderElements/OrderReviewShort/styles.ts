@@ -2,8 +2,12 @@ import {Theme} from '@emotion/react';
 import {SxProps} from '@mui/material';
 
 export const textFieldSx: SxProps<Theme> = {
+    fonsize: '14px',
+    lineHeight: '21px',
+    color: '#7E7E7E',
+    letterSpacing: '-0.05em',
     '& .MuiInputBase-inputMultiline': {
-        color: 'text.secondary',
+        color: '#7E7E7E',
     },
 };
 
@@ -22,6 +26,7 @@ export const editButtonSx: SxProps<Theme> = {
 
 export const deleteButtonSx: SxProps<Theme> = {
     ...buttonSx,
+    backgroundColor: 'secondary.main',
 };
 
 export const orderTitleSx: SxProps<Theme> = {

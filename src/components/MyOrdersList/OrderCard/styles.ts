@@ -6,10 +6,11 @@ export const useStyles = (): StylesDictionary => {
 
     return {
         title: {
-            opacity: 0.8,
             mb: '20px',
-            fontWeight: 600,
-            fontSize: '18px',
+            fontWeight: 500,
+            fontSize: '21px',
+            color: '#4D4D4D',
+            lineHeight: '21px',
         },
         label: {
             fontSize: '14px',
@@ -44,6 +45,7 @@ export const useStyles = (): StylesDictionary => {
             textTransform: 'none',
             '&.Mui-disabled': {
                 backgroundColor: 'white',
+                opacity: 1,
                 color: '#000',
             },
         },
@@ -56,6 +58,7 @@ export const useStyles = (): StylesDictionary => {
             height: '44px',
             backgroundColor: theme.palette.primary.main,
             color: 'white',
+            textTransform: 'none',
             '&.Mui-disabled': {
                 backgroundColor: 'white',
                 color: '#000',
@@ -68,7 +71,7 @@ export const useStyles = (): StylesDictionary => {
             display: 'flex',
             flexDirection: 'column',
             gap: 1,
-            backgroundColor: '#F6F6F6',
+            backgroundColor: theme.palette.background.blue,
         },
     };
 };

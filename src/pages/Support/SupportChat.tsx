@@ -41,6 +41,7 @@ const SupportChat = () => {
     const supportChatUser: ChatUser = {
         id: 0,
         name: 'Поддержка',
+        imagePath: '/support.png',
     };
 
     const chat = {

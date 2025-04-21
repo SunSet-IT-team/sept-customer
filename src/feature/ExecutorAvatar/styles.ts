@@ -4,7 +4,7 @@ export const useStyles = (): StylesDictionary => {
     return {
         box: {position: 'relative'},
         image: {
-            backgroundColor: '#7D7D7D',
+            backgroundColor: 'background.blue',
             borderRadius: '20px',
         },
         favouriteIconStyle: {

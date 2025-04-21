@@ -47,7 +47,10 @@ export const BaseExecutorItem: FC<IProps> = ({
                     </Stack>
                     <Box>
                         <Stack sx={ratingContainerStyle}>
-                            <StarIcon color="secondary" fontSize="small" />
+                            <StarIcon
+                                sx={{color: '#FFC700'}}
+                                fontSize="small"
+                            />
                             <Typography variant="body2">
                                 {averageRating}
                             </Typography>

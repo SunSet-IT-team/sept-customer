@@ -3,6 +3,9 @@ import {StylesDictionary} from '../../../../types/share';
 export const useStyles = (): StylesDictionary => {
     return {
         input: {
+            '& .MuiInputBase-root': {
+                background: 'white',
+            },
             '& .MuiInputBase-input': {
                 padding: '10px',
                 '::placeholder': {

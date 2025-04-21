@@ -17,6 +17,7 @@ export interface IChangeMeDTO {
     }[];
     deleteAddressIds?: number[];
     profilePhoto?: File;
+    password?: string;
 }
 
 export interface IChangeMeResponse extends IServerAns {

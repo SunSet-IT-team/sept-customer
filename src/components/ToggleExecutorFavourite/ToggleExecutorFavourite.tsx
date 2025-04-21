@@ -20,9 +20,9 @@ export const ToggleExecutorFavourite: FC<IProps> = ({
     return (
         <Box sx={sx} onClick={onClick}>
             {isFavourite ? (
-                <FavoriteIcon sx={{color: 'secondary.main'}} />
+                <FavoriteIcon sx={{color: '#A41A18'}} />
             ) : (
-                <FavoriteBorderIcon sx={{color: 'secondary.main'}} />
+                <FavoriteBorderIcon sx={{color: '#A41A18'}} />
             )}
         </Box>
     );

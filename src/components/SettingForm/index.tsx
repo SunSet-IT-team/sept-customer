@@ -49,7 +49,7 @@ export const SettingForm = () => {
             .filter((a) => a.id && a.value)
             .map((el) => ({
                 value: el.value,
-                id: el.id,
+                id: Number(el.id),
             }));
         const newAddresses = formData.addresses
             .filter((a) => !a.id)
@@ -82,17 +82,21 @@ export const SettingForm = () => {
             changeMeData.email = formData.email;
         }
 
-        if (updateAddresses.length) {
-            changeMeData.updateAddresses = updateAddresses;
+        if (formData.newPassword) {
+            changeMeData.password = formData.newPassword;
         }
 
-        if (newAddresses.length) {
-            changeMeData.newAddresses = newAddresses;
-        }
+        // if (updateAddresses.length) {
+        //     changeMeData.updateAddresses = updateAddresses;
+        // }
 
-        if (deleteAddressIds.length) {
-            changeMeData.deleteAddressIds = deleteAddressIds;
-        }
+        // if (newAddresses.length) {
+        //     changeMeData.newAddresses = newAddresses;
+        // }
+
+        // if (deleteAddressIds.length) {
+        //     changeMeData.deleteAddressIds = deleteAddressIds;
+        // }
 
         // Проверка на изменение аватара
         // Преобразуем оригинальный URL в файл для сравнения
@@ -106,6 +110,8 @@ export const SettingForm = () => {
         if (!isSameFile) {
             changeMeData.profilePhoto = formData.profileImage;
         }
+
+        console.log(changeMeData);
 
         try {
             setIsLoading(true);

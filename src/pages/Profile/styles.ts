@@ -9,7 +9,7 @@ export const useProfileStyles = () => {
         },
         header: {
             width: '100%',
-            bgcolor: 'rgba(0, 0, 0, 0.7)',
+            background: theme.palette.background.gradient,
             py: 4,
             display: 'flex',
             flexDirection: 'column',
@@ -34,19 +34,22 @@ export const useProfileStyles = () => {
         menuButton: {
             py: '18px',
             justifyContent: 'center',
-            color: theme.palette.text.primary,
+            color: '#000',
             textTransform: 'none',
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.background.blue,
 
             '& .MuiButton-startIcon>*:nth-of-type(1)': {
                 fontSize: '24px',
                 width: '28px',
+                height: '28px',
             },
         },
         menuText: {
             width: '100px',
             fontSize: '14px',
-            fontWeight: 600,
+            fontWeight: 500,
+            lineHeight: '21px',
+            letterSpacing: '-0.05em',
         },
     };
 

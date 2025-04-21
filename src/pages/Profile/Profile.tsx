@@ -2,15 +2,14 @@ import React from 'react';
 import {Box, Avatar, Typography, Button, Container} from '@mui/material';
 import {Link as RouterLink} from 'react-router-dom';
 
-import StarOutlineRoundedIcon from '@mui/icons-material/StarOutlineRounded';
-import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
-import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded';
 import {useProfileStyles} from './styles';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getCurrentUser} from '../../app/store/user/selectors';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
+import {CalendarIcon} from '../../components/ui/icons/CalendarIcon';
+import {DocumentAddIcon} from '../../components/ui/icons/DocumentAddIcon';
+import {ProfileLikeIcon} from '../../components/ui/icons/ProfileLikeIcon';
+import {StarIcon} from '../../components/ui/icons/StarIcon';
 
 /**
  * Страница профиля
@@ -22,27 +21,26 @@ const ProfilePage: React.FC = () => {
 
     const menuItems = [
         {
-            icon: <StarOutlineRoundedIcon />,
+            icon: <StarIcon />,
             text: 'Мои отзывы',
             path: '/my-reviews',
         },
         {
-            icon: <CalendarTodayRoundedIcon />,
+            icon: <CalendarIcon />,
             text: 'Мои вызовы',
             path: '/my-orders',
         },
         {
-            icon: <FavoriteBorderRoundedIcon />,
+            icon: <ProfileLikeIcon />,
             text: 'Избранное',
             path: '/favorites',
         },
         {
-            icon: <ManageAccountsRoundedIcon />,
+            icon: <DocumentAddIcon />,
             text: 'Настройки',
             path: '/settings',
         },
         {
-            icon: <HelpOutlineRoundedIcon />,
             text: 'Техподдержка',
             path: '/support',
         },

@@ -45,8 +45,8 @@ export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
                 direction="row"
                 justifyContent="space-between"
                 alignItems="center"
-                mt={'35px'}
-                mb={1}
+                mt={'30px'}
+                mb={'2px'}
             >
                 <Typography fontWeight={600}>Мой отзыв</Typography>
                 <Rating readOnly value={review.rating} />
