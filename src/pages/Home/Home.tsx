@@ -9,6 +9,7 @@ import {mappingServerService} from '../../api/services/services/mapping/service'
 import {useStyles} from './styles';
 import {InputSearch} from '../../components/ui/Inputs/InputSearch';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
+
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
     const styles = useStyles();
@@ -32,8 +33,8 @@ export const Home: FC = () => {
     }
 
     return (
-        <Box sx={styles.container}>
-            <LayoutWithNavbar>
+        <LayoutWithNavbar>
+            <Box sx={styles.container}>
                 <InputSearch onChange={setSearch} value={search} />
 
                 <Typography variant="h5" sx={styles.title}>
@@ -42,7 +43,7 @@ export const Home: FC = () => {
                 {filteredServices && (
                     <ServicesList servicesList={filteredServices} />
                 )}
-            </LayoutWithNavbar>
-        </Box>
+            </Box>
+        </LayoutWithNavbar>
     );
 };

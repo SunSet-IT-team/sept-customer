@@ -48,19 +48,18 @@ const ProfilePage: React.FC = () => {
 
     return (
         <Box sx={styles.root}>
-            <LayoutWithNavbar>
-                {/* Верхний блок с аватаром */}
-                <Box sx={styles.header}>
-                    <Avatar
-                        src={user.profile.profileImage}
-                        sx={styles.avatar}
-                    ></Avatar>
-                    <Typography variant="h5" component="h1">
-                        {user.name}
-                    </Typography>
-                </Box>
+            {/* Верхний блок с аватаром */}
+            <Box sx={styles.header}>
+                <Avatar
+                    src={user.profile.profileImage}
+                    sx={styles.avatar}
+                ></Avatar>
+                <Typography variant="h5" component="h1">
+                    {user.name}
+                </Typography>
+            </Box>
 
-                {/* Меню */}
+            <LayoutWithNavbar>
                 <Container maxWidth="sm" sx={styles.menuContainer}>
                     {menuItems.map((item, index) => (
                         <Button
