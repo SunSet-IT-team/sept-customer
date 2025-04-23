@@ -26,6 +26,7 @@ import {Home} from '../../pages/Home/Home';
 import {useAppDispatch} from '../store/store';
 import {fetchUserData} from '../store/user/thunk';
 import {ResetPage} from '../../pages/ResetPage';
+import {ChooseAuth} from '../../pages/ChooseAuth/ChooseAuth';
 
 function AppRoute() {
     const {user, isInited, isLoading} = useTypedSelector((state) => state.user);
@@ -63,6 +64,7 @@ function AppRoute() {
                     )
                 }
             >
+                <Route path="/choose-auth" element={<ChooseAuth />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/sign-in" element={<SignIn />} />
@@ -77,7 +79,7 @@ function AppRoute() {
                     isAuthenticated ? (
                         <Outlet />
                     ) : (
-                        <Navigate to={`/auth`} replace />
+                        <Navigate to={`/choose-auth`} replace />
                     )
                 }
             >
