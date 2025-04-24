@@ -23,14 +23,14 @@ const SettingFormContent = ({
             {settingFormData.map(({label, ...el}) => {
 
                 return (
-                    <Box sx={styles.input}>
+                    <Box sx={styles.input} key={label}>
                         <Typography variant="subtitle1" sx={styles.labelStyles}>
                             {label}
                             {el.required && (
                                 <span style={requiredAsteriskStyles}>*</span>
                             )}
                         </Typography>
-                        <Stack key={label}>
+                        <Stack>
                             <SettingFormFactoryInput
                                 {...el}
                                 key={el.name}
