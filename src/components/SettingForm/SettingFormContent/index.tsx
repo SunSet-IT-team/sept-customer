@@ -1,7 +1,8 @@
-import {Stack} from '@mui/material';
+import {Box, Stack, Typography} from '@mui/material';
 import {useStyles} from './styles';
 import {settingFormData} from '../data';
 import SettingFormFactoryInput from '../SettingFormFactoryInput';
+import { requiredAsteriskStyles } from '../../ui/Inputs/InputField/styles';
 
 type SettingFormContentProps = {
     editName: string;
@@ -19,16 +20,27 @@ const SettingFormContent = ({
 
     return (
         <Stack sx={styles.container}>
-            {settingFormData.map((el) => (
-                <Stack key={el.label} sx={styles.input}>
-                    <SettingFormFactoryInput
-                        {...el}
-                        key={el.name}
-                        editName={editName}
-                        onClickEdit={onClickEdit}
-                    />
-                </Stack>
-            ))}
+            {settingFormData.map(({label, ...el}) => {
+
+                return (
+                    <Box sx={styles.input}>
+                        <Typography variant="subtitle1" sx={styles.labelStyles}>
+                            {label}
+                            {el.required && (
+                                <span style={requiredAsteriskStyles}>*</span>
+                            )}
+                        </Typography>
+                        <Stack key={label}>
+                            <SettingFormFactoryInput
+                                {...el}
+                                key={el.name}
+                                editName={editName}
+                                onClickEdit={onClickEdit}
+                            />
+                        </Stack>
+                    </Box>
+                );
+            })}
         </Stack>
     );
 };
