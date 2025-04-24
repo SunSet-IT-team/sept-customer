@@ -3,7 +3,6 @@ import {SettingFormInputField} from './SettingFormInputField';
 import {SettingFormPasswordField} from './SettingFormPasswordField';
 
 type SettingFormFactoryInput = {
-    label: string;
     name: string;
     editName: string;
     required: boolean;
@@ -16,7 +15,6 @@ type SettingFormFactoryInput = {
  */
 const SettingFormFactoryInput = ({
     name,
-    label,
     type,
     required,
     onClickEdit,
@@ -26,7 +24,6 @@ const SettingFormFactoryInput = ({
         case 'password':
             return (
                 <SettingFormPasswordField
-                    label={label}
                     name={name}
                     type={type}
                     required={required}
@@ -37,7 +34,6 @@ const SettingFormFactoryInput = ({
         case 'newPassword':
             return (
                 <SettingFormPasswordField
-                    label={label}
                     name={name}
                     type={type}
                     required={required}
@@ -49,7 +45,6 @@ const SettingFormFactoryInput = ({
         case 'about':
             return (
                 <SettingFormAboutInput
-                    label={label}
                     name={name}
                     type={type}
                     required={required}
@@ -61,7 +56,6 @@ const SettingFormFactoryInput = ({
         default:
             return (
                 <SettingFormInputField
-                    label={label}
                     name={name}
                     type={type}
                     required={required}

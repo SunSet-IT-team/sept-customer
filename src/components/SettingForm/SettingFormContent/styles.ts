@@ -9,5 +9,10 @@ export const useStyles = (): StylesDictionary => {
             width: '100%',
         },
         input: {width: '100%'},
+        labelStyles: {
+            mb: 1,
+            fontWeight: 500,
+            width: "100%"
+        }
     };
 };

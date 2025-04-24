@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
+import { labelStyles, requiredAsteriskStyles } from '../../ui/Inputs/InputField/styles';
 
 type AddressListElementProps = {
     editName: string;
@@ -38,53 +39,68 @@ export const AddressListElement = ({
             </Typography>
 
             <Stack spacing={2}>
-                {fields.map((field, index) => (
-                    <TextFieldElement
-                        key={field.id}
-                        name={`addresses.${index}.value`}
-                        label={`Адрес ${index + 1}`}
-                        variant="outlined"
-                        fullWidth
-                        required
-                        slotProps={{
-                            input: {
-                                readOnly:
-                                    editName !== `addresses.${index}.value`,
-                                endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            onClick={() =>
-                                                onClickEdit(
-                                                    `addresses.${index}.value` ==
-                                                        editName
-                                                        ? null
-                                                        : `addresses.${index}.value`
-                                                )
-                                            }
-                                            sx={{
-                                                cursor: 'pointer',
-                                                color: 'primary.main',
-                                            }}
-                                        >
-                                            {editName ===
-                                            `addresses.${index}.value` ? (
-                                                <CheckIcon />
-                                            ) : (
-                                                <EditIcon />
-                                            )}
-                                        </IconButton>
-                                        <IconButton
-                                            onClick={() => remove(index)}
-                                            color="error"
-                                        >
-                                            <DeleteIcon />
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            },
-                        }}
-                    />
-                ))}
+                {fields.map((field, index) => {
+                    const label = `Адрес ${index + 1}`;
+
+                    return (
+                        <Box>
+                            <Typography
+                                variant="subtitle1"
+                                sx={labelStyles}
+                            >
+                                {label}
+                                <span style={requiredAsteriskStyles}>*</span>
+                            </Typography>
+                            <TextFieldElement
+                                key={field.id}
+                                name={`addresses.${index}.value`}
+                                variant="outlined"
+                                fullWidth
+                                required
+                                slotProps={{
+                                    input: {
+                                        readOnly:
+                                            editName !==
+                                            `addresses.${index}.value`,
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    onClick={() =>
+                                                        onClickEdit(
+                                                            `addresses.${index}.value` ==
+                                                                editName
+                                                                ? null
+                                                                : `addresses.${index}.value`
+                                                        )
+                                                    }
+                                                    sx={{
+                                                        cursor: 'pointer',
+                                                        color: 'primary.main',
+                                                    }}
+                                                >
+                                                    {editName ===
+                                                    `addresses.${index}.value` ? (
+                                                        <CheckIcon />
+                                                    ) : (
+                                                        <EditIcon />
+                                                    )}
+                                                </IconButton>
+                                                <IconButton
+                                                    onClick={() =>
+                                                        remove(index)
+                                                    }
+                                                    color="error"
+                                                >
+                                                    <DeleteIcon />
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    },
+                                }}
+                            />
+                        </Box>
+                    );
+                })}
                 <Button
                     variant="outlined"
                     startIcon={<AddIcon />}
