@@ -1,8 +1,7 @@
-import {Box, Stack, Typography} from '@mui/material';
+import {Stack, Typography} from '@mui/material';
 import {FC} from 'react';
 import {Helmet} from 'react-helmet-async';
 import {ConfirmationForm} from '../../components/ConfirmationForm/ConfirmationForm';
-import {PageTitle} from '../../components/PageTitle/PageTitle';
 import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {toast} from 'react-toastify';
 import {SERVICES} from '../../api';

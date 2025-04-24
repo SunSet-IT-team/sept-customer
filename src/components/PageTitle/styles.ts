@@ -23,7 +23,7 @@ export const useStyles = (): StylesDictionary => {
 
         arrow: {
             position: 'absolute',
-            left: '33px',
+            left: '0',
             cursor: 'pointer',
             padding: '2px',
         },
