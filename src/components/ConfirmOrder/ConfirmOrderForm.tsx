@@ -22,11 +22,11 @@ export const ConfirmOrderForm: FC = () => {
                 septicConstructionType: formData.object,
                 paymentMethod: formData.payment_type,
                 workDate: formData.date,
-                distanceToSeptic: parseFloat(formData.entrance_distance),
-                septicDepth: parseFloat(formData.septic_height),
-                septicVolume: parseFloat(formData.volume),
-                serviceId: parseInt(service.id),
-                executorId: executor.id,
+                distanceToSeptic: String(formData.entrance_distance),
+                septicDepth: String(formData.septic_height),
+                septicVolume: String(formData.volume),
+                serviceId: String(service.id),
+                executorId: String(executor.id),
                 city: formData.city,
             });
 

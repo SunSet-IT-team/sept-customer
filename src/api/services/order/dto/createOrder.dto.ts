@@ -9,12 +9,12 @@ export interface ICreateOrderDTO {
     city: string;
     workDate: string;
     address?: string;
-    distanceToSeptic: number;
-    septicDepth: number;
-    septicVolume: number;
+    distanceToSeptic: string;
+    septicDepth: string;
+    septicVolume: string;
     addressId?: number;
-    serviceId: number;
-    executorId: number;
+    serviceId: string;
+    executorId: string;
     price?: number;
 }
 

@@ -6,12 +6,16 @@ export const newOrderInputsData = [
     {label: 'Объект', name: 'object', required: true},
     {label: 'Комментарий', name: 'comment', required: false},
     {
-        label: 'Расстояние до септика от подъезда',
+        label: 'Расстояние до септика от подъезда (м)',
         name: 'entrance_distance',
         required: true,
     },
-    {label: 'Глубина септика до дна', name: 'septic_height', required: true},
-    {label: 'Объем септика', name: 'volume', required: true},
+    {
+        label: 'Глубина септика до дна (м)',
+        name: 'septic_height',
+        required: true,
+    },
+    {label: 'Объем септика (м³)', name: 'volume', required: true},
     {label: 'Вид очистного сооружения', name: 'object_type', required: true},
 
     {label: 'Адрес', name: 'address', required: true},

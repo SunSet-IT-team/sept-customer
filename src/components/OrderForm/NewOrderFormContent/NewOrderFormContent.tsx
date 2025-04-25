@@ -38,17 +38,25 @@ export const NewOrderFormContent: FC = () => {
                             label={label}
                             labelPosition="start"
                             slotProps={
-                                type == 'date' && {
-                                    htmlInput: {
-                                        min: new Date(
-                                            new Date().setDate(
-                                                new Date().getDate() + 1
-                                            )
-                                        )
-                                            .toISOString()
-                                            .split('T')[0], // Формат YYYY-MM-DD
-                                    },
-                                }
+                                type == 'date'
+                                    ? {
+                                          htmlInput: {
+                                              min: new Date(
+                                                  new Date().setDate(
+                                                      new Date().getDate() + 1
+                                                  )
+                                              )
+                                                  .toISOString()
+                                                  .split('T')[0],
+                                          },
+                                      }
+                                    : type === 'float'
+                                    ? {
+                                          htmlInput: {
+                                              step: '0.01',
+                                          },
+                                      }
+                                    : undefined
                             }
                         />
                     )}
