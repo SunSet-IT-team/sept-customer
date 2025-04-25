@@ -1,4 +1,5 @@
 import {IService} from '../../../../types/service';
+import {getImagePath} from '../../../../utils/share';
 import {ServiceResponse} from '../../share/types';
 
 /*
@@ -10,5 +11,8 @@ export const mappingServerService = (service: ServiceResponse): IService => {
         id: service.id,
         name: service.name,
         priority: service.priority,
+        previewUrl: service.previewFile
+            ? getImagePath(service.previewFile.url)
+            : '',
     };
 };

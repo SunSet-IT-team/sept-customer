@@ -48,6 +48,7 @@ export type ServiceResponse = {
     id: string;
     name: string;
     priority: number;
+    previewFile?: FileResponse
 };
 
 /**
