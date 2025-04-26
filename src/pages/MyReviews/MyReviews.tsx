@@ -8,7 +8,6 @@ import {useTypedSelector} from '../../hooks/useTypedSelector';
 import {getCurrentUser} from '../../app/store/user/selectors';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 import {Typography} from '@mui/material';
-import { useStyles } from './styles';
 
 export const MyReviews: FC = () => {
     const user = useTypedSelector(getCurrentUser);
@@ -21,14 +20,12 @@ export const MyReviews: FC = () => {
         return <Spinner />;
     }
 
-    const styles = useStyles()
-
     return (
         <>
             <Helmet>
                 <title>Мои отзывы</title>
             </Helmet>
-            <BackLayout title="Мои отзывы" sxTitle={styles.pageTitle}>
+            <BackLayout title="Мои отзывы">
                 <LayoutWithNavbar>
                     {reviews && reviews.length === 0 && !isLoading && (
                         <Typography

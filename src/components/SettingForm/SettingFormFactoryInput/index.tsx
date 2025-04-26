@@ -4,6 +4,8 @@ import {SettingFormPasswordField} from './SettingFormPasswordField';
 
 type SettingFormFactoryInput = {
     name: string;
+    label: string;
+    labelPosition?: 'start' | 'center' | 'end';
     editName: string;
     required: boolean;
     type?: string;
@@ -15,6 +17,8 @@ type SettingFormFactoryInput = {
  */
 const SettingFormFactoryInput = ({
     name,
+    label,
+    labelPosition = 'start',
     type,
     required,
     onClickEdit,
@@ -25,6 +29,8 @@ const SettingFormFactoryInput = ({
             return (
                 <SettingFormPasswordField
                     name={name}
+                    label={label}
+                    labelPosition={labelPosition}
                     type={type}
                     required={required}
                     onClickEdit={onClickEdit}
@@ -35,6 +41,8 @@ const SettingFormFactoryInput = ({
             return (
                 <SettingFormPasswordField
                     name={name}
+                    label={label}
+                    labelPosition={labelPosition}
                     type={type}
                     required={required}
                     onClickEdit={onClickEdit}
@@ -46,6 +54,8 @@ const SettingFormFactoryInput = ({
             return (
                 <SettingFormAboutInput
                     name={name}
+                    label={label}
+                    labelPosition={labelPosition}
                     type={type}
                     required={required}
                     onClickEdit={onClickEdit}
@@ -57,6 +67,8 @@ const SettingFormFactoryInput = ({
             return (
                 <SettingFormInputField
                     name={name}
+                    label={label}
+                    labelPosition={labelPosition}
                     type={type}
                     required={required}
                     onClickEdit={onClickEdit}

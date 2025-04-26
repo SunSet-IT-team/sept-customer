@@ -13,8 +13,8 @@ type BackLayoutProps = {
 /**
  * Добавляет сверху кнопку "назад"
  */
-export const BackLayout: FC<BackLayoutProps> = ({title, children, sxTitle}) => {
-    const styles = useStyles(sxTitle);
+export const BackLayout: FC<BackLayoutProps> = ({title, children}) => {
+    const styles = useStyles();
 
     return (
         <Box sx={styles.pageContainer}>

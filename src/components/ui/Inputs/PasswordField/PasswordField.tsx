@@ -26,7 +26,9 @@ export const PasswordField: FC<IProps> = ({
         <Stack width="100%">
             <Typography variant="subtitle1" sx={labelStyles}>
                 {label}
-                {required && <span style={requiredAsteriskStyles}>*</span>}
+                {label && required && (
+                    <span style={requiredAsteriskStyles}>*</span>
+                )}
             </Typography>
             <TextFieldElement
                 name={name}

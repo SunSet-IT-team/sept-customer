@@ -43,16 +43,12 @@ export const AddressListElement = ({
                     const label = `Адрес ${index + 1}`;
 
                     return (
-                        <Box>
-                            <Typography
-                                variant="subtitle1"
-                                sx={labelStyles}
-                            >
+                        <Box key={field.id}>
+                            <Typography variant="subtitle1" sx={labelStyles}>
                                 {label}
-                                <span style={requiredAsteriskStyles}>*</span>
+                                {label && <span style={requiredAsteriskStyles}>*</span>}
                             </Typography>
                             <TextFieldElement
-                                key={field.id}
                                 name={`addresses.${index}.value`}
                                 variant="outlined"
                                 fullWidth
