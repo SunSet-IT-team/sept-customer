@@ -6,7 +6,6 @@ import {useFetchOrders} from '../../hooks/Orders/useFetchOrders';
 import {BackLayout} from '../layouts/BackLayout';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
 import {Typography} from '@mui/material';
-import { useStyles } from './styles';
 
 export const MyOrders: FC = () => {
     const {orders, isLoading, ref} = useFetchOrders();
@@ -15,14 +14,12 @@ export const MyOrders: FC = () => {
         return <Spinner />;
     }
 
-    const styles = useStyles()
-
     return (
         <>
             <Helmet>
                 <title>Мои заказы</title>
             </Helmet>
-            <BackLayout title="Мои заказы" sxTitle={styles.pageTitle}>
+            <BackLayout title="Мои заказы">
                 <LayoutWithNavbar>
                     {orders && orders.length === 0 && !isLoading && (
                         <Typography

@@ -1,6 +1,4 @@
-import {SxProps} from '@mui/material';
 import {StylesDictionary} from '../../../../types/share';
-import {Theme} from '@emotion/react';
 
 export const useStyles = (): StylesDictionary => {
     return {
@@ -8,17 +6,11 @@ export const useStyles = (): StylesDictionary => {
             width: '100%',
         },
 
-        textFieldStyles: {
-            '& .MuiInputBase-input': {
-                padding: '10px',
-            },
+        labelStyles: {
+            mb: 1,
+            fontWeight: 500,
         },
     };
-};
-
-export const labelStyles: SxProps<Theme> = {
-    mb: 1,
-    fontWeight: 500,
 };
 
 export const requiredAsteriskStyles = {

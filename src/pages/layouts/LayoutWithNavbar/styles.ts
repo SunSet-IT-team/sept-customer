@@ -5,7 +5,6 @@ export const useLayoutStyles = () => {
         layout: {
             position: 'relative',
             pb: '140px',
-            px: '20px',
         },
         navigation: {
             position: 'fixed',

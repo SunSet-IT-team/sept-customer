@@ -1,8 +1,7 @@
-import {SxProps, useTheme} from '@mui/material/styles';
+import {useTheme} from '@mui/material/styles';
 import {StylesDictionary} from '../../../types/share';
-import { Theme } from '@emotion/react';
 
-export const useStyles = (sxTitle: SxProps<Theme>): StylesDictionary => {
+export const useStyles = (): StylesDictionary => {
     const theme = useTheme();
 
     return {
@@ -19,7 +18,6 @@ export const useStyles = (sxTitle: SxProps<Theme>): StylesDictionary => {
         },
         title: {
             height: '1px',
-            ...sxTitle
         },
         content: {
             flexGrow: 1,

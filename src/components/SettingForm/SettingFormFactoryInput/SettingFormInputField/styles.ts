@@ -8,5 +8,20 @@ export const useStyles = (): StylesDictionary => {
         label: {
             fontWeight: 500,
         },
+
+        input: {
+            width: '100%',
+        },
+
+        labelStyles: {
+            mb: 1,
+            fontWeight: 500,
+        },
     };
+};
+
+export const requiredAsteriskStyles = {
+    color: 'red',
+    marginLeft: '2px',
+    marginTop: '-10px',
 };
