@@ -9,6 +9,7 @@ import {mappingServerService} from '../../api/services/services/mapping/service'
 import {useStyles} from './styles';
 import {InputSearch} from '../../components/ui/Inputs/InputSearch';
 import {LayoutWithNavbar} from '../layouts/LayoutWithNavbar/LayoutWithNavbar';
+import {BackLayout} from '../layouts/BackLayout';
 
 export const Home: FC = () => {
     const [search, setSearch] = useState<string>('');
@@ -33,17 +34,19 @@ export const Home: FC = () => {
     }
 
     return (
-        <LayoutWithNavbar>
-            <Box sx={styles.container}>
-                <InputSearch onChange={setSearch} value={search} />
+        <BackLayout>
+            <LayoutWithNavbar>
+                <Box sx={styles.container}>
+                    <InputSearch onChange={setSearch} value={search} />
 
-                <Typography variant="h5" sx={styles.title}>
-                    Наши услуги
-                </Typography>
-                {filteredServices && (
-                    <ServicesList servicesList={filteredServices} />
-                )}
-            </Box>
-        </LayoutWithNavbar>
+                    <Typography variant="h5" sx={styles.title}>
+                        Наши услуги
+                    </Typography>
+                    {filteredServices && (
+                        <ServicesList servicesList={filteredServices} />
+                    )}
+                </Box>
+            </LayoutWithNavbar>
+        </BackLayout>
     );
 };

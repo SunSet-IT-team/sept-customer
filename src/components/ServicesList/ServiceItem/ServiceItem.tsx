@@ -23,49 +23,61 @@ export const ServiceItem = ({service, handleClick}: ServiceItemProps) => {
                 width: '100%', // Занимает всю доступную ширину
             }}
         >
-            <Typography
-                variant="h6"
-                sx={{
-                    fontSize: '18px',
-                    mb: 2, // Отступ сверху
-                    width: '100%',
-                }}
-            >
-                {service.name}
-            </Typography>
-            {/* Контейнер для превью (80% ширины) */}
             <Box
                 sx={{
-                    width: '80%',
-                    position: 'relative',
-                    '&:after': {
-                        content: '""',
-                        display: 'block',
-                        paddingBottom: '100%', // Поддерживаем соотношение 1:1
-                    },
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    width: '100%', // Занимает всю доступную ширину
                 }}
             >
-                {/* Круглое превью */}
-                <Avatar
-                    src={service.previewUrl}
+                <Typography
+                    variant="h6"
                     sx={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
+                        fontSize: '16px',
+                        mb: 1, // Отступ сверху
                         width: '100%',
-                        height: '100%',
-                        bgcolor: theme.palette.grey[200],
+                        letterSpacing: '-0.02em',
+                        lineHeight: '21px',
                     }}
                 >
-                    {!service.previewUrl && (
-                        <ImageIcon
-                            sx={{
-                                fontSize: '2.5rem',
-                                color: theme.palette.grey[500],
-                            }}
-                        />
-                    )}
-                </Avatar>
+                    {service.name}
+                </Typography>
+                {/* Контейнер для превью (80% ширины) */}
+                <Box
+                    sx={{
+                        width: '65%',
+                        position: 'relative',
+                        '&:after': {
+                            content: '""',
+                            display: 'block',
+                            paddingBottom: '100%', // Поддерживаем соотношение 1:1
+                        },
+                    }}
+                >
+                    {/* Круглое превью */}
+                    <Avatar
+                        src={service.previewUrl}
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            bgcolor: theme.palette.grey[200],
+                        }}
+                    >
+                        {!service.previewUrl && (
+                            <ImageIcon
+                                sx={{
+                                    fontSize: '2.5rem',
+                                    color: theme.palette.grey[500],
+                                }}
+                            />
+                        )}
+                    </Avatar>
+                </Box>
             </Box>
         </Box>
     );
