@@ -16,12 +16,8 @@ export const ChooseAuth: FC = () => {
 
     const isChoosed = searchParams.get('isChoosed');
 
-    console.log('isChoosed');
-    console.log(isChoosed);
     useEffect(() => {
         if (isChoosed) {
-            console.log('navigate');
-
             navigate('/auth', {replace: true});
         }
     }, [isChoosed, navigate]);
