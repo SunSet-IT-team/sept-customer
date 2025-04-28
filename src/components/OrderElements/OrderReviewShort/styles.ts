@@ -13,11 +13,14 @@ export const textFieldSx: SxProps<Theme> = {
 
 export const buttonSx: SxProps<Theme> = {
     borderRadius: '5px',
-    height: 50,
-    fontSize: '16px',
+    fontSize: '14px',
+    textTransform: 'none',
+    lineHeight: '21px',
+    letterSpacing: '-0.05em',
     backgroundColor: 'primary.main',
     color: 'white',
     flex: '0 1 50%',
+    fontWeight: 500,
 };
 
 export const editButtonSx: SxProps<Theme> = {

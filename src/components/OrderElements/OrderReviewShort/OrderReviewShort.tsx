@@ -10,9 +10,7 @@ import {
 import {FC, useCallback} from 'react';
 import {textFieldSx} from '../Form/styles';
 import {deleteButtonSx, editButtonSx} from './styles';
-import {useMediaQuery} from 'usehooks-ts';
 import {useNavigate} from 'react-router-dom';
-import {useActions} from '../../../hooks/useActions';
 import {IOrder} from '../../../types/order';
 import {IReview} from '../../../types/executor';
 import {useReviewMutations} from '../../../hooks/Review/useReview';
@@ -23,7 +21,6 @@ interface IProps {
 }
 
 export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
-    const isMobileSmall = useMediaQuery('(max-width:480px)');
     const navigate = useNavigate();
     const mutation = useReviewMutations(orderId);
 
@@ -66,9 +63,9 @@ export const OrderReviewShort: FC<IProps> = ({orderId, review}) => {
             />
 
             <Stack
-                direction={isMobileSmall ? 'column' : 'row'} // вертикально на xs, горизонтально на sm+
-                spacing={isMobileSmall ? 1 : 2}
-                justifyContent={isMobileSmall ? 'center' : 'space-between'}
+                direction={'row'}
+                spacing={2}
+                justifyContent={'space-between'}
                 mt={'10px'}
             >
                 <Button
