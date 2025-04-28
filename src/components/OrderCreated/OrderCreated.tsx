@@ -9,7 +9,7 @@ import {
     buttonStyle,
     containerStyle,
     textStyle,
-    titleStyle,
+    useStyles,
 } from './styles';
 
 export const OrderCreated: FC = () => {
@@ -24,6 +24,8 @@ export const OrderCreated: FC = () => {
         setService(null);
     }, [setExecutor, setFormData, setService]);
 
+    const styles = useStyles();
+
     return (
         <>
             <Helmet>
@@ -31,9 +33,20 @@ export const OrderCreated: FC = () => {
             </Helmet>
             <Box sx={containerStyle}>
                 <Stack>
-                    <Typography variant="h1" sx={titleStyle}>
-                        ЭКО Контроль
-                    </Typography>
+                    <Box sx={styles.logoContainer}>
+                        <Box
+                            component="img"
+                            sx={styles.logo}
+                            alt="ЭКОКОНТРОЛЬ logo"
+                            src="/logo.png"
+                        />
+                        <Box
+                            component="img"
+                            sx={styles.logoText}
+                            alt="ЭКОКОНТРОЛЬ"
+                            src="/logo_text.png"
+                        />
+                    </Box>
                     <Typography variant="body1" sx={textStyle}>
                         Ваш вызов №{orderId} создан. Вы можете связаться с
                         исполнителем для уточнения деталей.
