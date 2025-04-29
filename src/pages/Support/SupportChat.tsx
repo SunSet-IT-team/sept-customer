@@ -50,6 +50,7 @@ const SupportChat = () => {
         chatUser: supportChatUser,
         additionalInfo: chatData.additionalInfo,
         currentUserId: user.id,
+        newMessages: 0,
     };
 
     const handleBack = () => navigate('/');

@@ -30,6 +30,7 @@ export const OrderChat: FC = () => {
     const chatData: Chat = {
         id: data.data.id,
         messages: [],
+        newMessages: 0,
         additionalInfo: data.data.theme,
         currentUserId: user.id,
         chatUser: {
