@@ -4,6 +4,7 @@ import {CheckIsMobile} from '../components/CheckIsMobile/CheckIsMobile';
 import {Providers} from './providers/Providers';
 import AppRoute from './routes';
 import AppStatic from './static';
+import InstallPWAModal from '../components/InstallPWA/InstallPWA';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                     <AppStatic />
                     <ToastContainer />
                     <AppRoute />
+                    <InstallPWAModal />
                 </CheckIsMobile>
             </Providers>
         </StrictMode>
